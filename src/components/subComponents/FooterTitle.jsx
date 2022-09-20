@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const FooterTitle = ({ title, titleLink }) => {
   return (
-    <Title>
+    <Title data-scroll-section>
       <Link to={titleLink}>{title}</Link>
       <Link to={titleLink}>{title}</Link>
       <Link to={titleLink}>{title}</Link>
@@ -25,7 +25,7 @@ const Title = styled.div`
   justify-content: center;
   align-items: flex-start;
   flex-shrink: 0;
-
+  overflow: hidden;
   a {
     color: #fff;
     font-size: 8rem;

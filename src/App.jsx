@@ -32,6 +32,7 @@ function App() {
       ref: scrollRef,
       smooth: true,
       scrollFromAnywhere: true,
+      reloadOnContextChange: true,
       smartphone: {
         smooth: true,
       },
@@ -71,7 +72,7 @@ const Container = styled.div`
 `;
 
 const BgNoise = styled.div`
-  background: #101010;
+  /* background: #101010;
   pointer-events: none;
   height: 100vh;
   width: 100vw;
@@ -89,7 +90,7 @@ const BgNoise = styled.div`
     background-image: url("https://res.cloudinary.com/dbov4oeyp/image/upload/v1663052723/Portfolio/bg-noise_x8xg7l.png");
     background-position: 50%;
     animation: BgNoise 1s steps(2) infinite;
-  }
+  } */
   @keyframes BgNoise {
     0% {
       transform: translate3d(0, 9rem, 0);

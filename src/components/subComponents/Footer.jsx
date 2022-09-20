@@ -15,7 +15,7 @@ const Footer = () => {
         <InfoWrapper>
           <Info>
             <a href="mailto:aakashpanchal7000@gmail.com">
-              aakashpanchal7000@gmail.com
+              aakash@cleverstudio.in
               <hr />
             </a>
             <p>Madhya Pradesh, India</p>
@@ -60,6 +60,9 @@ const Container = styled.div`
   height: 65vh;
   width: 100vw;
   color: #101010;
+  @media (max-width: 1024px) {
+    height: 53vh;
+  }
 `;
 const Content = styled.div`
   padding: 5rem 5rem;
@@ -67,6 +70,12 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media (max-width: 1024px) {
+    padding: 4rem 4rem;
+  }
+  @media (max-width: 768px) {
+    padding: 2rem 2rem;
+  }
 `;
 
 const Title = styled.div`
@@ -85,12 +94,25 @@ const Title = styled.div`
       border-bottom: 1px solid #101010;
     }
   }
+  @media (max-width: 1024px) {
+    h1 {
+      font-size: 2.8rem;
+    }
+  }
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.2rem;
+    }
+  }
 `;
 
 const InfoWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 3rem;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
 `;
 
 const Info = styled.div`
@@ -100,13 +122,21 @@ const Info = styled.div`
     font-size: 1.2rem;
     hr {
       width: 85%;
-      /* opacity: 0.2; */
       color: #000;
     }
   }
   p {
     padding-top: 0.5rem;
     font-size: 1rem;
+  }
+  @media (max-width: 1024px) {
+    padding-bottom: 3.5rem;
+    a {
+      font-size: 1rem;
+      hr {
+        width: 52%;
+      }
+    }
   }
 `;
 
@@ -117,6 +147,14 @@ const Socials = styled.div`
     padding-left: 1rem;
     color: #101010;
     text-decoration: underline;
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+  @media (max-width: 1024px) {
+    a {
+      font-size: 0.8rem;
+    }
   }
 `;
 
@@ -126,12 +164,22 @@ const Credits = styled.h1`
   font-size: 0.8rem;
   display: flex;
   justify-content: center;
+  align-items: center;
   position: absolute;
   bottom: 0;
   width: 100%;
   svg {
     width: 1rem;
     margin: 0 0.2rem;
+  }
+  @media (max-width: 1024px) {
+    font-size: 0.6rem;
+    svg {
+      width: 0.8rem;
+      margin: 0 0.2rem;
+    }
+  }
+  @media (max-width: 768px) {
   }
 `;
 
