@@ -1,0 +1,124 @@
+.menu-open {
+  color: #fff;
+}
+.menu-open,
+.menu-close {
+  position: absolute;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  top: 0;
+  right: 0;
+  margin-right: 3rem;
+  margin-top: 2.5rem;
+  font-size: 20px;
+  z-index: 999999998;
+}
+.menu-close {
+  color: #101010;
+}
+
+.nav-container {
+  font-weight: 400;
+  position: fixed;
+  left: -100%;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  color: #101010;
+  z-index: 999999999;
+}
+
+.menu__item {
+  position: relative;
+  padding: 0 6vw;
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+.menu__item-link {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  transition: opacity 0.4s;
+  cursor: none;
+  color: #101010;
+}
+
+.menu__item-link::before {
+  all: initial;
+  counter-increment: menu;
+  position: absolute;
+  bottom: 60%;
+  left: 0;
+  pointer-events: none;
+}
+
+.menu__item-link:hover {
+  transition-duration: 0.1s;
+  opacity: 0;
+}
+
+.menu__item-img {
+  z-index: 2;
+  pointer-events: none;
+  position: absolute;
+  height: 12vh;
+  max-height: 600px;
+  opacity: 0;
+  left: 8%;
+  top: 10%;
+  transform: scale(0);
+}
+
+.menu__item-link:hover + .menu__item-img {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.4s;
+}
+
+.menu {
+  padding: 10vh 0 25vh;
+  --offset: 20vw;
+  --move-initial: calc(-25% + var(--offset));
+  --move-final: calc(-50% + var(--offset));
+  font-size: 7vw;
+}
+
+.marquee {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #101010;
+  pointer-events: none;
+  .marquee__inner {
+    width: fit-content;
+    display: flex;
+    position: relative;
+    opacity: 0;
+    transition: all 0.1s;
+    transform: translateX(60px);
+    span {
+      color: #101010;
+      opacity: 0.3;
+    }
+  }
+}
+
+.menu__item-link:hover ~ .marquee .marquee__inner {
+  opacity: 1;
+  transform: translateX(0px);
+  transition-duration: 0.4s;
+}
+
+.menu__item-link,
+.marquee span {
+  white-space: nowrap;
+  font-size: 7vw;
+  padding: 0 1vw;
+  line-height: 1.15;
+}
+
+.marquee span {
+  font-style: italic;
+}
