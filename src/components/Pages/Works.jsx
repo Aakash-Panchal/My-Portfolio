@@ -1,24 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import ProjectIMG from "../../assets/Test.png";
 import Footer from "../subComponents/Footer";
-import FooterTitle from "../subComponents/FooterTitle";
 import Quotes from "../subComponents/Quotes";
 import { BsArrowRight } from "react-icons/bs";
-import gsap from "gsap";
+import ProjectIMG from "../../assets/Test.png";
+import ProjectIMG2 from "../../assets/Test-2.webp";
 
-const Works = ({ setViewProject }) => {
-  // onMouseEnter={() => {
-  //   setViewProject(true);
-  // }}
-  // onMouseLeave={() => {
-  //   setViewProject(false);
-  // }}
-
-  const tl = gsap.timeline({ paused: true });
-
-  useEffect(() => {}, []);
-
+const Works = () => {
   return (
     <>
       <Container data-scroll-section>
@@ -35,7 +23,22 @@ const Works = ({ setViewProject }) => {
               </ImageHolder>
               <ProjectInfo>
                 <h1>Project 1</h1>
-                <BsArrowRight />
+                <a href="https://www.google.com">
+                  <BsArrowRight />
+                </a>
+              </ProjectInfo>
+            </ProjectCard>
+            <ProjectCard>
+              <ImageHolder>
+                <a href="https://www.google.com" target="_blank">
+                  <img src={ProjectIMG2} />
+                </a>
+              </ImageHolder>
+              <ProjectInfo>
+                <h1>Project 2</h1>
+                <a href="https://www.google.com">
+                  <BsArrowRight />
+                </a>
               </ProjectInfo>
             </ProjectCard>
             <ProjectCard>
@@ -45,26 +48,16 @@ const Works = ({ setViewProject }) => {
                 </a>
               </ImageHolder>
               <ProjectInfo>
-                <h1>Project 1</h1>
-                <BsArrowRight />
-              </ProjectInfo>
-            </ProjectCard>
-            <ProjectCard>
-              <ImageHolder>
-                <a href="https://www.google.com" target="_blank">
-                  <img src={ProjectIMG} />
+                <h1>Project 3</h1>
+                <a href="https://www.google.com">
+                  <BsArrowRight />
                 </a>
-              </ImageHolder>
-              <ProjectInfo>
-                <h1>Project 1</h1>
-                <BsArrowRight />
               </ProjectInfo>
             </ProjectCard>
           </ProjectsContainer>
         </Content>
       </Container>
       <Quotes />
-      <FooterTitle titleLink="/contact" title="Contact me" />
       <Footer />
     </>
   );
@@ -154,8 +147,24 @@ const ProjectInfo = styled.div`
   justify-content: space-between;
   padding: 1.5rem 0;
   align-items: center;
-  svg {
-    font-size: 2.5rem;
+  a {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: 0.5s all ease-in-out;
+    svg {
+      color: #fff;
+      font-size: 2rem;
+    }
+    &:hover {
+      background: #fff;
+    }
+    &:hover > svg {
+      color: #101010;
+    }
   }
 `;
 export default Works;
