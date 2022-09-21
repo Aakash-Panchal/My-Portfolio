@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Footer = () => {
+const Footer = ({ FooterTitle, FooterLinkTitle, FooterLink }) => {
   return (
     <Container data-scroll-section>
       <Content>
         <Title>
           <h1>
-            Have a project in mind?
-            <Link to="/contact">Contact me</Link>
+            {FooterTitle}
+            <Link to={FooterLink}>{FooterLinkTitle}</Link>
           </h1>
         </Title>
         <InfoWrapper>
@@ -24,7 +24,6 @@ const Footer = () => {
             <a href="https://github.com/Aakash-Panchal" target="_blank">
               Instagram
             </a>
-
             <a href="https://github.com/Aakash-Panchal" target="_blank">
               Github
             </a>
