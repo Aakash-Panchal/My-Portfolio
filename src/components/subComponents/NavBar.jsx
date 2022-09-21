@@ -1,28 +1,31 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import gsap from "gsap";
 import "./style.scss";
 
 const NavBar = () => {
+  var tl = gsap.timeline({ paused: true });
+
   function OpenMenu() {
-    console.log("open");
     tl.play();
   }
   function CloseMenu() {
-    console.log("close");
     tl.reverse();
   }
 
-  var tl = gsap.timeline({ paused: true });
-
   useEffect(() => {
     tl.to(".nav-container", {
-      left: 0,
+      left: "0%",
       ease: "Expo.easeInOut",
     });
-
     tl.to(".menu__item", {
       y: "0",
+      opacity: 1,
+      ease: "Expo.easeOut",
+      stagger: 0.1,
+    });
+    tl.to(".socials", {
       opacity: 1,
       ease: "Expo.easeOut",
       stagger: 0.1,
@@ -108,9 +111,57 @@ const NavBar = () => {
             </div>
           </div>
         </nav>
+        <Socials>
+          <a
+            className="socials"
+            href="https://github.com/Aakash-Panchal"
+            target="_blank"
+          >
+            Instagram
+          </a>
+          <a
+            className="socials"
+            href="https://github.com/Aakash-Panchal"
+            target="_blank"
+          >
+            Github
+          </a>
+          <a
+            className="socials"
+            href="https://github.com/Aakash-Panchal"
+            target="_blank"
+          >
+            Linkedin
+          </a>
+        </Socials>
       </div>
     </>
   );
 };
+
+const Socials = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 2rem;
+  margin-bottom: 6rem;
+  .socials {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    padding-left: 1rem;
+    color: #101010;
+    position: relative;
+    opacity: 0;
+    text-decoration: underline;
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+  @media (max-width: 1024px) {
+    a {
+      font-size: 0.8rem;
+    }
+  }
+`;
 
 export default NavBar;
