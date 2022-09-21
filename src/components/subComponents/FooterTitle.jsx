@@ -5,13 +5,62 @@ import { Link } from "react-router-dom";
 const FooterTitle = ({ title, titleLink }) => {
   return (
     <Title data-scroll-section>
-      <Link to={titleLink}>{title}</Link>
-      <Link to={titleLink}>{title}</Link>
-      <Link to={titleLink}>{title}</Link>
-      <Link to={titleLink}>{title}</Link>
-      <Link to={titleLink}>{title}</Link>
-      <Link to={titleLink}>{title}</Link>
-      <Link to={titleLink}>{title}</Link>
+      <Link
+        data-scroll
+        data-scroll-direction="horizontal"
+        data-scroll-speed="-2"
+        to={titleLink}
+      >
+        {title}
+      </Link>
+      <Link
+        data-scroll
+        data-scroll-direction="horizontal"
+        data-scroll-speed="-2"
+        to={titleLink}
+      >
+        {title}
+      </Link>
+      <Link
+        data-scroll
+        data-scroll-direction="horizontal"
+        data-scroll-speed="-2"
+        to={titleLink}
+      >
+        {title}
+      </Link>
+      <Link
+        data-scroll
+        data-scroll-direction="horizontal"
+        data-scroll-speed="-2"
+        to={titleLink}
+      >
+        {title}
+      </Link>
+      <Link
+        data-scroll
+        data-scroll-direction="horizontal"
+        data-scroll-speed="-2"
+        to={titleLink}
+      >
+        {title}
+      </Link>
+      <Link
+        data-scroll
+        data-scroll-direction="horizontal"
+        data-scroll-speed="-2"
+        to={titleLink}
+      >
+        {title}
+      </Link>
+      <Link
+        data-scroll
+        data-scroll-direction="horizontal"
+        data-scroll-speed="-2"
+        to={titleLink}
+      >
+        {title}
+      </Link>
     </Title>
   );
 };
@@ -29,21 +78,16 @@ const Title = styled.div`
   a {
     color: #fff;
     font-size: 8rem;
-    animation: slide-left 5s linear infinite;
     padding: 0 10rem;
     &:first-letter {
       font-style: italic;
     }
   }
-
-  @keyframes slide-left {
-    from {
-      -webkit-transform: translateX(0);
-      transform: translateX(0);
-    }
-    to {
-      -webkit-transform: translateX(-100%);
-      transform: translateX(-100%);
+  @media screen and (max-width: 768px) {
+    height: 10rem;
+    a {
+      font-size: 3rem;
+      padding: 0 2rem;
     }
   }
 `;
