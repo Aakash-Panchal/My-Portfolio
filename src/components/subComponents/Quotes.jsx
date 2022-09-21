@@ -44,11 +44,15 @@ const Quotes = () => {
 
 const Container = styled.div`
   width: 100%;
-  height: 400px;
+  height: 500px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+    height: 340px;
+  }
 `;
 const Quote = styled.p`
   font-size: 2.5rem;
