@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Footer from "../subComponents/Footer";
 import Quotes from "../subComponents/Quotes";
 import { BsArrowRight } from "react-icons/bs";
 import ProjectIMG from "../../assets/Test.png";
 import ProjectIMG2 from "../../assets/Test-2.webp";
+import FooterTitle from "../subComponents/FooterTitle";
 
-const Works = () => {
+const Works = ({ setViewProject }) => {
   return (
     <>
       <Container data-scroll-section>
@@ -16,9 +17,16 @@ const Works = () => {
         <Content>
           <ProjectsContainer>
             <ProjectCard>
-              <ImageHolder>
+              <ImageHolder
+                onMouseEnter={() => {
+                  setViewProject(true);
+                }}
+                onMouseLeave={() => {
+                  setViewProject(false);
+                }}
+              >
                 <a href="https://www.google.com" target="_blank">
-                  <img src={ProjectIMG} />
+                  <img data-scroll src={ProjectIMG} />
                 </a>
               </ImageHolder>
               <ProjectInfo>
@@ -31,7 +39,7 @@ const Works = () => {
             <ProjectCard>
               <ImageHolder>
                 <a href="https://www.google.com" target="_blank">
-                  <img src={ProjectIMG2} />
+                  <img data-scroll src={ProjectIMG2} />
                 </a>
               </ImageHolder>
               <ProjectInfo>
@@ -44,7 +52,7 @@ const Works = () => {
             <ProjectCard>
               <ImageHolder>
                 <a href="https://www.google.com" target="_blank">
-                  <img src={ProjectIMG} />
+                  <img data-scroll src={ProjectIMG} />
                 </a>
               </ImageHolder>
               <ProjectInfo>
@@ -57,8 +65,13 @@ const Works = () => {
           </ProjectsContainer>
         </Content>
       </Container>
-      <Quotes />
-      <Footer />
+      {/* <Quotes /> */}
+      <FooterTitle title="Contact" />
+      <Footer
+        FooterTitle="Have a project in mind?"
+        FooterLink="/contact"
+        FooterLinkTitle="Contact me"
+      />
     </>
   );
 };
@@ -94,7 +107,6 @@ const Title = styled.div`
 const Content = styled.div``;
 const ProjectsContainer = styled.div`
   margin: 0 5rem;
-  margin-bottom: 10rem;
   display: flex;
   flex-direction: column;
   :nth-child(even) {
@@ -106,7 +118,7 @@ const ProjectsContainer = styled.div`
 `;
 const ProjectCard = styled.div`
   width: 60vw;
-  margin-bottom: 10rem;
+  margin-bottom: 4rem;
   :nth-child(even) {
     margin-left: auto;
   }
@@ -130,6 +142,13 @@ const ImageHolder = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    clip-path: inset(0 100% 0 0);
+    transition: all 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+    scale: 1.3;
+  }
+  .is-inview {
+    clip-path: inset(0 0 0 0);
+    scale: 1;
   }
   @media (max-width: 1024px) {
     width: 100%;
