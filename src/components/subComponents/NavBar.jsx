@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import ContactPageImg from "../../assets/ContactPage.png";
+import WorksPageImg from "../../assets/WorksPage.png";
 import styled from "styled-components";
 import gsap from "gsap";
 import "./style.scss";
@@ -82,7 +84,7 @@ const NavBar = () => {
             <img
               className="menu__item-img"
               alt="failed to loads"
-              src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1658564329/menu-img-two_fgoplb.jpg"
+              src={WorksPageImg}
             />
             <div className="marquee">
               <div className="marquee__inner">
@@ -99,7 +101,7 @@ const NavBar = () => {
             <img
               className="menu__item-img"
               alt="failed to loads"
-              src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1658564329/menu-img-four_sjhxti.jpg"
+              src={ContactPageImg}
             />
             <div className="marquee">
               <div className="marquee__inner">
@@ -138,6 +140,8 @@ const NavBar = () => {
     </>
   );
 };
+
+const Logo = styled.div``;
 
 const Socials = styled.div`
   position: absolute;
