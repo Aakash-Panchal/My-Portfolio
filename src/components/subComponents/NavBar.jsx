@@ -4,17 +4,18 @@ import ContactPageImg from "../../assets/ContactPage.png";
 import WorksPageImg from "../../assets/WorksPage.png";
 import styled from "styled-components";
 import gsap from "gsap";
-import "./style.scss";
+import "./NavBar.scss";
 
 const NavBar = () => {
   var tl = gsap.timeline({ paused: true });
 
-  function OpenMenu() {
+  const OpenMenu = () => {
     tl.play();
-  }
-  function CloseMenu() {
+  };
+
+  const CloseMenu = () => {
     tl.reverse();
-  }
+  };
 
   useEffect(() => {
     tl.to(".nav-container", {

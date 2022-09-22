@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import "./style.scss";
+import "./CustomCursor.scss";
 
 const Cursor = ({ viewProject }) => {
   const [view, setIsView] = useState(false);

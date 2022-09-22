@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const ViewProject = createContext();
+const CustomCursor = createContext();
 
-export default ViewProject;
+export default CustomCursor;

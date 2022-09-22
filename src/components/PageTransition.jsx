@@ -1,11 +1,8 @@
-import React, { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
 import gsap from "gsap";
 import styled from "styled-components";
 
 const PageTransition = () => {
-  const location = useLocation();
-
   const tl = gsap.timeline({ paused: true });
 
   const curve = "M0 502S175 272 500 272s500 230 500 230V0H0Z";
@@ -37,20 +34,14 @@ const PageTransition = () => {
       zIndex: -1,
       display: "none",
     });
-    tl.from(
-      ".container h1",
-      {
-        y: 100,
-        opacity: 0,
-      },
-      "-=1.5"
-    );
   }, []);
 
-  tl.play();
+  useEffect(() => {
+    tl.play();
+  }, []);
 
   return (
-    <Container>
+    <Container className="loader-wrap">
       <div className="loader-wrap">
         <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
           <path
@@ -65,11 +56,6 @@ const PageTransition = () => {
             <h1>Loading</h1>
           </span>
         </div>
-      </div>
-      <div className="container">
-        <span>
-          <h1>Hello</h1>
-        </span>
       </div>
     </Container>
   );
@@ -112,6 +98,7 @@ const Container = styled.div`
     text-transform: uppercase;
     font-weight: lighter;
     font-family: "Ogg";
+    color: #101010;
   }
   .container {
     display: flex;

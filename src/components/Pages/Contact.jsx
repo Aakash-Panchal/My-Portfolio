@@ -75,7 +75,7 @@ const Contact = () => {
           </ContactInfo>
         </Content>
       </Container>
-      {/* <Quotes /> */}
+      <Quotes />
       <FooterTitle title="Works" />
       <Footer
         FooterTitle="Love Projects?"
