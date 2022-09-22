@@ -19,7 +19,7 @@ const Works = ({ setViewProject }) => {
             <ProjectCard>
               <ImageHolder
                 onMouseEnter={() => {
-                  setViewProject(true);
+                  setViewProject("View-Project");
                 }}
                 onMouseLeave={() => {
                   setViewProject(false);
@@ -37,7 +37,14 @@ const Works = ({ setViewProject }) => {
               </ProjectInfo>
             </ProjectCard>
             <ProjectCard>
-              <ImageHolder>
+              <ImageHolder
+                onMouseEnter={() => {
+                  setViewProject("View-Project");
+                }}
+                onMouseLeave={() => {
+                  setViewProject(false);
+                }}
+              >
                 <a href="https://www.google.com" target="_blank">
                   <img data-scroll src={ProjectIMG2} />
                 </a>
@@ -50,7 +57,14 @@ const Works = ({ setViewProject }) => {
               </ProjectInfo>
             </ProjectCard>
             <ProjectCard>
-              <ImageHolder>
+              <ImageHolder
+                onMouseEnter={() => {
+                  setViewProject("View-Project");
+                }}
+                onMouseLeave={() => {
+                  setViewProject(false);
+                }}
+              >
                 <a href="https://www.google.com" target="_blank">
                   <img data-scroll src={ProjectIMG} />
                 </a>
@@ -65,8 +79,8 @@ const Works = ({ setViewProject }) => {
           </ProjectsContainer>
         </Content>
       </Container>
-      {/* <Quotes /> */}
-      <FooterTitle title="Contact" />
+      <Quotes setViewProject={setViewProject} />
+      <FooterTitle title="Contact" titleLink="/contact" />
       <Footer
         FooterTitle="Have a project in mind?"
         FooterLink="/contact"
@@ -122,6 +136,9 @@ const ProjectCard = styled.div`
   :nth-child(even) {
     margin-left: auto;
   }
+  :last-child {
+    margin-bottom: 0;
+  }
   @media (max-width: 1024px) {
     width: 100%;
     :nth-child(even) {
@@ -145,11 +162,15 @@ const ImageHolder = styled.div`
     clip-path: inset(0 100% 0 0);
     transition: all 1.2s cubic-bezier(0.77, 0, 0.175, 1);
     scale: 1.3;
+    :hover {
+      scale: 1.1;
+    }
   }
   .is-inview {
     clip-path: inset(0 0 0 0);
     scale: 1;
   }
+
   @media (max-width: 1024px) {
     width: 100%;
     height: 40vh;

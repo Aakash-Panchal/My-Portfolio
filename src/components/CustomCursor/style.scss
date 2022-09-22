@@ -24,29 +24,22 @@
   height: 3rem;
   transition: 0.3s ease-in-out;
   transition-property: height, width, opacity, background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.view-project {
-  border: 1px solid #fff;
+.View-Project {
+  border: none;
   width: 6rem;
   height: 6rem;
-  background: #fff;
+  background: #ffffff13;
   opacity: 1 !important;
-  transition-property: height, width, opacity, background-color;
-  &::after {
-    content: "View Project";
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #101010;
-    width: 100%;
-    height: 100%;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1;
-    opacity: 1;
-  }
+  font-family: "Inter", sans-serif;
+  backdrop-filter: blur(10px);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px;
+  color: #fff;
+  font-size: 0.8rem;
 }
 
 .view-project-dot {

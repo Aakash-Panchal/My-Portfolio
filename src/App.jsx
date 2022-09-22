@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, Route, Routes } from "react-router-dom";
 import LocomotiveScroll from "locomotive-scroll";
-import "locomotive-scroll/dist/locomotive-scroll.css";
 import NavBar from "./components/subComponents/NavBar";
 import Home from "./components/Pages/Home";
 import About from "./components/Pages/About";
@@ -12,14 +11,15 @@ import Cursor from "./components/CustomCursor/Cursor";
 import ViewProject from "./components/CustomCursor/CursorContext";
 import PageTransition from "./components/PageTransition";
 import ErrorPage from "./components/Pages/ErrorPage";
+import "locomotive-scroll/dist/locomotive-scroll.css";
 import Quotes from "./components/subComponents/Quotes";
 import "./App.scss";
 
 function App() {
-  const [viewProject, setViewProject] = useState(false);
+  const [viewProject, setViewProject] = useState("");
+  const [scrollbar, setScrollbar] = useState(null);
   const scrollRef = useRef(null);
   const location = useLocation();
-  const [scrollbar, setScrollbar] = useState(null);
 
   useEffect(() => {
     const LocoScroll = new LocomotiveScroll({

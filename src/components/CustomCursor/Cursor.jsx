@@ -1,18 +1,18 @@
 import { useRef, useEffect, useState } from "react";
 import "./style.scss";
 
-const Cursor = (props) => {
+const Cursor = ({ viewProject }) => {
   const [view, setIsView] = useState(false);
 
   useEffect(() => {
-    props.viewProject ? handleMouseOver() : handleMouseOut();
+    viewProject ? handleProjectViewIn() : handleProjectViewOut();
+    console.log("hello" + viewProject);
   });
 
-  const handleMouseOver = () => {
+  const handleProjectViewIn = () => {
     setIsView(true);
   };
-
-  const handleMouseOut = () => {
+  const handleProjectViewOut = () => {
     setIsView(false);
   };
 
@@ -101,9 +101,11 @@ const Cursor = (props) => {
       <div
         ref={dotOutline}
         className={
-          view ? "cursor-dot-outline view-project" : "cursor-dot-outline"
+          view ? "cursor-dot-outline View-Project" : "cursor-dot-outline"
         }
-      ></div>
+      >
+        {viewProject !== "" ? viewProject : ""}
+      </div>
       <div
         ref={dot}
         className={view ? "cursor-dot view-project-dot" : "cursor-dot"}
