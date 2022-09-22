@@ -41,6 +41,14 @@
   color: #fff;
   font-size: 0.8rem;
 }
+.invert-cursor {
+  border: none;
+  width: 6rem;
+  height: 6rem;
+  background: #ffffff13;
+  opacity: 1 !important;
+  backdrop-filter: invert(100%);
+}
 
 .view-project-dot {
   opacity: 0 !important;

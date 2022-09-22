@@ -6,7 +6,6 @@ const Cursor = ({ viewProject }) => {
 
   useEffect(() => {
     viewProject ? handleProjectViewIn() : handleProjectViewOut();
-    console.log("hello" + viewProject);
   });
 
   const handleProjectViewIn = () => {
@@ -101,10 +100,12 @@ const Cursor = ({ viewProject }) => {
       <div
         ref={dotOutline}
         className={
-          view ? "cursor-dot-outline View-Project" : "cursor-dot-outline"
+          viewProject
+            ? "cursor-dot-outline " + viewProject
+            : "cursor-dot-outline"
         }
       >
-        {viewProject !== "" ? viewProject : ""}
+        {viewProject === "View-Project" || "" ? viewProject : ""}
       </div>
       <div
         ref={dot}
