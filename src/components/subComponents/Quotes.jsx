@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const Quotes = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({
+    content:
+      "It is important to our friends to believe that we are unreservedly frank with them, and important to friendship that we are not.",
+  });
 
   async function updateQuote() {
     try {
@@ -14,7 +17,7 @@ const Quotes = () => {
       console.error(error);
       setData({
         content:
-          "It is important to our friends to believe that we are unreservedly frank with them, and important to friendship that we are not.",
+          "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.",
       });
     }
   }
@@ -22,8 +25,6 @@ const Quotes = () => {
   useEffect(() => {
     updateQuote();
   }, []);
-
-  if (!data) return null;
 
   return (
     <Container data-scroll-section>
@@ -44,14 +45,14 @@ const Quotes = () => {
 
 const Container = styled.div`
   width: 100%;
-  height: 500px;
+  height: 600px;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   @media screen and (max-width: 768px) {
     justify-content: center;
-    height: 340px;
+    height: 440px;
   }
 `;
 const Quote = styled.p`
