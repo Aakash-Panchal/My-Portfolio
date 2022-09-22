@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-const Quotes = () => {
+const Quotes = ({ setViewProject }) => {
   const [data, setData] = useState({
     content:
       "It is important to our friends to believe that we are unreservedly frank with them, and important to friendship that we are not.",
@@ -29,14 +29,42 @@ const Quotes = () => {
   return (
     <Container data-scroll-section>
       {data.content.length > 140 ? (
-        <Quote>
+        <Quote
+          onMouseEnter={() => {
+            setViewProject("invert-cursor");
+          }}
+          onMouseLeave={() => {
+            setViewProject(false);
+          }}
+        >
           It is important to our friends to believe that we are unreservedly
           frank with them, and important to friendship that we are not."
         </Quote>
       ) : (
         <div>
-          <Quote>{data.content}</Quote>
-          {data.author && <Author title="Source Title">- {data.author}</Author>}
+          <Quote
+            onMouseEnter={() => {
+              setViewProject("invert-cursor");
+            }}
+            onMouseLeave={() => {
+              setViewProject(false);
+            }}
+          >
+            {data.content}
+          </Quote>
+          {data.author && (
+            <Author
+              onMouseEnter={() => {
+                setViewProject("invert-cursor");
+              }}
+              onMouseLeave={() => {
+                setViewProject(false);
+              }}
+              title="Source Title"
+            >
+              - {data.author}
+            </Author>
+          )}
         </div>
       )}
     </Container>
