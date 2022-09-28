@@ -21,14 +21,13 @@ const Footer = ({ FooterTitle, FooterLinkTitle, FooterLink }) => {
             <p>Madhya Pradesh, India</p>
           </Info>
           <Socials>
-            <a href="https://github.com/Aakash-Panchal" target="_blank">
+            <a href="https://www.instagram.com/ig__drew/" target="_blank">
               Instagram
             </a>
             <a href="https://github.com/Aakash-Panchal" target="_blank">
               Github
             </a>
-
-            <a href="https://github.com/Aakash-Panchal" target="_blank">
+            <a href="" target="_blank">
               Linkedin
             </a>
           </Socials>

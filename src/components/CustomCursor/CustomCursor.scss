@@ -17,8 +17,7 @@
 }
 
 .cursor-dot-outline {
-  border: 1px solid #fff;
-  background-color: #fff;
+  border: 1px solid rgb(160, 160, 160);
   opacity: 0.3 !important;
   width: 3rem;
   height: 3rem;
@@ -29,7 +28,8 @@
   align-items: center;
 }
 
-.View-Project {
+.View-Project,
+.Contact {
   border: none;
   width: 6rem;
   height: 6rem;

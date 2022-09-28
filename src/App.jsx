@@ -49,7 +49,7 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar setViewProject={setViewProject} />
       <Cursor viewProject={viewProject} />
       <CustomCursor.Provider value={viewProject}>
         <Container ref={scrollRef} data-scroll-container>
@@ -61,9 +61,12 @@ function App() {
               path="/works"
               element={<Works setViewProject={setViewProject} />}
             />
-            <Route exact path="/contact" element={<Contact />} />
+            <Route
+              exact
+              path="/contact"
+              element={<Contact setViewProject={setViewProject} />}
+            />
             <Route exact path="*" element={<ErrorPage />} />
-            <Route exact path="/quotes" element={<Quotes />} />
           </Routes>
         </Container>
       </CustomCursor.Provider>

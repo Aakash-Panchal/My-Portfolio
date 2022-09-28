@@ -4,7 +4,7 @@ import Footer from "../subComponents/Footer";
 import FooterTitle from "../subComponents/FooterTitle";
 import Quotes from "../subComponents/Quotes";
 
-const Contact = () => {
+const Contact = ({ setViewProject }) => {
   return (
     <>
       <Container data-scroll-section>
@@ -47,7 +47,6 @@ const Contact = () => {
               </div>
             </div>
             <hr />
-
             <Button>
               <button>Send</button>
             </Button>
@@ -59,24 +58,30 @@ const Contact = () => {
             </ContactEmail>
             <Socials>
               <h1>Socials</h1>
-              <a href="/" target="_blank">
+              <a href="https://www.instagram.com/ig__drew/" target="_blank">
                 Instagram
               </a>
-              <a href="/" target="_blank">
+              <a href="https://github.com/Aakash-Panchal" target="_blank">
                 Github
               </a>
-              <a href="/" target="_blank">
+              <a href="https://twitter.com/AakashPanchal__" target="_blank">
                 Twitter
               </a>
-              <a href="/" target="_blank">
+              <a href="https://twitter.com/AakashPanchal__" target="_blank">
+                Linkedin
+              </a>
+              <a
+                href="https://discordapp.com/users/501734272328007681"
+                target="_blank"
+              >
                 Discord
               </a>
             </Socials>
           </ContactInfo>
         </Content>
       </Container>
-      <Quotes />
-      <FooterTitle title="Works" />
+      <Quotes setViewProject={setViewProject} />
+      <FooterTitle title="Works" titleLink="/works" />
       <Footer
         FooterTitle="Love Projects?"
         FooterLink="/works"
