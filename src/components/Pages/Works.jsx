@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Footer from "../subComponents/Footer";
 import Quotes from "../subComponents/Quotes";
 import { BsArrowRight } from "react-icons/bs";
-import ProjectIMG from "../../assets/Test.png";
-import ProjectIMG2 from "../../assets/Test-2.webp";
 import FooterTitle from "../subComponents/FooterTitle";
 
 const Works = ({ setViewProject }) => {
@@ -26,7 +24,10 @@ const Works = ({ setViewProject }) => {
                 }}
               >
                 <a href="https://www.google.com" target="_blank">
-                  <img data-scroll src={ProjectIMG} />
+                  <img
+                    data-scroll
+                    src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346123/Test_yeulvv.png"
+                  />
                 </a>
               </ImageHolder>
               <ProjectInfo>
@@ -46,7 +47,10 @@ const Works = ({ setViewProject }) => {
                 }}
               >
                 <a href="https://www.google.com" target="_blank">
-                  <img data-scroll src={ProjectIMG2} />
+                  <img
+                    data-scroll
+                    src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346117/test-2_eir7n7.webp"
+                  />
                 </a>
               </ImageHolder>
               <ProjectInfo>
@@ -66,7 +70,10 @@ const Works = ({ setViewProject }) => {
                 }}
               >
                 <a href="https://www.google.com" target="_blank">
-                  <img data-scroll src={ProjectIMG} />
+                  <img
+                    data-scroll
+                    src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346123/Test_yeulvv.png"
+                  />
                 </a>
               </ImageHolder>
               <ProjectInfo>

@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import ContactPageImg from "../../assets/ContactPage.png";
-import WorksPageImg from "../../assets/WorksPage.png";
 import styled from "styled-components";
 import gsap from "gsap";
 import "./Navbar.scss";
@@ -85,7 +83,7 @@ const NavBar = () => {
             <img
               className="menu__item-img"
               alt="failed to loads"
-              src={WorksPageImg}
+              src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346118/WorksPage_deckgq.png"
             />
             <div className="marquee">
               <div className="marquee__inner">
@@ -102,7 +100,7 @@ const NavBar = () => {
             <img
               className="menu__item-img"
               alt="failed to loads"
-              src={ContactPageImg}
+              src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346117/ContactPage_xwgc4u.png"
             />
             <div className="marquee">
               <div className="marquee__inner">
