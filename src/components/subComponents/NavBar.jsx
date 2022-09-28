@@ -4,7 +4,7 @@ import ContactPageImg from "../../assets/ContactPage.png";
 import WorksPageImg from "../../assets/WorksPage.png";
 import styled from "styled-components";
 import gsap from "gsap";
-import "./NavBar.scss";
+import "./Navbar.scss";
 
 const NavBar = () => {
   var tl = gsap.timeline({ paused: true });
