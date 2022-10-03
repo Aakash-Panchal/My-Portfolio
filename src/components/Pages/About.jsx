@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const About = () => {
@@ -6,6 +7,7 @@ const About = () => {
     <>
       <Container>
         <h1>About Page</h1>
+        <Link to="/">home</Link>
       </Container>
     </>
   );
