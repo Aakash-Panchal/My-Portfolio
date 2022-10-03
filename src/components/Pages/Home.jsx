@@ -10,7 +10,8 @@ const Home = ({ setViewProject }) => {
     <>
       <Container data-scroll-section>
         <h1>Home Page</h1>
-        <Link to="/login">About</Link>
+        <Link to="/login">login</Link>
+        <Link to="/register">register</Link>
       </Container>
       <Quotes setViewProject={setViewProject} />
       <FooterTitle titleLink="/works" title="Recent Works" />
