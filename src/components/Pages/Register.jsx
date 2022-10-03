@@ -17,7 +17,7 @@ const Register = () => {
   const handelSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(BaseUrl + "/admin/register", inputs);
+      const res = await axios.post(BaseUrl + "/admin/addadmin", inputs);
       console.log(res);
     } catch (err) {
       setError(err.response.data);
