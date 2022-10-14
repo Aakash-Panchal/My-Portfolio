@@ -1,19 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
+import CustomCursor from "./components/CustomCursor/CursorContext";
 import { useLocation, Route, Routes } from "react-router-dom";
-import LocomotiveScroll from "locomotive-scroll";
+import SingleProject from "./components/Pages/SingleProject";
+import PageTransition from "./components/PageTransition";
 import NavBar from "./components/subComponents/NavBar";
-import Home from "./components/Pages/Home";
+import "locomotive-scroll/dist/locomotive-scroll.css";
+import Cursor from "./components/CustomCursor/Cursor";
+import ErrorPage from "./components/Pages/ErrorPage";
+import Login from "./components/Pages/Admin/Login";
+import Admin from "./components/Pages/Admin/Admin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import LocomotiveScroll from "locomotive-scroll";
+import Contact from "./components/Pages/Contact";
 import About from "./components/Pages/About";
 import Works from "./components/Pages/Works";
-import Contact from "./components/Pages/Contact";
-import Project from "./components/Pages/Project";
+import Home from "./components/Pages/Home";
 import styled from "styled-components";
-import Cursor from "./components/CustomCursor/Cursor";
-import CustomCursor from "./components/CustomCursor/CursorContext";
-import ErrorPage from "./components/Pages/ErrorPage";
-import Login from "./components/Pages/Login";
-import Register from "./components/Pages/Register";
-import "locomotive-scroll/dist/locomotive-scroll.css";
+import gsap from "gsap";
 import "./App.scss";
 
 function App() {
@@ -21,6 +24,8 @@ function App() {
   const [scrollbar, setScrollbar] = useState(null);
   const scrollRef = useRef(null);
   const location = useLocation();
+
+  gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
     const LocoScroll = new LocomotiveScroll({
@@ -34,7 +39,32 @@ function App() {
       tablet: { smooth: true },
       repeat: true,
     });
+
+    ScrollTrigger.defaults({ scroller: ".scrollContainer", markers: true });
+
+    ScrollTrigger.scrollerProxy(".scrollContainer", {
+      scrollTop(value) {
+        return arguments.length
+          ? LocoScroll.scrollTo(value, { duration: 0, disableLerp: true })
+          : LocoScroll.scroll.instance.scroll.y;
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
+    });
+
     setScrollbar(LocoScroll);
+
+    ScrollTrigger.addEventListener("refresh", () => {
+      LocoScroll.update;
+    });
+
+    ScrollTrigger.update();
   }, []);
 
   useEffect(() => {
@@ -53,8 +83,13 @@ function App() {
     <>
       <NavBar setViewProject={setViewProject} />
       <Cursor viewProject={viewProject} />
+      {/* <PageTransition /> */}
       <CustomCursor.Provider value={viewProject}>
-        <Container ref={scrollRef} data-scroll-container>
+        <Container
+          ref={scrollRef}
+          data-scroll-container
+          className="scrollContainer"
+        >
           <Routes key={location.pathname}>
             <Route
               exact
@@ -70,7 +105,7 @@ function App() {
             <Route
               exact
               path="/works/:id"
-              element={<Project setViewProject={setViewProject} />}
+              element={<SingleProject setViewProject={setViewProject} />}
             />
             <Route
               exact
@@ -79,13 +114,13 @@ function App() {
             />
             <Route
               exact
-              path="/register"
-              element={<Register setViewProject={setViewProject} />}
+              path="/login"
+              element={<Login setViewProject={setViewProject} />}
             />
             <Route
               exact
-              path="/login"
-              element={<Login setViewProject={setViewProject} />}
+              path="/admin"
+              element={<Admin setViewProject={setViewProject} />}
             />
             <Route exact path="*" element={<ErrorPage />} />
           </Routes>
