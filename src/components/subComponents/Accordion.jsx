@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import styled from "styled-components";
-import Data from "./Data";
+import Data from "./TempData";
 
 const Accordion = () => {
   const [active, setActive] = useState(false);
