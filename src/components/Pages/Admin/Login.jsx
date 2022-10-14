@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BaseUrl } from "../../BaseUrl";
+import { BaseUrl } from "../../../BaseUrl";
 import axios from "axios";
 
 const Login = () => {
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     name: "",
     password: "",
@@ -21,15 +22,14 @@ const Login = () => {
         withCredentials: true,
       });
       console.log(res);
+
+      if (res.data.token) {
+        localStorage.setItem("AccessToken", res.data.token);
+        navigate("/admin");
+      }
     } catch (err) {
       setError(err.response.data);
     }
-  };
-
-  const handeltest = async (e) => {
-    e.preventDefault();
-    const res = await axios.post("http://localhost:5000/api/projects");
-    console.log(res);
   };
 
   return (
@@ -49,8 +49,6 @@ const Login = () => {
           onChange={handelChange}
         />
         <button onClick={handelSubmit}>Submit</button>
-        <button onClick={handeltest}>test</button>
-
         {error && <p>{error}</p>}
       </form>
     </div>
