@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import gsap from "gsap";
 import "./Navbar.scss";
+import { MagneticButton } from "./MagneticButton";
 
-const NavBar = () => {
+const NavBar = ({ setViewProject }) => {
   var tl = gsap.timeline({ paused: true });
 
   const OpenMenu = () => {
@@ -35,12 +36,48 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="menu-open" onClick={OpenMenu}>
-        menu
-      </div>
+      <NavHeader>
+        <MagneticButton
+          className="logo"
+          scale={2}
+          tollerance={0.8}
+          speed={0.3}
+          borderRadius="50%"
+        >
+          <Link
+            onMouseEnter={() => {
+              setViewProject("invert-cursor");
+            }}
+            onMouseLeave={() => {
+              setViewProject(false);
+            }}
+            to="/"
+          >
+            Aakash.
+          </Link>
+        </MagneticButton>
+        <MagneticButton
+          className="nav-btn"
+          scale={2}
+          tollerance={0.8}
+          speed={0.3}
+          borderRadius="50%"
+          onClick={OpenMenu}
+        >
+          Menu
+        </MagneticButton>
+      </NavHeader>
       <div className="nav-container">
         <div className="menu-close" onClick={CloseMenu}>
-          close
+          <MagneticButton
+            className="nav-btn-close"
+            scale={2}
+            tollerance={0.8}
+            speed={0.3}
+            borderRadius="50%"
+          >
+            Close
+          </MagneticButton>
         </div>
         <nav className="menu">
           <div className="menu__item">
@@ -140,7 +177,33 @@ const NavBar = () => {
   );
 };
 
-const Logo = styled.div``;
+const NavHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10rem;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 999999999;
+  .logo {
+    height: 100px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Roboto Mono";
+    a {
+      color: #fff;
+      font-size: 1.2rem;
+      font-family: "Roboto Mono";
+      position: relative;
+      left: -34px;
+    }
+  }
+`;
 
 const Socials = styled.div`
   position: absolute;

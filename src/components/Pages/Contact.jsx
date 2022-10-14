@@ -1,37 +1,47 @@
 import React from "react";
 import styled from "styled-components";
+import Accordion from "../subComponents/Accordion";
 import Footer from "../subComponents/Footer";
 import FooterTitle from "../subComponents/FooterTitle";
+import { MagneticButton } from "../subComponents/MagneticButton";
 import Quotes from "../subComponents/Quotes";
 
 const Contact = ({ setViewProject }) => {
   return (
     <>
       <Container data-scroll-section>
-        <Title>Let’s collaborate</Title>
+        <Title>Let's talk about your next project</Title>
         <Content>
           <Form>
             <hr />
             <div className="name-input">
-              <span>01</span>
+              <p>01</p>
               <div className="input-content">
                 <label>What's your name?</label>
-                <input placeholder="Your name" required></input>
+                <input placeholder="Enter your name here" required></input>
               </div>
             </div>
             <hr />
             <div className="email-input">
-              <span>02</span>
+              <p>02</p>
               <div className="input-content">
                 <label>What's your email?</label>
-                <input placeholder="example@example.com*" required></input>
+                <input placeholder="Enter your email here" required></input>
               </div>
             </div>
             <hr />
             <div className="subject-input">
-              <span>03</span>
+              <p>03</p>
               <div className="input-content">
-                <label>Subject</label>
+                <label>What do you want to get done?</label>
+                <input placeholder="Enter your ..." required></input>
+              </div>
+            </div>
+            <hr />
+            <div className="subject-input">
+              <p>04</p>
+              <div className="input-content">
+                <label>How did you find me?</label>
                 <input
                   placeholder="I want a full stack web developer"
                   required
@@ -40,7 +50,7 @@ const Contact = ({ setViewProject }) => {
             </div>
             <hr />
             <div className="message-input">
-              <span>04</span>
+              <p>05</p>
               <div className="input-content">
                 <label>Your message</label>
                 <textarea placeholder="Your message*" required></textarea>
@@ -48,7 +58,24 @@ const Contact = ({ setViewProject }) => {
             </div>
             <hr />
             <Button>
-              <button>Send</button>
+              <MagneticButton
+                className="button-1"
+                style={{ backgroundColor: "transparent" }}
+                scale={2}
+                tollerance={0.8}
+                speed={0.3}
+                borderRadius="50%"
+              >
+                <MagneticButton
+                  className="button-1"
+                  scale={4}
+                  tollerance={1}
+                  speed={0.5}
+                  borderRadius="50%"
+                >
+                  Send
+                </MagneticButton>
+              </MagneticButton>
             </Button>
           </Form>
           <ContactInfo>
@@ -79,6 +106,10 @@ const Contact = ({ setViewProject }) => {
             </Socials>
           </ContactInfo>
         </Content>
+        <SubContent>
+          <SubTitle>Frequently asked questions</SubTitle>
+          <Accordion />
+        </SubContent>
       </Container>
       <Quotes setViewProject={setViewProject} />
       <FooterTitle title="Works" titleLink="/works" />
@@ -92,9 +123,9 @@ const Contact = ({ setViewProject }) => {
 };
 
 const Container = styled.div`
-  margin: 0 8rem;
+  margin: 0 10rem;
   font-family: "Inter", sans-serif;
-  span {
+  p {
     opacity: 0.5;
     font-size: 1rem;
     font-weight: 600;
@@ -108,7 +139,7 @@ const Container = styled.div`
     padding: 1rem;
     padding-left: 0;
     margin-top: 0.5rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-family: "Poppins", sans-serif;
     background: none;
     color: #fff;
@@ -121,7 +152,7 @@ const Container = styled.div`
   }
   label {
     display: flex;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     font-weight: 600;
   }
   .input-content {
@@ -143,12 +174,13 @@ const Container = styled.div`
 `;
 
 const Title = styled.div`
-  height: 40vh;
+  height: 60vh;
   display: flex;
   align-items: end;
-  font-size: 6rem;
+  font-size: 6vw;
   font-weight: 600;
   margin-bottom: 6rem;
+  width: 65vw;
   span {
     padding-right: 0.6rem;
     font-style: italic;
@@ -191,18 +223,7 @@ const Form = styled.form`
 `;
 
 const Button = styled.div`
-  padding: 3rem;
-  padding-left: 0;
-  button {
-    color: #fff;
-    background: transparent;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    font-family: "Poppins", sans-serif;
-    padding: 0.5rem 3rem;
-    font-weight: 600;
-    border: 1px solid #fff;
-  }
+  width: 220px;
 `;
 
 const ContactInfo = styled.div``;
@@ -245,6 +266,16 @@ const Socials = styled.div`
       font-size: 1.2rem;
     }
   }
+`;
+
+const SubContent = styled.div``;
+
+const SubTitle = styled.h1`
+  font-size: 4vw;
+  height: 30vh;
+  display: flex;
+  align-items: flex-end;
+  width: 40vw;
 `;
 
 export default Contact;
