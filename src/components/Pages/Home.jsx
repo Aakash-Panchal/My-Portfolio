@@ -10,8 +10,6 @@ const Home = ({ setViewProject }) => {
     <>
       <Container data-scroll-section>
         <h1>Home Page</h1>
-        <Link to="/login">login</Link>
-        <Link to="/register">register</Link>
       </Container>
       <Quotes setViewProject={setViewProject} />
       <FooterTitle titleLink="/works" title="Recent Works" />
@@ -26,6 +24,7 @@ const Home = ({ setViewProject }) => {
 
 const Container = styled.div`
   width: 80%;
+  min-height: 100vh;
   margin-left: auto;
   margin-right: auto;
 `;
