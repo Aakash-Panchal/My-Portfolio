@@ -18,7 +18,8 @@ const NavBar = ({ setViewProject }) => {
 
   useEffect(() => {
     tl.to(".nav-container", {
-      left: "0%",
+      top: "0%",
+      duration: 1,
       ease: "Expo.easeInOut",
     });
     tl.to(".menu__item", {
@@ -180,7 +181,7 @@ const NavBar = ({ setViewProject }) => {
 const NavHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 10rem;
+  padding: 0 6rem;
   position: absolute;
   width: 100%;
   top: 0;
@@ -202,6 +203,9 @@ const NavHeader = styled.div`
       position: relative;
       left: -34px;
     }
+  }
+  @media (max-width: 768px) {
+    padding: 0 2rem;
   }
 `;
 
