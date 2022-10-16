@@ -105,7 +105,7 @@ const Cursor = ({ viewProject }) => {
             : "cursor-dot-outline"
         }
       >
-        {viewProject !== "invert-cursor" ? viewProject : ""}
+        {viewProject === "View-Project" ? viewProject : ""}
       </div>
       <div
         ref={dot}

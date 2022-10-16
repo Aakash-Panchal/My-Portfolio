@@ -54,6 +54,16 @@
   opacity: 0 !important;
 }
 
+.footer-cursor {
+  border: none;
+  opacity: 0.5 !important;
+  width: 3rem;
+  height: 3rem;
+  background: #ffffff13;
+  opacity: 1 !important;
+  backdrop-filter: invert(100%);
+}
+
 @media only screen and (max-width: 1024px) {
   .cursor-dot,
   .cursor-dot-outline {
