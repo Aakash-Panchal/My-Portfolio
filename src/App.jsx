@@ -40,6 +40,10 @@ function App() {
       repeat: true,
     });
 
+    new ResizeObserver(() => LocoScroll.update()).observe(
+      document.querySelector("[data-scroll-container]")
+    );
+
     ScrollTrigger.defaults({ scroller: ".scrollContainer", markers: true });
 
     ScrollTrigger.scrollerProxy(".scrollContainer", {
@@ -96,7 +100,11 @@ function App() {
               path="/"
               element={<Home setViewProject={setViewProject} />}
             />
-            <Route exact path="/about" element={<About />} />
+            <Route
+              exact
+              path="/about"
+              element={<About setViewProject={setViewProject} />}
+            />
             <Route
               exact
               path="/works"
