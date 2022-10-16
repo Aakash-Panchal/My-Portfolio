@@ -7,7 +7,7 @@ const Accordion = () => {
   const [active, setActive] = useState(false);
 
   const toggle = (index) => {
-    if (active === index) {
+    if (active == index) {
       return setActive(null);
     }
     setActive(index);
@@ -26,13 +26,15 @@ const Accordion = () => {
               <DropDown
                 style={
                   active === index
-                    ? { maxHeight: "fit-content" }
+                    ? { maxHeight: "999999px" }
                     : { maxHeight: "" }
                 }
               >
-                {/* {active === index ? <p> */}
-                {item.content}
-                {/* </p> : null} */}
+                <p>
+                  {/* {active === index ? <p> */}
+                  {item.content}
+                  {/* </p> : null} */}
+                </p>
               </DropDown>
             </Content>
           );
@@ -42,16 +44,31 @@ const Accordion = () => {
   );
 };
 
-const AccordionSection = styled.div``;
+const AccordionSection = styled.div`
+  width: 60%;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+`;
 const Container = styled.div``;
-const Content = styled.div``;
+const Content = styled.div`
+  border-bottom: 1px solid #fff;
+  padding: 1.5rem 0;
+`;
 const Wrapper = styled.div`
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h1 {
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
 `;
 const DropDown = styled.div`
   overflow: hidden;
-  transition: 1s all ease-in-out;
-  height: 0px;
+  height: auto;
+  max-height: 0px;
+  transition: 0.5s max-height ease-in-out;
 `;
 
 export default Accordion;
