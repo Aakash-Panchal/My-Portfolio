@@ -2,14 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Footer = ({ FooterTitle, FooterLinkTitle, FooterLink }) => {
+const Footer = ({
+  FooterTitle,
+  FooterLinkTitle,
+  FooterLink,
+  setViewProject,
+}) => {
   return (
-    <Container data-scroll-section>
+    <Container
+      data-scroll-section
+      onMouseEnter={() => {
+        setViewProject("footer-cursor");
+      }}
+      onMouseLeave={() => {
+        setViewProject(false);
+      }}
+    >
       <Content>
         <Title>
           <h1>
             {FooterTitle}
-            <Link to={FooterLink}>{FooterLinkTitle}</Link>
+            <Link to={FooterLink}>Let's talk about it!</Link>
           </h1>
         </Title>
         <InfoWrapper>
@@ -20,7 +33,14 @@ const Footer = ({ FooterTitle, FooterLinkTitle, FooterLink }) => {
             </a>
             <p>Madhya Pradesh, India</p>
           </Info>
-          <Socials>
+          <Socials
+            onMouseEnter={() => {
+              setViewProject("invert-cursor");
+            }}
+            onMouseLeave={() => {
+              setViewProject("footer-cursor");
+            }}
+          >
             <a href="https://www.instagram.com/ig__drew/" target="_blank">
               Instagram
             </a>
@@ -82,6 +102,7 @@ const Title = styled.div`
     font-weight: 600;
     font-size: 3.5rem;
     line-height: 1.2;
+    width: fit-content;
     a {
       display: block;
       font-family: "Playfair Display", serif;
