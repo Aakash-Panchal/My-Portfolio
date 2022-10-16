@@ -11,18 +11,24 @@ const FooterTitle = ({ title, titleLink }) => {
         data-scroll-direction="horizontal"
         data-scroll-speed="12"
       >
-        {title} <span>{title}</span>
         {title}
         <span>{title}</span>
-        {title} <span>{title}</span>
-        {title} <span>{title}</span>
         {title}
         <span>{title}</span>
-        {title} <span>{title}</span>
         {title}
         <span>{title}</span>
-        {title} <span>{title}</span>
-        {title} <span>{title}</span>
+        {title}
+        <span>{title}</span>
+        {title}
+        <span>{title}</span>
+        {title}
+        <span>{title}</span>
+        {title}
+        <span>{title}</span>
+        {title}
+        <span>{title}</span>
+        {title}
+        <span>{title}</span>
         {title}
         <span>{title}</span>
       </Link>
@@ -35,15 +41,20 @@ const FooterTitle = ({ title, titleLink }) => {
         <span>{title} </span>
         {title}
         <span>{title} </span>
-        {title} <span>{title} </span>
-        {title} <span>{title}</span>
+        {title}
+        <span>{title} </span>
         {title}
         <span>{title}</span>
-        {title} <span>{title}</span>
         {title}
         <span>{title}</span>
-        {title} <span>{title}</span>
-        {title} <span>{title}</span>
+        {title}
+        <span>{title}</span>
+        {title}
+        <span>{title}</span>
+        {title}
+        <span>{title}</span>
+        {title}
+        <span>{title}</span>
         {title}
         <span>{title}</span>
       </Link>
@@ -53,18 +64,24 @@ const FooterTitle = ({ title, titleLink }) => {
         data-scroll-direction="horizontal"
         data-scroll-speed="12"
       >
-        {title} <span>{title}</span>
         {title}
         <span>{title}</span>
-        {title} <span>{title}</span>
-        {title} <span>{title}</span>
         {title}
         <span>{title}</span>
-        {title} <span>{title}</span>
         {title}
         <span>{title}</span>
-        {title} <span>{title}</span>
-        {title} <span>{title}</span>
+        {title}
+        <span>{title}</span>
+        {title}
+        <span>{title}</span>
+        {title}
+        <span>{title}</span>
+        {title}
+        <span>{title}</span>
+        {title}
+        <span>{title}</span>
+        {title}
+        <span>{title}</span>
         {title}
         <span>{title}</span>
       </Link>
@@ -73,8 +90,9 @@ const FooterTitle = ({ title, titleLink }) => {
 };
 
 const Title = styled.div`
-  font-family: "Open Sans", sans-serif;
+  font-family: "gallientregular";
   margin: 10rem 0;
+  margin-top: 0;
   min-width: 100%;
   overflow: hidden;
   a {
