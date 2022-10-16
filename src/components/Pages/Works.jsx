@@ -9,9 +9,7 @@ const Works = ({ setViewProject }) => {
   return (
     <>
       <Container data-scroll-section>
-        <Title>
-          <span>W</span>ORKS
-        </Title>
+        <Title>selected project</Title>
         <Content>
           <ProjectsContainer>
             <ProjectCard>
@@ -24,10 +22,7 @@ const Works = ({ setViewProject }) => {
                 }}
               >
                 <a href="https://www.google.com" target="_blank">
-                  <img
-                    data-scroll
-                    src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346123/Test_yeulvv.png"
-                  />
+                  <img src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346123/Test_yeulvv.png" />
                 </a>
               </ImageHolder>
               <ProjectInfo>
@@ -47,10 +42,7 @@ const Works = ({ setViewProject }) => {
                 }}
               >
                 <a href="https://www.google.com" target="_blank">
-                  <img
-                    data-scroll
-                    src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346117/test-2_eir7n7.webp"
-                  />
+                  <img src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346117/test-2_eir7n7.webp" />
                 </a>
               </ImageHolder>
               <ProjectInfo>
@@ -70,10 +62,27 @@ const Works = ({ setViewProject }) => {
                 }}
               >
                 <a href="https://www.google.com" target="_blank">
-                  <img
-                    data-scroll
-                    src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346123/Test_yeulvv.png"
-                  />
+                  <img src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346123/Test_yeulvv.png" />
+                </a>
+              </ImageHolder>
+              <ProjectInfo>
+                <h1>Project 3</h1>
+                <a href="https://www.google.com">
+                  <BsArrowRight />
+                </a>
+              </ProjectInfo>
+            </ProjectCard>
+            <ProjectCard>
+              <ImageHolder
+                onMouseEnter={() => {
+                  setViewProject("View-Project");
+                }}
+                onMouseLeave={() => {
+                  setViewProject(false);
+                }}
+              >
+                <a href="https://www.google.com" target="_blank">
+                  <img src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346123/Test_yeulvv.png" />
                 </a>
               </ImageHolder>
               <ProjectInfo>
@@ -102,12 +111,12 @@ const Container = styled.div`
 `;
 
 const Title = styled.div`
-  font-family: "Inter", sans-serif;
-  height: 40vh;
+  font-family: "gallientregular";
+  height: 60vh;
   display: flex;
   align-items: end;
   margin: 0 5rem;
-  font-size: 6rem;
+  font-size: 10vw;
   font-weight: 600;
   margin-bottom: 8rem;
   span {
@@ -162,15 +171,16 @@ const ProjectCard = styled.div`
 const ImageHolder = styled.div`
   height: 33vw;
   overflow: hidden;
+  -webkit-user-drag: none;
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    clip-path: inset(0 100% 0 0);
+    /* clip-path: inset(0 100% 0 0);
     transition: all 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-    scale: 1.3;
+    scale: 1.3; */
     :hover {
-      scale: 1.1;
+      /* scale: 1.1; */
     }
   }
   .is-inview {

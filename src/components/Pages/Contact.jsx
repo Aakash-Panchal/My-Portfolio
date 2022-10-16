@@ -114,9 +114,9 @@ const Contact = ({ setViewProject }) => {
       <Quotes setViewProject={setViewProject} />
       <FooterTitle title="Works" titleLink="/works" />
       <Footer
-        FooterTitle="Love Projects?"
-        FooterLink="/works"
-        FooterLinkTitle="Have a look on mine"
+        FooterTitle="Have a project in mind?"
+        FooterLink="/contact"
+        FooterLinkTitle="Contact me"
       />
     </>
   );
@@ -180,7 +180,8 @@ const Title = styled.div`
   font-size: 6vw;
   font-weight: 600;
   margin-bottom: 6rem;
-  width: 65vw;
+  width: 50vw;
+  font-family: "gallientregular";
   span {
     padding-right: 0.6rem;
     font-style: italic;
@@ -193,7 +194,7 @@ const Title = styled.div`
     font-size: 2.5rem;
     margin-left: 0rem;
     margin-bottom: 4rem;
-    height: 30vh;
+    height: 40vh;
   }
 `;
 const Content = styled.div`
@@ -224,6 +225,7 @@ const Form = styled.form`
 
 const Button = styled.div`
   width: 220px;
+  margin: 2rem -3.5rem;
 `;
 
 const ContactInfo = styled.div``;
@@ -271,11 +273,13 @@ const Socials = styled.div`
 const SubContent = styled.div``;
 
 const SubTitle = styled.h1`
+  font-family: "gallientregular";
   font-size: 4vw;
-  height: 30vh;
+  height: 25vh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   width: 40vw;
+  margin-bottom: 3rem;
 `;
 
 export default Contact;
