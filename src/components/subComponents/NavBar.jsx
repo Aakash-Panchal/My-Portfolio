@@ -38,47 +38,26 @@ const NavBar = ({ setViewProject }) => {
   return (
     <>
       <NavHeader>
-        <MagneticButton
+        <Link
           className="logo"
-          scale={2}
-          tollerance={0.8}
-          speed={0.3}
-          borderRadius="50%"
+          onMouseEnter={() => {
+            setViewProject("invert-cursor");
+          }}
+          onMouseLeave={() => {
+            setViewProject(false);
+          }}
+          to="/"
         >
-          <Link
-            onMouseEnter={() => {
-              setViewProject("invert-cursor");
-            }}
-            onMouseLeave={() => {
-              setViewProject(false);
-            }}
-            to="/"
-          >
-            Aakash.
-          </Link>
-        </MagneticButton>
-        <MagneticButton
-          className="nav-btn"
-          scale={2}
-          tollerance={0.8}
-          speed={0.3}
-          borderRadius="50%"
-          onClick={OpenMenu}
-        >
+          Aakash.
+        </Link>
+
+        <p className="nav-btn" onClick={OpenMenu}>
           Menu
-        </MagneticButton>
+        </p>
       </NavHeader>
       <div className="nav-container">
         <div className="menu-close" onClick={CloseMenu}>
-          <MagneticButton
-            className="nav-btn-close"
-            scale={2}
-            tollerance={0.8}
-            speed={0.3}
-            borderRadius="50%"
-          >
-            Close
-          </MagneticButton>
+          Close
         </div>
         <nav className="menu">
           <div className="menu__item">
@@ -181,14 +160,12 @@ const NavBar = ({ setViewProject }) => {
 const NavHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 6rem;
+  padding: 2rem 6rem;
   position: absolute;
   width: 100%;
   top: 0;
   z-index: 999999999;
   .logo {
-    height: 100px;
-    width: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -205,7 +182,7 @@ const NavHeader = styled.div`
     }
   }
   @media (max-width: 768px) {
-    padding: 0 2rem;
+    padding: 2rem 2rem;
   }
 `;
 
