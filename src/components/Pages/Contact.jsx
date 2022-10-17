@@ -1,59 +1,114 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Accordion from "../subComponents/Accordion";
 import Footer from "../subComponents/Footer";
 import FooterTitle from "../subComponents/FooterTitle";
 import { MagneticButton } from "../subComponents/MagneticButton";
 import Quotes from "../subComponents/Quotes";
+import Data from "../../components/subComponents/TempData";
+import gsap from "gsap";
 
 const Contact = ({ setViewProject }) => {
+  const [inputs, setInputs] = useState({
+    name: "",
+    email: "",
+    work: "",
+    category: "",
+    message: "",
+  });
+
+  const tl = gsap.timeline();
+
+  useEffect(() => {
+    tl.from(".contact-title span", {
+      duration: 1.8,
+      y: 100,
+      opacity: 0,
+      ease: "power4.out",
+      delay: 1,
+      skewY: 7,
+      stagger: {
+        amount: 0.3,
+      },
+    });
+  }, []);
+
+  const handelChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
   return (
     <>
       <Container data-scroll-section>
-        <Title>Let's talk about your next project</Title>
+        <Title className="contact-title">
+          <span>Let's talk about</span>
+          <span>your next project</span>
+        </Title>
         <Content>
           <Form>
             <hr />
             <div className="name-input">
-              <p>01</p>
+              <Counter>01</Counter>
               <div className="input-content">
                 <label>What's your name?</label>
-                <input placeholder="Enter your name here" required></input>
+                <input
+                  placeholder="Enter your name here"
+                  name="name"
+                  required
+                  onChange={handelChange}
+                ></input>
               </div>
             </div>
             <hr />
             <div className="email-input">
-              <p>02</p>
+              <Counter>02</Counter>
               <div className="input-content">
                 <label>What's your email?</label>
-                <input placeholder="Enter your email here" required></input>
+                <input
+                  placeholder="Enter your email here"
+                  name="email"
+                  required
+                  onChange={handelChange}
+                ></input>
               </div>
             </div>
             <hr />
             <div className="subject-input">
-              <p>03</p>
+              <Counter>03</Counter>
               <div className="input-content">
                 <label>What do you want to get done?</label>
-                <input placeholder="Enter your ..." required></input>
+                <input
+                  placeholder="Enter your ..."
+                  name="work"
+                  onChange={handelChange}
+                  required
+                ></input>
               </div>
             </div>
             <hr />
             <div className="subject-input">
-              <p>04</p>
+              <Counter>04</Counter>
               <div className="input-content">
                 <label>How did you find me?</label>
                 <input
                   placeholder="I want a full stack web developer"
+                  name="category"
+                  onChange={handelChange}
                   required
                 ></input>
               </div>
             </div>
             <hr />
             <div className="message-input">
-              <p>05</p>
+              <Counter>05</Counter>
               <div className="input-content">
                 <label>Your message</label>
-                <textarea placeholder="Your message*" required></textarea>
+                <textarea
+                  placeholder="Your message*"
+                  name="message"
+                  onChange={handelChange}
+                  required
+                ></textarea>
               </div>
             </div>
             <hr />
@@ -108,7 +163,15 @@ const Contact = ({ setViewProject }) => {
         </Content>
         <SubContent>
           <SubTitle>Frequently asked questions</SubTitle>
-          <Accordion />
+          {Data.map((item, index) => {
+            return (
+              <Accordion
+                key={index}
+                title={item.title}
+                AccordionContent={item.content}
+              />
+            );
+          })}
         </SubContent>
       </Container>
       <Quotes setViewProject={setViewProject} />
@@ -125,13 +188,6 @@ const Contact = ({ setViewProject }) => {
 const Container = styled.div`
   margin: 0 10rem;
   font-family: "Inter", sans-serif;
-  p {
-    opacity: 0.5;
-    font-size: 1rem;
-    font-weight: 600;
-    padding-top: 0.2rem;
-    padding-right: 1rem;
-  }
   input,
   textarea {
     width: 100%;
@@ -176,15 +232,16 @@ const Container = styled.div`
 const Title = styled.div`
   height: 60vh;
   display: flex;
-  align-items: end;
+  justify-content: end;
+  flex-direction: column;
   font-size: 6vw;
   font-weight: 600;
   margin-bottom: 6rem;
   width: 50vw;
   font-family: "gallientregular";
   span {
-    padding-right: 0.6rem;
-    font-style: italic;
+    width: 100%;
+    display: block;
   }
   @media (max-width: 1024px) {
     height: 30vh;
@@ -195,6 +252,8 @@ const Title = styled.div`
     margin-left: 0rem;
     margin-bottom: 4rem;
     height: 40vh;
+    letter-spacing: 2px;
+    width: 90vw;
   }
 `;
 const Content = styled.div`
@@ -221,6 +280,14 @@ const Form = styled.form`
     width: 100%;
     padding-right: 0;
   }
+`;
+
+const Counter = styled.p`
+  opacity: 0.5;
+  font-size: 1rem;
+  font-weight: 600;
+  padding-top: 0.2rem;
+  padding-right: 1rem;
 `;
 
 const Button = styled.div`
@@ -280,6 +347,12 @@ const SubTitle = styled.h1`
   align-items: center;
   width: 40vw;
   margin-bottom: 3rem;
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    letter-spacing: 2px;
+    width: 90vw;
+  }
 `;
 
 export default Contact;
