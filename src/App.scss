@@ -5,12 +5,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap");
 
 @font-face {
-  font-family: "VisbyRoundCF-Medium";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../public/Fonts/VisbyRound/VisbyRoundCF-Medium.woff") format("woff");
-}
-@font-face {
   font-family: "bigillaregular";
   src: url("../public/Fonts/Bigilla/bigilla-webfont.woff2") format("woff2"),
     url("../public/Fonts/Bigilla/bigilla-webfont.woff") format("woff");
@@ -97,20 +91,62 @@ a {
 
 .nav-btn,
 .nav-btn-close {
-  height: 100px;
-  width: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
   font-size: 18px;
   font-weight: bold;
   font-family: "Roboto Mono";
 }
-.nav-btn {
-  position: relative;
-  left: 50px;
-}
+
 .nav-btn-close {
   color: #101010;
+}
+
+//Accordion Css
+.accordion__section {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.accordion {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  outline: none;
+  transition: background-color 0.6s ease;
+  font-family: "Open Sans", sans-serif;
+}
+
+.accordion__title {
+  opacity: 1;
+  font-weight: 600;
+  font-size: 2rem;
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+}
+
+.rotate {
+  transform: rotate(90deg);
+}
+
+.accordion__content {
+  overflow: hidden;
+  transition: max-height 0.6s ease;
+  margin: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.accordion__text {
+  font-weight: 400;
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+  opacity: 0.6;
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 }

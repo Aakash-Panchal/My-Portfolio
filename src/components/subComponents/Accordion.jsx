@@ -1,74 +1,39 @@
-import React, { useState } from "react";
-import { FiPlus, FiMinus } from "react-icons/fi";
-import styled from "styled-components";
-import Data from "./TempData";
+import React, { useEffect, useRef, useState } from "react";
 
-const Accordion = () => {
+const Accordion = ({ title, AccordionContent }) => {
   const [active, setActive] = useState(false);
+  const content = useRef(null);
+  const [height, setHeight] = useState("0px");
 
-  const toggle = (index) => {
-    if (active == index) {
-      return setActive(null);
-    }
-    setActive(index);
-  };
+  useEffect(() => {
+    console.log("Height for ", title, ": ", height);
+  }, [height]);
+
+  function toggleAccordion() {
+    setActive(!active);
+    setHeight(active ? "0px" : `${content.current.scrollHeight}px`);
+  }
 
   return (
-    <AccordionSection>
-      <Container>
-        {Data.map((item, index) => {
-          return (
-            <Content key={index}>
-              <Wrapper onClick={() => toggle(index)}>
-                <h1>{item.title}</h1>
-                <span>{active === index ? <FiMinus /> : <FiPlus />}</span>
-              </Wrapper>
-              <DropDown
-                style={
-                  active === index
-                    ? { maxHeight: "999999px" }
-                    : { maxHeight: "" }
-                }
-              >
-                <p>
-                  {/* {active === index ? <p> */}
-                  {item.content}
-                  {/* </p> : null} */}
-                </p>
-              </DropDown>
-            </Content>
-          );
-        })}
-      </Container>
-    </AccordionSection>
+    <div className="accordion__section">
+      <div
+        className={`accordion ${active ? "active" : ""}`}
+        onClick={toggleAccordion}
+      >
+        <p className="accordion__title">{title}</p>
+        <span style={{ marginLeft: "20px", fontSize: "1.5rem" }}>
+          {active ? "-" : "+"}
+        </span>
+      </div>
+      <div
+        ref={content}
+        style={{ maxHeight: `${height}` }}
+        className="accordion__content"
+      >
+        <div className="accordion__text">{AccordionContent}</div>
+      </div>
+    </div>
   );
 };
-
-const AccordionSection = styled.div`
-  width: 60%;
-  @media (max-width: 1024px) {
-    width: 100%;
-  }
-`;
-const Container = styled.div``;
-const Content = styled.div`
-  border-bottom: 1px solid #fff;
-  padding: 1.5rem 0;
-`;
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  h1 {
-    font-weight: 500;
-    font-size: 1.5rem;
-  }
-`;
-const DropDown = styled.div`
-  overflow: hidden;
-  height: auto;
-  max-height: 0px;
-  transition: 0.5s max-height ease-in-out;
-`;
 
 export default Accordion;
