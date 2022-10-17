@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import Footer from "../subComponents/Footer";
 import FooterTitle from "../subComponents/FooterTitle";
 import Quotes from "../subComponents/Quotes";
+import gsap from "gsap";
 
 const Home = ({ setViewProject }) => {
+  const tl = gsap.timeline();
+
+  useEffect(() => {
+    tl.from(".hero-title div", {
+      duration: 1.8,
+      y: 100,
+      opacity: 0,
+      ease: "power4.out",
+      delay: 1,
+      skewY: 7,
+      stagger: {
+        amount: 0.3,
+      },
+    });
+  }, []);
+
   return (
     <>
       <Container data-scroll-section>
         <Content>
-          <Header>
+          <Header className="hero-title">
             <div>CREATIVE</div>
             <div>DESIGNER</div>
             <div>DEVELOPER</div>
@@ -42,6 +59,9 @@ const Home = ({ setViewProject }) => {
 
 const Container = styled.div`
   margin: 0 6rem;
+  @media (max-width: 768px) {
+    margin: 0 2rem;
+  }
 `;
 
 const Content = styled.div`
@@ -59,6 +79,15 @@ const Header = styled.div`
   div {
     :nth-child(2) {
       text-align: right;
+    }
+  }
+  @media (max-width: 768px) {
+    font-size: 15vw;
+    div {
+      text-align: center;
+      :nth-child(2) {
+        text-align: center;
+      }
     }
   }
 `;

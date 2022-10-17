@@ -1,42 +1,58 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import Footer from "../subComponents/Footer";
+import Quotes from "../subComponents/Quotes";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FooterTitle from "../subComponents/FooterTitle";
 
-const About = () => {
+const About = ({ setViewProject }) => {
+  const tl = gsap.timeline();
+
+  useEffect(() => {
+    tl.from(".about-title", {
+      duration: 1.8,
+      y: 100,
+      opacity: 0,
+      ease: "power4.out",
+      delay: 1,
+      skewY: 7,
+      stagger: {
+        amount: 0.3,
+      },
+    });
+    tl.from(".content p p", {
+      duration: 1.8,
+      y: 100,
+      opacity: 0,
+      ease: "power4.out",
+      // skewY: 7,
+      stagger: {
+        amount: 1,
+      },
+    });
+  }, []);
+
   return (
     <>
       <Container data-scroll-section>
-        <HeaderImg>
-          <img src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1665474643/New_Project_bogkmq.png" />
-        </HeaderImg>
-        <Title>about Me</Title>
-        <Content className="test">
+        <Title className="about-title">About Me</Title>
+        <Content className="content">
           <p>
-            <span>Sapiente expedita hic obcaecati</span>
-          </p>
-          <p>
-            <span>laboriosam similique omnis architecto ducimus</span>
-          </p>
-          <p>
-            <span>Sapiente expedita hic obcaecati, laboriosam s</span>
-          </p>
-          <p>
-            <span>Sapiente expedita hic obcaecati, laboriosam similique o</span>
-          </p>
-          <p>
-            <span>necessitatibus rem vel dignissimos dolor ut</span>
-          </p>
-          <p>
-            <span>Sapiente expedita hic obcaecati, laboriosam similique o</span>
+            <p>Sapiente expedita hic obcaecati laboriosa</p>
+            <p> architecto ducimus Sapiente expedita </p>
+            <p> hic obcaecati, laboriosam s Sapiente </p>
+            <p> expedita hic obcaecati, laboriosam </p>
+            <p>similique o necessitatibus rem vel</p>
+            <p>dignissimos dolor ut Sapiente expedita hic</p>
+            <p>obcaecati, laboriosam similique o</p>
           </p>
         </Content>
       </Container>
-
+      <Quotes setViewProject={setViewProject} />
       <FooterTitle titleLink="/works" title="Recent Works" />
       <Footer
+        setViewProject={setViewProject}
         FooterTitle="Have a project in mind?"
         FooterLink="/contact"
         FooterLinkTitle="Contact me"
@@ -48,27 +64,18 @@ const About = () => {
 const Container = styled.div`
   margin: 0 10rem;
 `;
-const HeaderImg = styled.div`
-  width: 100%;
-  height: 85vh;
-  padding-top: 7rem;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
 
 const Title = styled.div`
-  font-family: "Roboto Mono";
-  font-size: 2rem;
+  font-family: "gallientregular";
+  font-size: 10rem;
   padding: 3rem 0;
+  height: 60vh;
+  display: flex;
+  align-items: flex-end;
 `;
 
 const Content = styled.div`
   p {
-    width: 100%;
-    height: 80px;
     user-select: none;
     font-size: 3.5rem;
     font-family: "Open Sans", sans-serif;
