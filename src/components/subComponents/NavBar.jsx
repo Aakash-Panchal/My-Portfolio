@@ -56,7 +56,7 @@ const NavBar = ({ setViewProject }) => {
         </p>
       </NavHeader>
       <div className="nav-container">
-        <div className="menu-close" onClick={CloseMenu}>
+        <div className="nav-btn-close" onClick={CloseMenu}>
           Close
         </div>
         <nav className="menu">
