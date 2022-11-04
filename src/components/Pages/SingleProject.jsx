@@ -4,6 +4,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import FooterTitle from "../subComponents/FooterTitle";
 import Footer from "../subComponents/Footer";
 import Quotes from "../subComponents/Quotes";
+import RouteTransition from "../subComponents/RouteTransition";
 
 const SingleProject = () => {
   const projects = {
@@ -16,7 +17,7 @@ const SingleProject = () => {
   };
 
   return (
-    <>
+    <RouteTransition>
       <Container data-scroll-section>
         <Title>{projects.projectTitle}</Title>
         <Content>
@@ -65,7 +66,7 @@ const SingleProject = () => {
         FooterLink="/contact"
         FooterLinkTitle="Contact me"
       />
-    </>
+    </RouteTransition>
   );
 };
 
@@ -74,12 +75,12 @@ const Container = styled.div`
   font-family: "Inter", sans-serif;
 `;
 const Title = styled.div`
-  height: 40vh;
+  height: 50vh;
   display: flex;
   align-items: flex-end;
-  font-size: 4rem;
+  font-size: 6rem;
   font-weight: 600;
-  font-family: "Roboto Mono";
+  font-family: "gallientregular";
 `;
 const Content = styled.div`
   margin-top: 5rem;
