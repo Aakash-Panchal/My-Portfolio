@@ -7,6 +7,9 @@ import { MagneticButton } from "../subComponents/MagneticButton";
 import Quotes from "../subComponents/Quotes";
 import Data from "../../components/subComponents/TempData";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import RouteTransition from "../subComponents/RouteTransition";
+import SplitType from "split-type";
 
 const Contact = ({ setViewProject }) => {
   const [inputs, setInputs] = useState({
@@ -17,20 +20,47 @@ const Contact = ({ setViewProject }) => {
     message: "",
   });
 
-  const tl = gsap.timeline();
+  gsap.registerPlugin(ScrollTrigger);
+  // const SplitText = new SplitType(".contact-title span");
+
+  // const tl = gsap.timeline({ paused: true });
+
+  // tl.to(".char", {
+  //   y: 0,
+  //   stagger: 0.05,
+  //   delay: 0.2,
+  //   duration: 0.1,
+  // });
 
   useEffect(() => {
-    tl.from(".contact-title span", {
-      duration: 1.8,
-      y: 100,
-      opacity: 0,
-      ease: "power4.out",
-      delay: 1,
-      skewY: 7,
-      stagger: {
-        amount: 0.3,
-      },
-    });
+    // tl.from(".contact-title span", {
+    //   duration: 1.8,
+    //   y: 100,
+    //   opacity: 0,
+    //   ease: "power4.out",
+    //   delay: 1,
+    //   skewY: 7,
+    //   stagger: {
+    //     amount: 0.3,
+    //   },
+    // });
+    // tl.from(".sub-title span", {
+    //   scrollTrigger: {
+    //     trigger: ".sub-title span",
+    //     scroller: ".scrollContainer",
+    //     scrub: true,
+    //     start: "top bottom",
+    //     end: "top bottom",
+    //   },
+    //   duration: 1.8,
+    //   y: 100,
+    //   opacity: 0,
+    //   ease: "power4.out",
+    //   skewY: 7,
+    //   stagger: {
+    //     amount: 0.3,
+    //   },
+    // });
   }, []);
 
   const handelChange = (e) => {
@@ -38,8 +68,8 @@ const Contact = ({ setViewProject }) => {
   };
 
   return (
-    <>
-      <Container data-scroll-section>
+    <RouteTransition>
+      <Container className="scrollContainer" data-scroll-section>
         <Title className="contact-title">
           <span>Let's talk about</span>
           <span>your next project</span>
@@ -162,7 +192,10 @@ const Contact = ({ setViewProject }) => {
           </ContactInfo>
         </Content>
         <SubContent>
-          <SubTitle>Frequently asked questions</SubTitle>
+          <SubTitle className="sub-title">
+            <span>Frequently</span>
+            <span>asked questions</span>
+          </SubTitle>
           {Data.map((item, index) => {
             return (
               <Accordion
@@ -181,7 +214,7 @@ const Contact = ({ setViewProject }) => {
         FooterLink="/contact"
         FooterLinkTitle="Contact me"
       />
-    </>
+    </RouteTransition>
   );
 };
 
@@ -293,6 +326,11 @@ const Counter = styled.p`
 const Button = styled.div`
   width: 220px;
   margin: 2rem -3.5rem;
+
+  @media (max-width: 768px) {
+    width: 120px;
+    margin: 2rem 0rem;
+  }
 `;
 
 const ContactInfo = styled.div``;
@@ -344,7 +382,8 @@ const SubTitle = styled.h1`
   font-size: 4vw;
   height: 25vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   width: 40vw;
   margin-bottom: 3rem;
   @media (max-width: 768px) {
