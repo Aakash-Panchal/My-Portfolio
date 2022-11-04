@@ -5,6 +5,7 @@ import Quotes from "../subComponents/Quotes";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FooterTitle from "../subComponents/FooterTitle";
+import RouteTransition from "../subComponents/RouteTransition";
 
 const About = ({ setViewProject }) => {
   const tl = gsap.timeline();
@@ -26,7 +27,6 @@ const About = ({ setViewProject }) => {
       y: 100,
       opacity: 0,
       ease: "power4.out",
-      // skewY: 7,
       stagger: {
         amount: 1,
       },
@@ -34,7 +34,7 @@ const About = ({ setViewProject }) => {
   }, []);
 
   return (
-    <>
+    <RouteTransition>
       <Container data-scroll-section>
         <Title className="about-title">About Me</Title>
         <Content className="content">
@@ -57,7 +57,7 @@ const About = ({ setViewProject }) => {
         FooterLink="/contact"
         FooterLinkTitle="Contact me"
       />
-    </>
+    </RouteTransition>
   );
 };
 

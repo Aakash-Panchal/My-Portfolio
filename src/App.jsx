@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import CustomCursor from "./components/CustomCursor/CursorContext";
 import { useLocation, Route, Routes } from "react-router-dom";
 import SingleProject from "./components/Pages/SingleProject";
-import PageTransition from "./components/PageTransition";
 import NavBar from "./components/subComponents/NavBar";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import Cursor from "./components/CustomCursor/Cursor";
@@ -11,6 +10,7 @@ import Login from "./components/Pages/Admin/Login";
 import Admin from "./components/Pages/Admin/Admin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LocomotiveScroll from "locomotive-scroll";
+import { AnimatePresence } from "framer-motion";
 import Contact from "./components/Pages/Contact";
 import About from "./components/Pages/About";
 import Works from "./components/Pages/Works";
@@ -44,8 +44,6 @@ function App() {
       document.querySelector("[data-scroll-container]")
     );
 
-    ScrollTrigger.defaults({ scroller: ".scrollContainer", markers: true });
-
     ScrollTrigger.scrollerProxy(".scrollContainer", {
       scrollTop(value) {
         return arguments.length
@@ -64,6 +62,11 @@ function App() {
 
     setScrollbar(LocoScroll);
 
+    ScrollTrigger.defaults({
+      scroller: ".scrollContainer",
+      markers: true,
+    });
+
     ScrollTrigger.addEventListener("refresh", () => {
       LocoScroll.update;
     });
@@ -74,12 +77,12 @@ function App() {
   useEffect(() => {
     if (scrollbar !== null) {
       scrollbar.update();
-      scrollbar.scrollTo("top", {
-        offset: 0,
-        duration: 600,
-        easing: [0.25, 0.0, 0.35, 1.0],
-        disableLerp: true,
-      });
+      // scrollbar.scrollTo("top", {
+      //   offset: 0,
+      //   duration: 600,
+      //   easing: [0.25, 0.0, 0.35, 1.0],
+      //   disableLerp: true,
+      // });
     }
   }, [location]);
 
@@ -87,51 +90,52 @@ function App() {
     <>
       <NavBar setViewProject={setViewProject} />
       <Cursor viewProject={viewProject} />
-      {/* <PageTransition /> */}
       <CustomCursor.Provider value={viewProject}>
         <Container
           ref={scrollRef}
-          data-scroll-container
           className="scrollContainer"
+          data-scroll-container
         >
-          <Routes key={location.pathname}>
-            <Route
-              exact
-              path="/"
-              element={<Home setViewProject={setViewProject} />}
-            />
-            <Route
-              exact
-              path="/about"
-              element={<About setViewProject={setViewProject} />}
-            />
-            <Route
-              exact
-              path="/works"
-              element={<Works setViewProject={setViewProject} />}
-            />
-            <Route
-              exact
-              path="/works/:id"
-              element={<SingleProject setViewProject={setViewProject} />}
-            />
-            <Route
-              exact
-              path="/contact"
-              element={<Contact setViewProject={setViewProject} />}
-            />
-            <Route
-              exact
-              path="/login"
-              element={<Login setViewProject={setViewProject} />}
-            />
-            <Route
-              exact
-              path="/admin"
-              element={<Admin setViewProject={setViewProject} />}
-            />
-            <Route exact path="*" element={<ErrorPage />} />
-          </Routes>
+          <AnimatePresence initial={false} mode={"wait"}>
+            <Routes location={location} key={location.pathname}>
+              <Route
+                exact
+                path="/"
+                element={<Home setViewProject={setViewProject} />}
+              />
+              <Route
+                exact
+                path="/about"
+                element={<About setViewProject={setViewProject} />}
+              />
+              <Route
+                exact
+                path="/works"
+                element={<Works setViewProject={setViewProject} />}
+              />
+              <Route
+                exact
+                path="/works/:id"
+                element={<SingleProject setViewProject={setViewProject} />}
+              />
+              <Route
+                exact
+                path="/contact"
+                element={<Contact setViewProject={setViewProject} />}
+              />
+              <Route
+                exact
+                path="/login"
+                element={<Login setViewProject={setViewProject} />}
+              />
+              <Route
+                exact
+                path="/admin"
+                element={<Admin setViewProject={setViewProject} />}
+              />
+              <Route exact path="*" element={<ErrorPage />} />
+            </Routes>
+          </AnimatePresence>
         </Container>
       </CustomCursor.Provider>
     </>

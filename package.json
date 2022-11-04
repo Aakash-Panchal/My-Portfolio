@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build && cp _redirects dist/_redirects",
     "preview": "vite preview"
   },
@@ -23,6 +23,7 @@
     "react-transition-group": "^4.4.5",
     "sass": "^1.54.9",
     "sort-by": "^1.2.0",
+    "split-type": "^0.3.3",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
