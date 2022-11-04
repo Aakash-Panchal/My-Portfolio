@@ -1,18 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Footer from "../subComponents/Footer";
 import Quotes from "../subComponents/Quotes";
 import { BsArrowRight } from "react-icons/bs";
 import FooterTitle from "../subComponents/FooterTitle";
+import gsap from "gsap";
 
 const Works = ({ setViewProject }) => {
+  const tl = gsap.timeline();
+
+  useEffect(() => {
+    tl.from(".works-title span", {
+      duration: 1.8,
+      y: 100,
+      opacity: 0,
+      ease: "power4.out",
+      delay: 1,
+      skewY: 7,
+      stagger: {
+        amount: 0.3,
+      },
+    });
+
+    tl.from(".project-card", {
+      duration: 1.8,
+      y: 100,
+      opacity: 0,
+      ease: "power4.out",
+      skewY: 7,
+      stagger: {
+        amount: 0.3,
+      },
+    });
+  }, []);
+
   return (
     <>
       <Container data-scroll-section>
-        <Title>selected project</Title>
+        <Title className="works-title">
+          <span>selected</span>
+          <span>project</span>
+        </Title>
         <Content>
           <ProjectsContainer>
-            <ProjectCard>
+            <ProjectCard className="project-card">
               <ImageHolder
                 onMouseEnter={() => {
                   setViewProject("View-Project");
@@ -112,16 +143,19 @@ const Container = styled.div`
 
 const Title = styled.div`
   font-family: "gallientregular";
-  height: 60vh;
+  height: 70vh;
   display: flex;
-  align-items: end;
+  justify-content: end;
+  flex-direction: column;
   margin: 0 5rem;
   font-size: 10vw;
   font-weight: 600;
   margin-bottom: 8rem;
+  line-height: 0.9;
   span {
-    padding-right: 0.6rem;
-    font-style: italic;
+    :nth-child(2) {
+      margin-left: 15rem;
+    }
   }
   @media (max-width: 1024px) {
     font-size: 5rem;
