@@ -77,12 +77,14 @@ function App() {
   useEffect(() => {
     if (scrollbar !== null) {
       scrollbar.update();
-      scrollbar.scrollTo("top", {
-        offset: 0,
-        duration: 600,
-        easing: [0.25, 0.0, 0.35, 1.0],
-        disableLerp: true,
-      });
+      setTimeout(() => {
+        scrollbar.scrollTo("top", {
+          offset: 0,
+          duration: 600,
+          easing: [0.25, 0.0, 0.35, 1.0],
+          disableLerp: true,
+        });
+      }, 1000);
     }
   }, [location]);
 
