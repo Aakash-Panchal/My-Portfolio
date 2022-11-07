@@ -79,6 +79,9 @@ const Home = ({ setViewProject }) => {
                   onMouseLeave={() => {
                     setViewProject(false);
                   }}
+                  onClick={() => {
+                    setViewProject(false);
+                  }}
                 >
                   <Link to="/works/54">
                     <Filter />
@@ -96,8 +99,8 @@ const Home = ({ setViewProject }) => {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M27.5377 1.1906L28.1347 2.63918C29.0998 4.98087 30.8573 6.86515 33.0501 8.0001L0 8.0001V9.0001L33.05 9.0001C30.8572 10.135 29.0998 12.0193 28.1347 14.361L27.5377 15.8096L28.4623 16.1906L29.0593 14.742C30.287 11.763 32.9311 9.60166 36.0948 8.99103V8.00915C32.9311 7.39852 30.287 5.23713 29.0593 2.25815L28.4623 0.80957L27.5377 1.1906Z"
                         fill="#b3cc6d"
                       ></path>

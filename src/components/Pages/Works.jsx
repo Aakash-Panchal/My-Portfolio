@@ -1,12 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Footer from "../subComponents/Footer";
 import Quotes from "../subComponents/Quotes";
 import { BsArrowRight } from "react-icons/bs";
 import FooterTitle from "../subComponents/FooterTitle";
 import gsap from "gsap";
+import { Link } from "react-router-dom";
+import RouteTransition from "../subComponents/RouteTransition";
 
 const Works = ({ setViewProject }) => {
+  const [projects, setProjects] = useState([
+    {
+      projectImg:
+        "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
+      ProjectTitle: "Project 1",
+    },
+    {
+      projectImg:
+        "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/618f3ad5f6c6e05234740557_sarnco-mark.jpg",
+      ProjectTitle: "Project 2",
+    },
+    {
+      projectImg:
+        "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
+      ProjectTitle: "Project 3",
+    },
+    {
+      projectImg:
+        "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
+      ProjectTitle: "Project 3",
+    },
+    {
+      projectImg:
+        "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
+      ProjectTitle: "Project 3",
+    },
+  ]);
+
   const tl = gsap.timeline();
 
   useEffect(() => {
@@ -22,108 +52,72 @@ const Works = ({ setViewProject }) => {
       },
     });
 
-    tl.from(".project-card", {
-      duration: 1.8,
-      y: 100,
-      opacity: 0,
-      ease: "power4.out",
-      skewY: 7,
-      stagger: {
-        amount: 0.3,
-      },
-    });
+    // tl.from(".project-card", {
+    //   duration: 1.8,
+    //   y: 100,
+    //   opacity: 0,
+    //   ease: "power4.out",
+    //   skewY: 7,
+    //   stagger: {
+    //     amount: 0.3,
+    //   },
+    // });
   }, []);
 
   return (
-    <>
+    <RouteTransition>
       <Container data-scroll-section>
         <Title className="works-title">
           <span>selected</span>
-          <span>project</span>
+          <span>projects</span>
         </Title>
         <Content>
           <ProjectsContainer>
-            <ProjectCard className="project-card">
-              <ImageHolder
-                onMouseEnter={() => {
-                  setViewProject("View-Project");
-                }}
-                onMouseLeave={() => {
-                  setViewProject(false);
-                }}
-              >
-                <a href="https://www.google.com" target="_blank">
-                  <img src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346123/Test_yeulvv.png" />
-                </a>
-              </ImageHolder>
-              <ProjectInfo>
-                <h1>Project 1</h1>
-                <a href="https://www.google.com">
-                  <BsArrowRight />
-                </a>
-              </ProjectInfo>
-            </ProjectCard>
-            <ProjectCard>
-              <ImageHolder
-                onMouseEnter={() => {
-                  setViewProject("View-Project");
-                }}
-                onMouseLeave={() => {
-                  setViewProject(false);
-                }}
-              >
-                <a href="https://www.google.com" target="_blank">
-                  <img src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346117/test-2_eir7n7.webp" />
-                </a>
-              </ImageHolder>
-              <ProjectInfo>
-                <h1>Project 2</h1>
-                <a href="https://www.google.com">
-                  <BsArrowRight />
-                </a>
-              </ProjectInfo>
-            </ProjectCard>
-            <ProjectCard>
-              <ImageHolder
-                onMouseEnter={() => {
-                  setViewProject("View-Project");
-                }}
-                onMouseLeave={() => {
-                  setViewProject(false);
-                }}
-              >
-                <a href="https://www.google.com" target="_blank">
-                  <img src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346123/Test_yeulvv.png" />
-                </a>
-              </ImageHolder>
-              <ProjectInfo>
-                <h1>Project 3</h1>
-                <a href="https://www.google.com">
-                  <BsArrowRight />
-                </a>
-              </ProjectInfo>
-            </ProjectCard>
-            <ProjectCard>
-              <ImageHolder
-                onMouseEnter={() => {
-                  setViewProject("View-Project");
-                }}
-                onMouseLeave={() => {
-                  setViewProject(false);
-                }}
-              >
-                <a href="https://www.google.com" target="_blank">
-                  <img src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346123/Test_yeulvv.png" />
-                </a>
-              </ImageHolder>
-              <ProjectInfo>
-                <h1>Project 3</h1>
-                <a href="https://www.google.com">
-                  <BsArrowRight />
-                </a>
-              </ProjectInfo>
-            </ProjectCard>
+            {projects.map((item, index) => (
+              <ProjectCard key={index} className="project-card">
+                <ImageHolder
+                  onMouseEnter={() => {
+                    setViewProject("View-Project");
+                  }}
+                  onMouseLeave={() => {
+                    setViewProject(false);
+                  }}
+                  onClick={() => {
+                    setViewProject(false);
+                  }}
+                >
+                  <Link to="/works/54">
+                    <Filter />
+                    <img src={item.projectImg} />
+                  </Link>
+                </ImageHolder>
+                <ProjectInfo>
+                  <h1>{item.ProjectTitle}</h1>
+                  <a href="https://www.google.com">
+                    <svg
+                      width="37"
+                      height="17"
+                      viewBox="0 0 37 17"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M27.5377 1.1906L28.1347 2.63918C29.0998 4.98087 30.8573 6.86515 33.0501 8.0001L0 8.0001V9.0001L33.05 9.0001C30.8572 10.135 29.0998 12.0193 28.1347 14.361L27.5377 15.8096L28.4623 16.1906L29.0593 14.742C30.287 11.763 32.9311 9.60166 36.0948 8.99103V8.00915C32.9311 7.39852 30.287 5.23713 29.0593 2.25815L28.4623 0.80957L27.5377 1.1906Z"
+                        fill="#b3cc6d"
+                      ></path>
+                    </svg>
+                  </a>
+                </ProjectInfo>
+              </ProjectCard>
+            ))}
           </ProjectsContainer>
+
+          <ContactContainer>
+            <h1>Liked my Works?</h1>
+            <h1>Lets work To?</h1>
+          </ContactContainer>
         </Content>
       </Container>
       <Quotes setViewProject={setViewProject} />
@@ -133,7 +127,7 @@ const Works = ({ setViewProject }) => {
         FooterLink="/contact"
         FooterLinkTitle="Contact me"
       />
-    </>
+    </RouteTransition>
   );
 };
 
@@ -183,7 +177,7 @@ const ProjectsContainer = styled.div`
 const ProjectCard = styled.div`
   width: 60vw;
   margin-bottom: 4rem;
-  :nth-child(even) {
+  :nth-child(odd) {
     margin-left: auto;
   }
   :last-child {
@@ -191,7 +185,7 @@ const ProjectCard = styled.div`
   }
   @media (max-width: 1024px) {
     width: 100%;
-    :nth-child(even) {
+    :nth-child(odd) {
       margin-left: 0;
     }
     margin-bottom: 4rem;
@@ -206,6 +200,7 @@ const ImageHolder = styled.div`
   height: 33vw;
   overflow: hidden;
   -webkit-user-drag: none;
+  position: relative;
   img {
     width: 100%;
     height: 100%;
@@ -213,14 +208,11 @@ const ImageHolder = styled.div`
     /* clip-path: inset(0 100% 0 0);
     transition: all 1.2s cubic-bezier(0.77, 0, 0.175, 1);
     scale: 1.3; */
-    :hover {
-      /* scale: 1.1; */
-    }
   }
-  .is-inview {
+  /* .is-inview {
     clip-path: inset(0 0 0 0);
     scale: 1;
-  }
+  } */
 
   @media (max-width: 1024px) {
     width: 100%;
@@ -232,12 +224,29 @@ const ImageHolder = styled.div`
   }
 `;
 
+const Filter = styled.div`
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(1, 1, 1, 0.06) 48%,
+    #0b0b0b
+  );
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+`;
+
 const ProjectInfo = styled.div`
-  font-family: "Open Sans", sans-serif;
+  font-family: "gallientregular";
   display: flex;
   justify-content: space-between;
   padding: 1.5rem 0;
+  padding-bottom: 0;
   align-items: center;
+  color: #b3cc6d;
   a {
     width: 4rem;
     height: 4rem;
@@ -258,4 +267,7 @@ const ProjectInfo = styled.div`
     }
   }
 `;
+
+const ContactContainer = styled.div``;
+
 export default Works;

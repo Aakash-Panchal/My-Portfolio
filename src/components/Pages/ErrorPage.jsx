@@ -2,21 +2,24 @@ import gsap from "gsap";
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import RouteTransition from "../subComponents/RouteTransition";
 
 const ErrorPage = () => {
   return (
-    <Container>
-      <div className="errorDiv">
-        <span>PAGE</span>
-        <span>
-          <div className="span404">404</div>NOT
-        </span>
-        <span>FOUND</span>
-      </div>
-      <HomeBTN className="homeBtn">
-        <Link to="/">Take Me Home</Link>
-      </HomeBTN>
-    </Container>
+    <RouteTransition>
+      <Container>
+        <div className="errorDiv">
+          <span>PAGE</span>
+          <span>
+            <div className="span404">404</div>NOT
+          </span>
+          <span>FOUND</span>
+        </div>
+        <HomeBTN className="homeBtn">
+          <Link to="/">Take Me Home</Link>
+        </HomeBTN>
+      </Container>
+    </RouteTransition>
   );
 };
 

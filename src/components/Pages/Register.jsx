@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { BaseUrl } from "../../BaseUrl";
+import RouteTransition from "../subComponents/RouteTransition";
 
 const Register = () => {
   const [error, setError] = useState(null);
@@ -25,31 +26,33 @@ const Register = () => {
   };
 
   return (
-    <div>
-      Register
-      <form>
-        <input
-          type="text"
-          onChange={handelChange}
-          name="name"
-          placeholder="First Name"
-        />
-        <input
-          type="email"
-          onChange={handelChange}
-          name="email"
-          placeholder="Email"
-        />
-        <input
-          type="password"
-          onChange={handelChange}
-          name="password"
-          placeholder="Password"
-        />
-        <button onClick={handelSubmit}>Register</button>
-        {error && <p>{error}</p>}
-      </form>
-    </div>
+    <RouteTransition>
+      <div>
+        Register
+        <form>
+          <input
+            type="text"
+            onChange={handelChange}
+            name="name"
+            placeholder="First Name"
+          />
+          <input
+            type="email"
+            onChange={handelChange}
+            name="email"
+            placeholder="Email"
+          />
+          <input
+            type="password"
+            onChange={handelChange}
+            name="password"
+            placeholder="Password"
+          />
+          <button onClick={handelSubmit}>Register</button>
+          {error && <p>{error}</p>}
+        </form>
+      </div>
+    </RouteTransition>
   );
 };
 
