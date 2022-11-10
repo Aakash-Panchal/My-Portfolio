@@ -4,7 +4,6 @@ import Footer from "../subComponents/Footer";
 import FooterTitle from "../subComponents/FooterTitle";
 import Quotes from "../subComponents/Quotes";
 import RouteTransition from "../subComponents/RouteTransition";
-import { BsArrowRight } from "react-icons/bs";
 import gsap from "gsap";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -48,29 +47,81 @@ const Home = ({ setViewProject }) => {
     <RouteTransition>
       <Container data-scroll-section>
         <Content>
-          <Header className="hero-title">
+          <Header className="hero-title" data-scroll data-scroll-speed="2">
             <div>CREATIVE</div>
             <div>DESIGNER</div>
             <div>DEVELOPER</div>
           </Header>
           <AboutSection>
+            <div className="imageHolder" data-scroll>
+              <img
+                data-scroll
+                data-scroll-speed="3"
+                className="image one"
+                src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1668070795/Portfolio/index_ph3l7j.jpg"
+              />
+              <img
+                data-scroll
+                data-scroll-speed="1"
+                className="image two"
+                src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1668070794/Portfolio/indexs_ksz2lr.jpg"
+              />
+              <img
+                data-scroll
+                data-scroll-speed="3  "
+                className="image three"
+                src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1668070794/Portfolio/insdex_z7ewkd.jpg"
+              />
+            </div>
             <div>
               <p>
-                <span>Hey i'm Aakash</span>
                 <span>
-                  dummy text of the printing and typesetting industry. Lorem
-                  Ipsum has been the industry's standard dummy text ever since
-                  the 1500s
+                  Hey i'm Aakash <br />I am a full stack web developer & UI/UX
+                  Designer from India, dummy text of the printing and
                 </span>
               </p>
+              <Button>
+                <Link
+                  onMouseEnter={() => {
+                    setViewProject("invert-cursor");
+                  }}
+                  onMouseLeave={() => {
+                    setViewProject(false);
+                  }}
+                  onClick={() => {
+                    setViewProject(false);
+                  }}
+                  to="/about"
+                >
+                  <span>About Me</span>
+                  <svg
+                    width="37"
+                    height="17"
+                    viewBox="0 0 37 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M27.5377 1.1906L28.1347 2.63918C29.0998 4.98087 30.8573 6.86515 33.0501 8.0001L0 8.0001V9.0001L33.05 9.0001C30.8572 10.135 29.0998 12.0193 28.1347 14.361L27.5377 15.8096L28.4623 16.1906L29.0593 14.742C30.287 11.763 32.9311 9.60166 36.0948 8.99103V8.00915C32.9311 7.39852 30.287 5.23713 29.0593 2.25815L28.4623 0.80957L27.5377 1.1906Z"
+                      fill="#b3cc6d"
+                    ></path>
+                  </svg>
+                </Link>
+              </Button>
             </div>
           </AboutSection>
           <ProjectsSection>
             <ProjectTitle>
-              <p>Recent</p>
-              <p>Projects</p>
+              <p data-scroll data-scroll-speed="1">
+                Recent
+              </p>
+              <p data-scroll data-scroll-speed="2">
+                Projects
+              </p>
             </ProjectTitle>
-            {projects.map((item, index) => (
+            {projects.slice(0, 3).map((item, index) => (
               <ProjectCard key={index} className="project-card">
                 <ImageHolder
                   onMouseEnter={() => {
@@ -114,12 +165,7 @@ const Home = ({ setViewProject }) => {
       </Container>
       <Quotes setViewProject={setViewProject} />
       <FooterTitle titleLink="/works" title="Recent Works" />
-      <Footer
-        setViewProject={setViewProject}
-        FooterTitle="Have a project in mind?"
-        FooterLink="/contact"
-        FooterLinkTitle="Contact me"
-      />
+      <Footer setViewProject={setViewProject} />
     </RouteTransition>
   );
 };
@@ -164,20 +210,68 @@ const AboutSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "gallientregular";
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+  position: relative;
+  margin-bottom: 10rem;
+  .imageHolder {
+    width: 80vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+    .image {
+      display: block;
+      position: absolute;
+      width: 15rem;
+      opacity: 0.5;
+      rotate: 10deg;
+    }
+    .two {
+      top: 25%;
+      rotate: -10deg;
+      right: 0;
+    }
+    .three {
+      bottom: 0;
+    }
+  }
   div {
     p {
       display: flex;
       flex-direction: column;
       align-items: center;
       span {
+        font-weight: 600;
+        font-size: 3.5rem;
       }
     }
   }
 `;
 
+const Button = styled.div`
+  margin: 0 auto;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  a {
+    color: #fff;
+    svg {
+      margin-left: 1rem;
+    }
+  }
+  @media (max-width: 768px) {
+    width: 120px;
+    margin: 2rem 0rem;
+  }
+`;
+
 const ProjectsSection = styled.div``;
 const ProjectTitle = styled.div`
-  font-size: clamp(5rem, 15vw, 16rem);
+  font-size: clamp(5rem, 15vw, 13rem);
   font-family: "gallientregular";
   line-height: 1;
   padding-bottom: 10vh;
@@ -190,7 +284,7 @@ const ProjectTitle = styled.div`
 
 const ProjectCard = styled.div`
   width: 60vw;
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
   :nth-child(even) {
     margin-left: auto;
   }
@@ -215,6 +309,9 @@ const ImageHolder = styled.div`
   overflow: hidden;
   -webkit-user-drag: none;
   position: relative;
+  a {
+    display: block;
+  }
   img {
     width: 100%;
     height: 100%;
