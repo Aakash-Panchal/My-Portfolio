@@ -27,7 +27,7 @@ const RouteTransition = ({ children }) => {
           initial={{ y: "0" }}
           animate={{ y: "-100%" }}
           transition={{
-            delay: 0.5,
+            delay: -0.3,
             type: "tween",
             ease: "easeInOut",
             duration: 1,
