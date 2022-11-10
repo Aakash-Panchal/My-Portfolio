@@ -2,12 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Footer = ({
-  FooterTitle,
-  FooterLinkTitle,
-  FooterLink,
-  setViewProject,
-}) => {
+const Footer = ({ setViewProject }) => {
   return (
     <Container
       data-scroll-section
@@ -21,8 +16,8 @@ const Footer = ({
       <Content>
         <Title>
           <h1>
-            {FooterTitle}
-            <Link to={FooterLink}>Let's talk about it!</Link>
+            Have a project in mind?
+            <Link to="/contact">Let's talk about it!</Link>
           </h1>
         </Title>
         <InfoWrapper>

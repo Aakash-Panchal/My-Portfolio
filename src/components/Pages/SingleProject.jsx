@@ -6,7 +6,7 @@ import Footer from "../subComponents/Footer";
 import Quotes from "../subComponents/Quotes";
 import RouteTransition from "../subComponents/RouteTransition";
 
-const SingleProject = () => {
+const SingleProject = ({ setViewProject }) => {
   const projects = {
     projectTitle: "Chemin Esports",
     projectImg:
@@ -61,11 +61,7 @@ const SingleProject = () => {
       </Container>
       <Quotes />
       <FooterTitle titleLink="/works" title="Recent Works" />
-      <Footer
-        FooterTitle="Have a project in mind?"
-        FooterLink="/contact"
-        FooterLinkTitle="Contact me"
-      />
+      <Footer setViewProject={setViewProject} />
     </RouteTransition>
   );
 };
@@ -73,6 +69,13 @@ const SingleProject = () => {
 const Container = styled.div`
   margin: 0 10rem;
   font-family: "Inter", sans-serif;
+
+  @media (max-width: 1024px) {
+    margin: 0 4rem;
+  }
+  @media (max-width: 768px) {
+    margin: 0 2rem;
+  }
 `;
 const Title = styled.div`
   height: 50vh;
@@ -81,9 +84,17 @@ const Title = styled.div`
   font-size: 6rem;
   font-weight: 600;
   font-family: "gallientregular";
+
+  @media (max-width: 768px) {
+    height: 40vh;
+    font-size: 4rem;
+  }
 `;
 const Content = styled.div`
   margin-top: 5rem;
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+  }
 `;
 
 const Info = styled.div`
@@ -91,6 +102,12 @@ const Info = styled.div`
   height: 20vh;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+    margin-bottom: 2rem;
+  }
 `;
 
 const ItemWrapper = styled.div`
@@ -137,6 +154,9 @@ const ProjectDesc = styled.div`
   font-size: 1.6rem;
   opacity: 0.6;
   margin-bottom: 5rem;
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const Review = styled.div`

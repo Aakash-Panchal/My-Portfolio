@@ -164,10 +164,6 @@ const Contact = ({ setViewProject }) => {
             </Button>
           </Form>
           <ContactInfo>
-            <ContactEmail>
-              <h1>Email</h1>
-              <a href="mailto:aakash@cleverstudio.in">aakash@cleverstudio.in</a>
-            </ContactEmail>
             <Socials>
               <h1>Socials</h1>
               <a href="https://www.instagram.com/ig__drew/" target="_blank">
@@ -207,13 +203,9 @@ const Contact = ({ setViewProject }) => {
           })}
         </SubContent>
       </Container>
-      <Quotes setViewProject={setViewProject} />
+      {/* <Quotes setViewProject={setViewProject} />
       <FooterTitle title="Works" titleLink="/works" />
-      <Footer
-        FooterTitle="Have a project in mind?"
-        FooterLink="/contact"
-        FooterLinkTitle="Contact me"
-      />
+      <Footer setViewProject={setViewProject} /> */}
     </RouteTransition>
   );
 };
@@ -334,27 +326,8 @@ const Button = styled.div`
 `;
 
 const ContactInfo = styled.div``;
-const ContactEmail = styled.div`
-  h1 {
-    font-size: 1.5rem;
-  }
-  a {
-    display: block;
-    font-weight: 600;
-    opacity: 0.6;
-    letter-spacing: 1px;
-    padding: 0.6rem 0;
-    padding-top: 0.4rem;
-    color: #fff;
-  }
-  @media (max-width: 1024px) {
-    h1 {
-      font-size: 1.3rem;
-    }
-  }
-`;
+
 const Socials = styled.div`
-  margin-top: 1rem;
   h1 {
     font-size: 1.4rem;
   }
@@ -375,7 +348,9 @@ const Socials = styled.div`
   }
 `;
 
-const SubContent = styled.div``;
+const SubContent = styled.div`
+  padding-bottom: 10rem;
+`;
 
 const SubTitle = styled.h1`
   font-family: "gallientregular";

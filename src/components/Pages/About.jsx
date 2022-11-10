@@ -51,12 +51,7 @@ const About = ({ setViewProject }) => {
       </Container>
       <Quotes setViewProject={setViewProject} />
       <FooterTitle titleLink="/works" title="Recent Works" />
-      <Footer
-        setViewProject={setViewProject}
-        FooterTitle="Have a project in mind?"
-        FooterLink="/contact"
-        FooterLinkTitle="Contact me"
-      />
+      <Footer setViewProject={setViewProject} />
     </RouteTransition>
   );
 };

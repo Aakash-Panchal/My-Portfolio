@@ -113,7 +113,6 @@ const Works = ({ setViewProject }) => {
               </ProjectCard>
             ))}
           </ProjectsContainer>
-
           <ContactContainer>
             <h1>Liked my Works?</h1>
             <h1>Lets work To?</h1>
@@ -122,11 +121,7 @@ const Works = ({ setViewProject }) => {
       </Container>
       <Quotes setViewProject={setViewProject} />
       <FooterTitle title="Contact" titleLink="/contact" />
-      <Footer
-        FooterTitle="Have a project in mind?"
-        FooterLink="/contact"
-        FooterLinkTitle="Contact me"
-      />
+      <Footer setViewProject={setViewProject} />
     </RouteTransition>
   );
 };
