@@ -70,7 +70,8 @@ const Footer = ({ setViewProject }) => {
 
 const Container = styled.div`
   background-color: #fff;
-  height: 65vh;
+  border-radius: 4rem 5rem 0 0;
+  height: 90vh;
   width: 100vw;
   color: #101010;
   @media (max-width: 1024px) {
@@ -92,18 +93,17 @@ const Content = styled.div`
 `;
 
 const Title = styled.div`
+  text-align: center;
   h1 {
-    font-family: "Open Sans", sans-serif;
+    font-family: "gallientregular";
     font-weight: 600;
-    font-size: 3.5rem;
+    font-size: 8rem;
     line-height: 1.2;
-    width: fit-content;
     a {
       display: block;
       font-family: "Playfair Display", serif;
       font-weight: 600;
       color: #101010;
-      width: max-content;
       padding-bottom: 0.5rem;
       border-bottom: 1px solid #101010;
     }

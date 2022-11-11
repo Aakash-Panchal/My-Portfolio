@@ -15,7 +15,7 @@ const Cursor = ({ viewProject }) => {
     setIsView(false);
   };
 
-  const delay = 8;
+  const delay = 5;
   const dot = useRef(null);
   const dotOutline = useRef(null);
   const cursorVisible = useRef(true);

@@ -1,39 +1,41 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Footer from "../subComponents/Footer";
-import Quotes from "../subComponents/Quotes";
-import { BsArrowRight } from "react-icons/bs";
-import FooterTitle from "../subComponents/FooterTitle";
-import gsap from "gsap";
-import { Link } from "react-router-dom";
 import RouteTransition from "../subComponents/RouteTransition";
+import { Link } from "react-router-dom";
+import gsap from "gsap";
 
 const Works = ({ setViewProject }) => {
   const [projects, setProjects] = useState([
     {
+      projectRank: "01",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
-      ProjectTitle: "Project 1",
+      ProjectTitle: "Chemin Esports",
     },
     {
+      projectRank: "02",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/618f3ad5f6c6e05234740557_sarnco-mark.jpg",
-      ProjectTitle: "Project 2",
+      ProjectTitle: "Project Oxygen",
     },
     {
+      projectRank: "03",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
-      ProjectTitle: "Project 3",
+      ProjectTitle: "Lemon Juice",
     },
     {
+      projectRank: "04",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
-      ProjectTitle: "Project 3",
+      ProjectTitle: "Project Width",
     },
     {
+      projectRank: "05",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
-      ProjectTitle: "Project 3",
+      ProjectTitle: "Alive",
     },
   ]);
 
@@ -87,41 +89,25 @@ const Works = ({ setViewProject }) => {
                   }}
                 >
                   <Link to="/works/54">
-                    <Filter />
                     <img src={item.projectImg} />
                   </Link>
                 </ImageHolder>
                 <ProjectInfo>
+                  <p>{item.projectRank}</p>
                   <h1>{item.ProjectTitle}</h1>
-                  <a href="https://www.google.com">
-                    <svg
-                      width="37"
-                      height="17"
-                      viewBox="0 0 37 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M27.5377 1.1906L28.1347 2.63918C29.0998 4.98087 30.8573 6.86515 33.0501 8.0001L0 8.0001V9.0001L33.05 9.0001C30.8572 10.135 29.0998 12.0193 28.1347 14.361L27.5377 15.8096L28.4623 16.1906L29.0593 14.742C30.287 11.763 32.9311 9.60166 36.0948 8.99103V8.00915C32.9311 7.39852 30.287 5.23713 29.0593 2.25815L28.4623 0.80957L27.5377 1.1906Z"
-                        fill="#b3cc6d"
-                      ></path>
-                    </svg>
-                  </a>
                 </ProjectInfo>
               </ProjectCard>
             ))}
           </ProjectsContainer>
           <ContactContainer>
-            <h1>Liked my Works?</h1>
-            <h1>Lets work To?</h1>
+            <h1>
+              Have a <br /> project in mind?
+            </h1>
+            <p>Lets work To?</p>
           </ContactContainer>
         </Content>
       </Container>
-      <Quotes setViewProject={setViewProject} />
-      <FooterTitle title="Contact" titleLink="/contact" />
-      <Footer setViewProject={setViewProject} />
+      {/* <Footer setViewProject={setViewProject} /> */}
     </RouteTransition>
   );
 };
@@ -171,7 +157,7 @@ const ProjectsContainer = styled.div`
 `;
 const ProjectCard = styled.div`
   width: 60vw;
-  margin-bottom: 4rem;
+  margin-bottom: 8rem;
   :nth-child(odd) {
     margin-left: auto;
   }
@@ -219,50 +205,33 @@ const ImageHolder = styled.div`
   }
 `;
 
-const Filter = styled.div`
-  background-image: linear-gradient(
-    180deg,
-    transparent,
-    rgba(1, 1, 1, 0.06) 48%,
-    #0b0b0b
-  );
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 3;
-`;
-
 const ProjectInfo = styled.div`
   font-family: "gallientregular";
   display: flex;
-  justify-content: space-between;
   padding: 1.5rem 0;
   padding-bottom: 0;
-  align-items: center;
   color: #b3cc6d;
-  a {
-    width: 4rem;
-    height: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    transition: 0.5s all ease-in-out;
-    svg {
-      color: #fff;
-      font-size: 2rem;
-    }
-    &:hover {
-      background: #fff;
-    }
-    &:hover > svg {
-      color: #101010;
-    }
+  p {
+    font-family: "Open Sans", sans-serif;
+    padding: 0 0.5rem;
+    opacity: 0.5;
+    font-size: 1.5rem;
+  }
+  h1 {
+    font-size: 5rem;
   }
 `;
 
-const ContactContainer = styled.div``;
+const ContactContainer = styled.div`
+  margin: 0 5rem;
+  h1 {
+    font-family: "gallientregular";
+    font-size: 10rem;
+    line-height: 0.8;
+  }
+  p {
+    line-height: 2;
+  }
+`;
 
 export default Works;

@@ -13,17 +13,17 @@ const Home = ({ setViewProject }) => {
     {
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
-      ProjectTitle: "Project 1",
+      ProjectTitle: "Chemin Esports",
     },
     {
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/618f3ad5f6c6e05234740557_sarnco-mark.jpg",
-      ProjectTitle: "Project 2",
+      ProjectTitle: "Project blue",
     },
     {
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
-      ProjectTitle: "Project 3",
+      ProjectTitle: "Oxygen",
     },
   ]);
 
@@ -135,36 +135,51 @@ const Home = ({ setViewProject }) => {
                   }}
                 >
                   <Link to="/works/54">
-                    <Filter />
                     <img src={item.projectImg} />
                   </Link>
                 </ImageHolder>
                 <ProjectInfo>
+                  <p>01</p>
                   <h1>{item.ProjectTitle}</h1>
-                  <a href="https://www.google.com">
-                    <svg
-                      width="37"
-                      height="17"
-                      viewBox="0 0 37 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M27.5377 1.1906L28.1347 2.63918C29.0998 4.98087 30.8573 6.86515 33.0501 8.0001L0 8.0001V9.0001L33.05 9.0001C30.8572 10.135 29.0998 12.0193 28.1347 14.361L27.5377 15.8096L28.4623 16.1906L29.0593 14.742C30.287 11.763 32.9311 9.60166 36.0948 8.99103V8.00915C32.9311 7.39852 30.287 5.23713 29.0593 2.25815L28.4623 0.80957L27.5377 1.1906Z"
-                        fill="#b3cc6d"
-                      ></path>
-                    </svg>
-                  </a>
+                  <a href="https://www.google.com"></a>
                 </ProjectInfo>
               </ProjectCard>
             ))}
+            <ViewAllBtn data-scroll data-scroll-speed="2">
+              <Link
+                onMouseEnter={() => {
+                  setViewProject("invert-cursor");
+                }}
+                onMouseLeave={() => {
+                  setViewProject(false);
+                }}
+                onClick={() => {
+                  setViewProject(false);
+                }}
+                to="/works"
+              >
+                <span>View All</span>
+                <svg
+                  width="37"
+                  height="17"
+                  viewBox="0 0 37 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M27.5377 1.1906L28.1347 2.63918C29.0998 4.98087 30.8573 6.86515 33.0501 8.0001L0 8.0001V9.0001L33.05 9.0001C30.8572 10.135 29.0998 12.0193 28.1347 14.361L27.5377 15.8096L28.4623 16.1906L29.0593 14.742C30.287 11.763 32.9311 9.60166 36.0948 8.99103V8.00915C32.9311 7.39852 30.287 5.23713 29.0593 2.25815L28.4623 0.80957L27.5377 1.1906Z"
+                    fill="#b3cc6d"
+                  ></path>
+                </svg>
+              </Link>
+            </ViewAllBtn>
           </ProjectsSection>
         </Content>
       </Container>
       <Quotes setViewProject={setViewProject} />
-      <FooterTitle titleLink="/works" title="Recent Works" />
+      {/* <FooterTitle titleLink="/works" title="Recent Works" /> */}
       <Footer setViewProject={setViewProject} />
     </RouteTransition>
   );
@@ -195,6 +210,8 @@ const Header = styled.div`
     }
   }
   @media (max-width: 768px) {
+    height: 90vh;
+
     font-size: 15vw;
     div {
       text-align: center;
@@ -205,7 +222,7 @@ const Header = styled.div`
   }
 `;
 
-const AboutSection = styled.div`
+const AboutSection = styled.section`
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -218,7 +235,7 @@ const AboutSection = styled.div`
   margin-bottom: 10rem;
   .imageHolder {
     width: 80vw;
-    height: 100vh;
+    height: 100%;
     position: absolute;
     z-index: -1;
     .image {
@@ -244,9 +261,20 @@ const AboutSection = styled.div`
       align-items: center;
       span {
         font-weight: 600;
-        font-size: 3.5rem;
+        font-size: clamp(1rem, 5vw, 3.5rem);
       }
     }
+  }
+  @media (max-width: 1024px) {
+    margin-bottom: 5rem;
+    height: 40vh;
+    width: 80%;
+    .imageHolder {
+      display: none;
+    }
+  }
+  @media (max-width: 768px) {
+    width: 90%;
   }
 `;
 
@@ -269,12 +297,13 @@ const Button = styled.div`
   }
 `;
 
-const ProjectsSection = styled.div``;
+const ProjectsSection = styled.section``;
+
 const ProjectTitle = styled.div`
   font-size: clamp(5rem, 15vw, 13rem);
   font-family: "gallientregular";
   line-height: 1;
-  padding-bottom: 10vh;
+  padding-bottom: 15vh;
   p {
     :last-child {
       padding-left: 20vw;
@@ -284,11 +313,11 @@ const ProjectTitle = styled.div`
 
 const ProjectCard = styled.div`
   width: 60vw;
-  margin-bottom: 6rem;
+  margin-bottom: 8rem;
   :nth-child(even) {
     margin-left: auto;
   }
-  :last-child {
+  :nth-last-child(2) {
     margin-bottom: 0;
   }
   @media (max-width: 1024px) {
@@ -307,7 +336,6 @@ const ProjectCard = styled.div`
 const ImageHolder = styled.div`
   height: 33vw;
   overflow: hidden;
-  -webkit-user-drag: none;
   position: relative;
   a {
     display: block;
@@ -316,16 +344,6 @@ const ImageHolder = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* clip-path: inset(0 100% 0 0);
-    transition: all 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-    scale: 1.3; */
-    :hover {
-      /* scale: 1.1; */
-    }
-  }
-  .is-inview {
-    clip-path: inset(0 0 0 0);
-    scale: 1;
   }
 
   @media (max-width: 1024px) {
@@ -338,47 +356,38 @@ const ImageHolder = styled.div`
   }
 `;
 
-const Filter = styled.div`
-  background-image: linear-gradient(
-    180deg,
-    transparent,
-    rgba(1, 1, 1, 0.06) 48%,
-    #0b0b0b
-  );
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 3;
-`;
-
 const ProjectInfo = styled.div`
   font-family: "gallientregular";
   display: flex;
-  justify-content: space-between;
   padding: 1.5rem 0;
   padding-bottom: 0;
-  align-items: center;
   color: #b3cc6d;
+  p {
+    font-family: "Open Sans", sans-serif;
+    padding: 0 0.5rem;
+    opacity: 0.5;
+    font-size: 1.5rem;
+  }
+  h1 {
+    font-size: 5rem;
+  }
+`;
+
+const ViewAllBtn = styled.div`
+  font-family: "gallientregular";
+  font-size: 10rem;
+  display: flex;
+  align-items: center;
+  margin-top: 10rem;
   a {
-    width: 4rem;
-    height: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    transition: 0.5s all ease-in-out;
-    svg {
-      color: #fff;
-      font-size: 2rem;
-    }
-    &:hover {
-      background: #fff;
-    }
-    &:hover > svg {
-      color: #101010;
-    }
+    color: #fff;
+  }
+  span {
+    padding-right: 3rem;
+  }
+  svg {
+    width: 5rem;
+    height: 5rem;
   }
 `;
 

@@ -2,14 +2,10 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Accordion from "../subComponents/Accordion";
 import Footer from "../subComponents/Footer";
-import FooterTitle from "../subComponents/FooterTitle";
 import { MagneticButton } from "../subComponents/MagneticButton";
-import Quotes from "../subComponents/Quotes";
 import Data from "../../components/subComponents/TempData";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import RouteTransition from "../subComponents/RouteTransition";
-import SplitType from "split-type";
 
 const Contact = ({ setViewProject }) => {
   const [inputs, setInputs] = useState({
@@ -20,18 +16,21 @@ const Contact = ({ setViewProject }) => {
     message: "",
   });
 
-  gsap.registerPlugin(ScrollTrigger);
-  // const SplitText = new SplitType(".contact-title span");
+  const tl = gsap.timeline();
 
-  // const tl = gsap.timeline({ paused: true });
-
-  // tl.to(".char", {
-  //   y: 0,
-  //   stagger: 0.05,
-  //   delay: 0.2,
-  //   duration: 0.1,
-  // });
-
+  useEffect(() => {
+    tl.from(".contact-title span", {
+      duration: 1.8,
+      y: 100,
+      opacity: 0,
+      ease: "power4.out",
+      delay: 1,
+      skewY: 7,
+      stagger: {
+        amount: 0.3,
+      },
+    });
+  }, []);
   useEffect(() => {
     // tl.from(".contact-title span", {
     //   duration: 1.8,
@@ -267,6 +266,7 @@ const Title = styled.div`
   span {
     width: 100%;
     display: block;
+    overflow: hidden;
   }
   @media (max-width: 1024px) {
     height: 30vh;
