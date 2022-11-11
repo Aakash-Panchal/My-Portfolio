@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import CustomCursor from "./components/CustomCursor/CursorContext";
 import { useLocation, Route, Routes } from "react-router-dom";
 import SingleProject from "./components/Pages/SingleProject";
+import Preloader from "./components/subComponents/Preloader";
 import NavBar from "./components/subComponents/NavBar";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import Cursor from "./components/CustomCursor/Cursor";
@@ -22,6 +23,7 @@ import "./App.scss";
 function App() {
   const [viewProject, setViewProject] = useState("");
   const [scrollbar, setScrollbar] = useState(null);
+
   const scrollRef = useRef(null);
   const location = useLocation();
 
@@ -90,8 +92,11 @@ function App() {
 
   return (
     <>
+      <Preloader />
+
       <NavBar setViewProject={setViewProject} />
       <Cursor viewProject={viewProject} />
+      <div className="bg"></div>
       <CustomCursor.Provider value={viewProject}>
         <Container
           ref={scrollRef}
