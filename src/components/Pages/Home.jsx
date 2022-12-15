@@ -77,7 +77,7 @@ const Home = ({ setViewProject }) => {
               <p>
                 <span>
                   Hey i'm Aakash <br />I am a full stack web developer & UI/UX
-                  Designer from India, dummy text of the printing and
+                  Designer from India.
                 </span>
               </p>
               <Button>
@@ -114,12 +114,8 @@ const Home = ({ setViewProject }) => {
           </AboutSection>
           <ProjectsSection>
             <ProjectTitle>
-              <p data-scroll data-scroll-speed="1">
-                Recent
-              </p>
-              <p data-scroll data-scroll-speed="2">
-                Projects
-              </p>
+              <p>Recent</p>
+              <p>Projects</p>
             </ProjectTitle>
             {projects.slice(0, 3).map((item, index) => (
               <ProjectCard key={index} className="project-card">
@@ -145,7 +141,7 @@ const Home = ({ setViewProject }) => {
                 </ProjectInfo>
               </ProjectCard>
             ))}
-            <ViewAllBtn data-scroll data-scroll-speed="2">
+            <ViewAllBtn>
               <Link
                 onMouseEnter={() => {
                   setViewProject("invert-cursor");
@@ -268,7 +264,7 @@ const AboutSection = styled.section`
   @media (max-width: 1024px) {
     margin-bottom: 5rem;
     height: 40vh;
-    width: 80%;
+    width: 90%;
     .imageHolder {
       display: none;
     }
@@ -292,7 +288,7 @@ const Button = styled.div`
     }
   }
   @media (max-width: 768px) {
-    width: 120px;
+    width: 100%;
     margin: 2rem 0rem;
   }
 `;
@@ -339,6 +335,7 @@ const ImageHolder = styled.div`
   position: relative;
   a {
     display: block;
+    height: 100%;
   }
   img {
     width: 100%;
@@ -347,8 +344,7 @@ const ImageHolder = styled.div`
   }
 
   @media (max-width: 1024px) {
-    width: 100%;
-    height: 40vh;
+    height: 35vh;
   }
   @media (max-width: 768px) {
     width: 100%;
@@ -371,6 +367,16 @@ const ProjectInfo = styled.div`
   h1 {
     font-size: 5rem;
   }
+  @media (max-width: 1024px) {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
 `;
 
 const ViewAllBtn = styled.div`
@@ -388,6 +394,13 @@ const ViewAllBtn = styled.div`
   svg {
     width: 5rem;
     height: 5rem;
+  }
+  @media (max-width: 1024px) {
+    font-size: 5rem;
+  }
+  @media (max-width: 768px) {
+    margin-top: 4rem;
+    font-size: 2.5rem;
   }
 `;
 
