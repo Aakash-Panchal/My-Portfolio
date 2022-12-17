@@ -93,7 +93,6 @@ function App() {
   return (
     <>
       <Preloader />
-
       <NavBar setViewProject={setViewProject} />
       <Cursor viewProject={viewProject} />
       <div className="bg"></div>

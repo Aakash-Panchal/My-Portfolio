@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import Footer from "../subComponents/Footer";
-import FooterTitle from "../subComponents/FooterTitle";
 import Quotes from "../subComponents/Quotes";
 import RouteTransition from "../subComponents/RouteTransition";
 import gsap from "gsap";
@@ -313,9 +312,9 @@ const ProjectCard = styled.div`
   :nth-child(even) {
     margin-left: auto;
   }
-  :nth-last-child(2) {
+  /* :nth-last-child(2) {
     margin-bottom: 0;
-  }
+  } */
   @media (max-width: 1024px) {
     width: 100%;
     :nth-child(even) {
