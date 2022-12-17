@@ -13,26 +13,26 @@ const RouteTransition = ({ children }) => {
         {children}
       </motion.div>
       <motion.div
-        initial={{ x: "0%" }}
-        animate={{ x: "-100%" }}
+        initial={{ y: "0%" }}
+        animate={{ y: "-100%" }}
         transition={{
           type: "tween",
           ease: "easeInOut",
           duration: 1,
         }}
-        exit={{ x: "0%" }}
+        exit={{ y: "0%" }}
         className="pageTransition"
       >
         <motion.div
-          initial={{ x: "0" }}
-          animate={{ x: "-100%" }}
+          initial={{ y: "0" }}
+          animate={{ y: "-100%" }}
           transition={{
             delay: -0.3,
             type: "tween",
             ease: "easeInOut",
             duration: 1,
           }}
-          exit={{ x: "0" }}
+          exit={{ y: "0" }}
           className="pageTransitionInner"
         ></motion.div>
       </motion.div>
