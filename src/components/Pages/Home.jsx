@@ -10,16 +10,19 @@ import { Link } from "react-router-dom";
 const Home = ({ setViewProject }) => {
   const [projects, setProjects] = useState([
     {
+      projectNo: "01",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
       ProjectTitle: "Chemin Esports",
     },
     {
+      projectNo: "02",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/618f3ad5f6c6e05234740557_sarnco-mark.jpg",
       ProjectTitle: "Project blue",
     },
     {
+      projectNo: "03",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
       ProjectTitle: "Oxygen",
@@ -134,7 +137,7 @@ const Home = ({ setViewProject }) => {
                   </Link>
                 </ImageHolder>
                 <ProjectInfo>
-                  <p>01</p>
+                  <p>{item.projectNo}</p>
                   <h1>{item.ProjectTitle}</h1>
                   <a href="https://www.google.com"></a>
                 </ProjectInfo>
