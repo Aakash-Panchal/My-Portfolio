@@ -46,34 +46,7 @@ function App() {
       document.querySelector("[data-scroll-container]")
     );
 
-    ScrollTrigger.scrollerProxy(".scrollContainer", {
-      scrollTop(value) {
-        return arguments.length
-          ? LocoScroll.scrollTo(value, { duration: 0, disableLerp: true })
-          : LocoScroll.scroll.instance.scroll.y;
-      },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        };
-      },
-    });
-
     setScrollbar(LocoScroll);
-
-    ScrollTrigger.defaults({
-      scroller: ".scrollContainer",
-      markers: true,
-    });
-
-    ScrollTrigger.addEventListener("refresh", () => {
-      LocoScroll.update;
-    });
-
-    ScrollTrigger.update();
   }, []);
 
   useEffect(() => {
