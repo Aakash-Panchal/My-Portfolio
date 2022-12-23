@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Footer from "../subComponents/Footer";
 import Quotes from "../subComponents/Quotes";
 import gsap from "gsap";
-import FooterTitle from "../subComponents/FooterTitle";
 import RouteTransition from "../subComponents/RouteTransition";
 
 const About = ({ setViewProject }) => {
@@ -21,7 +20,7 @@ const About = ({ setViewProject }) => {
         amount: 0.3,
       },
     });
-    tl.from(".content p p", {
+    tl.from(".content p ", {
       duration: 1,
       y: 100,
       opacity: 0,
@@ -38,13 +37,11 @@ const About = ({ setViewProject }) => {
         <Title className="about-title">About Me</Title>
         <Content className="content">
           <p>
-            <p>Sapiente expedita hic obcaecati laboriosa laboriosam</p>
-            <p> architecto ducimus Sapiente expedita obcaecati</p>
-            <p> hic obcaecati, laboriosam s Sapiente expedita hic</p>
-            <p> expedita hic obcaecati, laboriosam expedita hic</p>
-            <p>similique o necessitatibus rem vel expedita</p>
-            <p>dignissimos dolor ut Sapiente hic similique</p>
-            <p>obcaecati, laboriosam similique o</p>
+            apiente expedita hic obcaecati laboriosa laboriosam architecto
+            ducimus Sapiente expedita obcaecati hic obcaecati, laboriosam s
+            Sapiente expedita hic expedita hic obcaecati, laboriosam expedita
+            hic imilique o necessitatibus rem vel expedita dignissimos dolor ut
+            Sapiente hic similique obcaecati, laboriosam similique o
           </p>
         </Content>
         <SkillsTitle>Tools that i use</SkillsTitle>
@@ -107,6 +104,12 @@ const About = ({ setViewProject }) => {
 const Container = styled.div`
   margin: 0 10rem;
   font-family: "gallientregular";
+  @media (max-width: 1024px) {
+    margin: 0 5rem;
+  }
+  @media (max-width: 768px) {
+    margin: 0 2rem;
+  }
 `;
 
 const Title = styled.div`
@@ -115,6 +118,14 @@ const Title = styled.div`
   height: 60vh;
   display: flex;
   align-items: flex-end;
+  @media (max-width: 1024px) {
+    font-size: 7rem;
+    height: 40vh;
+  }
+  @media (max-width: 1024px) {
+    font-size: 4rem;
+    height: 45vh;
+  }
 `;
 
 const Content = styled.div`
@@ -123,18 +134,44 @@ const Content = styled.div`
     font-size: 3rem;
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
-    /* margin-bottom: 5rem; */
     overflow: hidden;
     position: relative;
+    width: 70%;
     span {
       position: absolute;
       line-height: 4.2rem;
+    }
+  }
+  @media (max-width: 1024px) {
+    p {
+      font-size: 2rem;
+      width: 100%;
+    }
+  }
+  @media (max-width: 1024px) {
+    p {
+      font-size: 1.2rem;
     }
   }
 `;
 
 const Subtitle = styled.h1`
   font-size: 3rem;
+  width: 30%;
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+`;
+
+const SkillsTitle = styled.h1`
+  margin-top: 10rem;
+  font-size: clamp(3rem, 8vw, 6rem);
+  @media (max-width: 1024px) {
+    margin-top: 6rem;
+  }
+  @media (max-width: 768px) {
+    margin-top: 4rem;
+  }
 `;
 
 const DesignSection = styled.div`
@@ -142,10 +179,18 @@ const DesignSection = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    margin-top: 5rem;
+  }
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+  }
 `;
 
 const DesignTools = styled.div`
   width: 70%;
+  margin-left: 1rem;
   ul {
     li {
       display: flex;
@@ -157,17 +202,32 @@ const DesignTools = styled.div`
         font-family: "Poppins", sans-serif;
         font-weight: 500;
         :last-child {
+          text-align: right;
           opacity: 0.5;
           font-size: 1.2rem;
         }
       }
     }
   }
-`;
-
-const SkillsTitle = styled.h1`
-  margin-top: 10rem;
-  font-size: clamp(3rem, 8vw, 6rem);
+  @media (max-width: 1024px) {
+    margin: 0;
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+    ul {
+      li {
+        padding: 1rem 0;
+        p {
+          font-size: 1rem;
+          :last-child {
+            opacity: 0.5;
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
 `;
 
 const DevelopmentSection = styled.div`
@@ -175,6 +235,13 @@ const DevelopmentSection = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 5rem;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    margin-top: 6rem;
+  }
+  @media (max-width: 768px) {
+    margin-top: 4rem;
+  }
 `;
 
 export default About;
