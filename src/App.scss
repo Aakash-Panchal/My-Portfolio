@@ -46,12 +46,12 @@ a {
 }
 
 html.has-scroll-smooth {
-    overflow: hidden;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;  
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 
 .magnetic-button {
@@ -225,5 +225,11 @@ html.has-scroll-smooth {
   }
   100% {
     transform: translate(5%, 0);
+  }
+}
+
+@media (max-width: 1366px) {
+  html {
+    font-size: 62.5%;
   }
 }

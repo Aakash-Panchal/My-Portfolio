@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { FiArrowRight, FiInstagram, FiGithub } from "react-icons/fi";
+import { AiFillLinkedin, AiOutlineTwitter } from "react-icons/ai";
 
 const Footer = ({ setViewProject }) => {
   return (
@@ -16,34 +18,41 @@ const Footer = ({ setViewProject }) => {
       <Content>
         <Title>
           <h1>
-            Have a project in mind?
-            <Link to="/contact">Let's talk about it!</Link>
+            Have a <span>PROJECT</span>
+          </h1>
+          <h1>
+            IN MIND?
+            <Link to="/contact">
+              Let's Talk <FiArrowRight />
+            </Link>
           </h1>
         </Title>
         <InfoWrapper>
-          <Info>
-            <a href="mailto:aakashpanchal7000@gmail.com">
-              aakash@cleverstudio.in
-              <hr />
-            </a>
-            <p>Madhya Pradesh, India</p>
-          </Info>
-          <Socials
-            onMouseEnter={() => {
-              setViewProject("invert-cursor");
-            }}
-            onMouseLeave={() => {
-              setViewProject("footer-cursor");
-            }}
-          >
+          <Socials>
             <a href="https://www.instagram.com/ig__drew/" target="_blank">
-              Instagram
+              <span>
+                Twitter<p>@aakash</p>
+              </span>
+              <AiOutlineTwitter />
+            </a>
+            <a href="https://www.instagram.com/ig__drew/" target="_blank">
+              <span>
+                Instagram <p>@ig_drew</p>
+              </span>
+              <FiInstagram />
             </a>
             <a href="https://github.com/Aakash-Panchal" target="_blank">
-              Github
+              <span>
+                Github
+                <p>@aakash-panchal</p>
+              </span>
+              <FiGithub />
             </a>
             <a href="" target="_blank">
-              Linkedin
+              <span>
+                Linkedin <p>@aakash</p>
+              </span>
+              <AiFillLinkedin />
             </a>
           </Socials>
         </InfoWrapper>
@@ -71,15 +80,15 @@ const Footer = ({ setViewProject }) => {
 const Container = styled.div`
   background-color: #fff;
   border-radius: 4rem 5rem 0 0;
-  height: 90vh;
+  height: 70vh;
   width: 100vw;
   color: #101010;
   @media (max-width: 1024px) {
-    height: 53vh;
+    height: 45vh;
   }
 `;
 const Content = styled.div`
-  padding: 5rem 5rem;
+  padding: 5rem 10vw;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -93,24 +102,37 @@ const Content = styled.div`
 `;
 
 const Title = styled.div`
+  width: 100%;
   text-align: center;
   h1 {
-    font-family: "gallientregular";
-    font-weight: 600;
-    font-size: 8rem;
-    line-height: 1.2;
+    font-family: "Open sans", sans-serif;
+    font-weight: 500;
+    font-size: 4.6vw;
+    span {
+      font-weight: 700;
+    }
     a {
-      display: block;
-      font-family: "Playfair Display", serif;
-      font-weight: 600;
+      border: 1px solid #101010;
+      padding: 0.5rem 1rem;
+      border-radius: 5rem;
+      font-size: 2.5rem;
+      margin-left: 2rem;
+      font-weight: 500;
       color: #101010;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid #101010;
+    }
+    :last-child {
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
   @media (max-width: 1024px) {
     h1 {
-      font-size: 2.8rem;
+      font-size: 4rem;
+      a {
+        font-size: 1.5rem;
+      }
     }
   }
   @media (max-width: 768px) {
@@ -122,52 +144,53 @@ const Title = styled.div`
 
 const InfoWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding-bottom: 3rem;
-  @media (max-width: 1024px) {
-    flex-direction: column;
-  }
-`;
-
-const Info = styled.div`
-  font-family: "Inter", sans-serif;
-  a {
-    color: #101010;
-    font-size: 1.2rem;
-    hr {
-      width: 85%;
-      color: #000;
-    }
-  }
-  p {
-    padding-top: 0.5rem;
-    font-size: 1rem;
-  }
-  @media (max-width: 1024px) {
-    padding-bottom: 3.5rem;
-    a {
-      font-size: 1rem;
-      hr {
-        width: 52%;
-      }
-    }
-  }
 `;
 
 const Socials = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   a {
-    font-family: "Inter", sans-serif;
+    font-family: "Poppins", sans-serif;
+    padding: 1rem 0;
     font-weight: 500;
-    padding-left: 1rem;
     color: #101010;
-    text-decoration: underline;
-    &:first-child {
-      padding-left: 0;
+    border-top: 2px solid #606060;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 2rem;
+    p {
+      font-size: 0.8rem;
+      opacity: 0.6;
+    }
+    svg {
+      font-size: 3rem;
+      background: #14141423;
+      border-radius: 5rem;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
   @media (max-width: 1024px) {
+    width: 60%;
     a {
-      font-size: 0.8rem;
+      border: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      span {
+        display: none;
+      }
+      p {
+        display: none;
+      }
     }
   }
 `;
@@ -175,19 +198,21 @@ const Socials = styled.div`
 const Credits = styled.h1`
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 0.8rem;
+  font-size: 1rem;
+  opacity: 0.7;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   bottom: 0;
   width: 100%;
+  padding: 2rem 0;
   svg {
     width: 1rem;
     margin: 0 0.2rem;
   }
   @media (max-width: 1024px) {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     svg {
       width: 0.8rem;
       margin: 0 0.2rem;
