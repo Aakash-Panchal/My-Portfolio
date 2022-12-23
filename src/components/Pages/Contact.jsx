@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Accordion from "../subComponents/Accordion";
 import Footer from "../subComponents/Footer";
 import { MagneticButton } from "../subComponents/MagneticButton";
 import Data from "../../components/subComponents/TempData";
-import gsap from "gsap";
 import RouteTransition from "../subComponents/RouteTransition";
+import gsap from "gsap";
 
-const Contact = ({ setViewProject }) => {
+const Contact = () => {
+  const formRef = useRef();
+  const socialRef = useRef();
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -30,41 +32,32 @@ const Contact = ({ setViewProject }) => {
         amount: 0.3,
       },
     });
-  }, []);
-  useEffect(() => {
-    // tl.from(".contact-title span", {
-    //   duration: 1.8,
-    //   y: 100,
-    //   opacity: 0,
-    //   ease: "power4.out",
-    //   delay: 1,
-    //   skewY: 7,
-    //   stagger: {
-    //     amount: 0.3,
-    //   },
-    // });
-    // tl.from(".sub-title span", {
-    //   scrollTrigger: {
-    //     trigger: ".sub-title span",
-    //     scroller: ".scrollContainer",
-    //     scrub: true,
-    //     start: "top bottom",
-    //     end: "top bottom",
-    //   },
-    //   duration: 1.8,
-    //   y: 100,
-    //   opacity: 0,
-    //   ease: "power4.out",
-    //   skewY: 7,
-    //   stagger: {
-    //     amount: 0.3,
-    //   },
-    // });
+    tl.from(formRef.current, {
+      duration: 1,
+      y: 100,
+      opacity: 0,
+      ease: "power4.out",
+      delay: "-1",
+      skewY: 7,
+    });
+    tl.from(socialRef.current, {
+      duration: 1,
+      y: 100,
+      opacity: 0,
+      ease: "power4.out",
+      skewY: 7,
+    });
   }, []);
 
   const handelChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
+  const handelSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  console.log(inputs);
 
   return (
     <RouteTransition>
@@ -74,7 +67,7 @@ const Contact = ({ setViewProject }) => {
           <span>your next project</span>
         </Title>
         <Content>
-          <Form>
+          <Form ref={formRef}>
             <hr />
             <div className="name-input">
               <Counter>01</Counter>
@@ -107,7 +100,7 @@ const Contact = ({ setViewProject }) => {
               <div className="input-content">
                 <label>What do you want to get done?</label>
                 <input
-                  placeholder="Enter your ..."
+                  placeholder="Web Development"
                   name="work"
                   onChange={handelChange}
                   required
@@ -120,7 +113,7 @@ const Contact = ({ setViewProject }) => {
               <div className="input-content">
                 <label>How did you find me?</label>
                 <input
-                  placeholder="I want a full stack web developer"
+                  placeholder="From google search"
                   name="category"
                   onChange={handelChange}
                   required
@@ -141,7 +134,7 @@ const Contact = ({ setViewProject }) => {
               </div>
             </div>
             <hr />
-            <Button>
+            <Button onClick={handelSubmit}>
               <MagneticButton
                 className="button-1"
                 style={{ backgroundColor: "transparent" }}
@@ -163,7 +156,7 @@ const Contact = ({ setViewProject }) => {
             </Button>
           </Form>
           <ContactInfo>
-            <Socials>
+            <Socials ref={socialRef}>
               <h1>Socials</h1>
               <a href="https://www.instagram.com/ig__drew/" target="_blank">
                 Instagram
