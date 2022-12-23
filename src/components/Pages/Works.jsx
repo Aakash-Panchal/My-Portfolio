@@ -2,37 +2,38 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Footer from "../subComponents/Footer";
 import RouteTransition from "../subComponents/RouteTransition";
+import Quotes from "../subComponents/Quotes";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 
 const Works = ({ setViewProject }) => {
   const [projects, setProjects] = useState([
     {
-      projectRank: "01",
+      projectNo: "01",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
       ProjectTitle: "Chemin Esports",
     },
     {
-      projectRank: "02",
+      projectNo: "02",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/618f3ad5f6c6e05234740557_sarnco-mark.jpg",
       ProjectTitle: "Project Oxygen",
     },
     {
-      projectRank: "03",
+      projectNo: "03",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
       ProjectTitle: "Lemon Juice",
     },
     {
-      projectRank: "04",
+      projectNo: "04",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
       ProjectTitle: "Project Width",
     },
     {
-      projectRank: "05",
+      projectNo: "05",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
       ProjectTitle: "Alive",
@@ -93,21 +94,16 @@ const Works = ({ setViewProject }) => {
                   </Link>
                 </ImageHolder>
                 <ProjectInfo>
-                  <p>{item.projectRank}</p>
+                  <p>{item.projectNo}</p>
                   <h1>{item.ProjectTitle}</h1>
                 </ProjectInfo>
               </ProjectCard>
             ))}
           </ProjectsContainer>
-          <ContactContainer>
-            <h1>
-              Have a <br /> project in mind?
-            </h1>
-            <p>Lets work To?</p>
-          </ContactContainer>
         </Content>
       </Container>
-      {/* <Footer setViewProject={setViewProject} /> */}
+      <Quotes />
+      <Footer setViewProject={setViewProject} />
     </RouteTransition>
   );
 };
