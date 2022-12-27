@@ -52,15 +52,15 @@ const SingleProject = ({ setViewProject }) => {
               </Next>
             </SlideButton>
           </ProjectImage>
-
+          {/* 
           <Review>
             <p>What they think about me</p>
             <p>{projects.review}</p>
-          </Review>
+          </Review> */}
         </Content>
       </Container>
       <Quotes />
-      <FooterTitle titleLink="/works" title="Recent Works" />
+      {/* <FooterTitle titleLink="/works" title="Recent Works" /> */}
       <Footer setViewProject={setViewProject} />
     </RouteTransition>
   );

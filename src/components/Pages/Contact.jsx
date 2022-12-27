@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Accordion from "../subComponents/Accordion";
 import Footer from "../subComponents/Footer";
 import { MagneticButton } from "../subComponents/MagneticButton";
-import Data from "../../components/subComponents/TempData";
 import RouteTransition from "../subComponents/RouteTransition";
 import gsap from "gsap";
 
@@ -17,6 +16,23 @@ const Contact = () => {
     category: "",
     message: "",
   });
+
+  const Data = [
+    {
+      title: "I want to work with you, how do we get started?",
+      content: `To start a new project just fill in the contact form and let me know what you want to get done.`,
+    },
+    {
+      title: "How long will it take to complete my project?",
+      content: `That depends on the type of project.`,
+    },
+    {
+      title: "Section 3",
+      content: `Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti
+        quam sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos
+        dolor ut sequi minus iste? Quas?`,
+    },
+  ];
 
   const tl = gsap.timeline();
 
@@ -241,7 +257,7 @@ const Container = styled.div`
   @media (max-width: 768px) {
     margin: 0 2rem;
     label {
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
   }
 `;
@@ -293,10 +309,14 @@ const Form = styled.form`
     padding: 2.3rem 0;
     padding-bottom: 1rem;
   }
-
   @media (max-width: 1024px) {
     width: 100%;
     padding-right: 0;
+    input {
+      font-size: 0.8rem;
+      padding: 0.4rem;
+      padding-left: 0;
+    }
   }
 `;
 
@@ -355,6 +375,8 @@ const SubTitle = styled.h1`
   width: 40vw;
   margin-bottom: 3rem;
   @media (max-width: 768px) {
+    height: 18vh;
+    justify-content: flex-end;
     font-size: 2.5rem;
     margin: 2rem 0;
     letter-spacing: 2px;

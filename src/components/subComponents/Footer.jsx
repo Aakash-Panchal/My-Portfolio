@@ -33,26 +33,34 @@ const Footer = ({ setViewProject }) => {
               <span>
                 Twitter<p>@aakash</p>
               </span>
-              <AiOutlineTwitter />
+              <div className="socialLogo">
+                <AiOutlineTwitter />
+              </div>
             </a>
             <a href="https://www.instagram.com/ig__drew/" target="_blank">
               <span>
                 Instagram <p>@ig_drew</p>
               </span>
-              <FiInstagram />
+              <div className="socialLogo">
+                <FiInstagram />
+              </div>
             </a>
             <a href="https://github.com/Aakash-Panchal" target="_blank">
               <span>
                 Github
                 <p>@aakash-panchal</p>
               </span>
-              <FiGithub />
+              <div className="socialLogo">
+                <FiGithub />
+              </div>
             </a>
             <a href="" target="_blank">
               <span>
                 Linkedin <p>@aakash</p>
               </span>
-              <AiFillLinkedin />
+              <div className="socialLogo">
+                <AiFillLinkedin />
+              </div>
             </a>
           </Socials>
         </InfoWrapper>
@@ -80,13 +88,10 @@ const Footer = ({ setViewProject }) => {
 const Container = styled.div`
   background-color: #fff;
   border-radius: 4rem 5rem 0 0;
-  height: 70vh;
   width: 100vw;
   color: #101010;
-  @media (max-width: 1024px) {
-    height: 45vh;
-  }
 `;
+
 const Content = styled.div`
   padding: 5rem 10vw;
   height: 100%;
@@ -103,6 +108,7 @@ const Content = styled.div`
 
 const Title = styled.div`
   width: 100%;
+  margin-bottom: 6rem;
   text-align: center;
   h1 {
     font-family: "Open sans", sans-serif;
@@ -128,6 +134,8 @@ const Title = styled.div`
     }
   }
   @media (max-width: 1024px) {
+    margin-bottom: 4rem;
+
     h1 {
       font-size: 4rem;
       a {
@@ -136,8 +144,14 @@ const Title = styled.div`
     }
   }
   @media (max-width: 768px) {
+    margin-bottom: 2rem;
     h1 {
       font-size: 2.2rem;
+      a {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+        margin-left: 0.8rem;
+      }
     }
   }
 `;
@@ -168,14 +182,17 @@ const Socials = styled.div`
       font-size: 0.8rem;
       opacity: 0.6;
     }
-    svg {
-      font-size: 3rem;
+    .socialLogo {
+      width: 3.5rem;
+      height: 3.5rem;
       background: #14141423;
-      border-radius: 5rem;
-      padding: 0.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 5rem;
+      svg {
+        font-size: 2rem;
+      }
     }
   }
   @media (max-width: 1024px) {
@@ -190,6 +207,17 @@ const Socials = styled.div`
       }
       p {
         display: none;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    a {
+      .socialLogo {
+        width: 2.5rem;
+        height: 2.5rem;
+        svg {
+          font-size: 1.5rem;
+        }
       }
     }
   }
