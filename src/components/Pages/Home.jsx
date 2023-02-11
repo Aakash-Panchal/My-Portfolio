@@ -78,7 +78,7 @@ const Home = ({ setViewProject }) => {
             <div>
               <p>
                 <span>
-                  Hey i'm Aakash <br />I am a full stack web developer & UI/UX
+                  Hey i'm Aakash <br />I am a Frontend web developer & UI/UX
                   Designer from India.
                 </span>
               </p>
