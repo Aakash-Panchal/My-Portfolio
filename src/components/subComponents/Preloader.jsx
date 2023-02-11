@@ -110,7 +110,7 @@ const Container = styled.div`
     font-size: 100px;
     text-transform: uppercase;
   }
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     .loader-wrap svg {
       width: 200vw;
       margin-left: -50vw;
@@ -118,6 +118,9 @@ const Container = styled.div`
     .loader-wrap .loader-wrap-heading,
     .container h1 {
       font-size: 60px;
+    }
+    .loader-wrap .loader-wrap-heading h1 {
+      font-size: 3rem;
     }
   }
 `;
