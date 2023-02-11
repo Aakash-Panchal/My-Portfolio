@@ -4,6 +4,8 @@ import Accordion from "../subComponents/Accordion";
 import emailjs from "@emailjs/browser";
 import { MagneticButton } from "../subComponents/MagneticButton";
 import RouteTransition from "../subComponents/RouteTransition";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import gsap from "gsap";
 
 const Contact = () => {
@@ -16,6 +18,13 @@ const Contact = () => {
     category: "",
     message: "",
   });
+
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 3000,
+    pauseOnHover: true,
+    theme: "dark",
+  };
 
   const Data = [
     {
@@ -69,10 +78,6 @@ const Contact = () => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handelSubmit = (e) => {
-    e.preventDefault();
-  };
-
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -85,18 +90,18 @@ const Contact = () => {
       )
       .then(
         (result) => {
-          console.log(result.text);
+          toast.success("Email Sent", toastOptions);
+          e.target.reset();
         },
         (error) => {
-          console.log(error.text);
+          toast.error("There was an error", toastOptions);
         }
       );
   };
 
-  console.log(inputs);
-
   return (
     <RouteTransition>
+      <ToastContainer />
       <Container className="scrollContainer" data-scroll-section>
         <Title className="contact-title">
           <span>Let's talk about</span>
