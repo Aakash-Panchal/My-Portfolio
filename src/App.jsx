@@ -4,11 +4,8 @@ import { useLocation, Route, Routes } from "react-router-dom";
 import SingleProject from "./components/Pages/SingleProject";
 import Preloader from "./components/subComponents/Preloader";
 import NavBar from "./components/subComponents/NavBar";
-import "locomotive-scroll/dist/locomotive-scroll.css";
 import Cursor from "./components/CustomCursor/Cursor";
 import ErrorPage from "./components/Pages/ErrorPage";
-import Login from "./components/Pages/Admin/Login";
-import Admin from "./components/Pages/Admin/Admin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LocomotiveScroll from "locomotive-scroll";
 import { AnimatePresence } from "framer-motion";
@@ -18,6 +15,7 @@ import Works from "./components/Pages/Works";
 import Home from "./components/Pages/Home";
 import styled from "styled-components";
 import gsap from "gsap";
+import "locomotive-scroll/dist/locomotive-scroll.css";
 import "./App.scss";
 
 function App() {
@@ -69,7 +67,7 @@ function App() {
       <NavBar setViewProject={setViewProject} />
       <Cursor viewProject={viewProject} />
       <div className="bg"></div>
-      <CustomCursor.Provider value={viewProject}>
+      <CustomCursor.Provider value={{ viewProject }}>
         <Container
           ref={scrollRef}
           className="scrollContainer"
@@ -101,16 +99,6 @@ function App() {
                 exact
                 path="/contact"
                 element={<Contact setViewProject={setViewProject} />}
-              />
-              <Route
-                exact
-                path="/login"
-                element={<Login setViewProject={setViewProject} />}
-              />
-              <Route
-                exact
-                path="/admin"
-                element={<Admin setViewProject={setViewProject} />}
               />
               <Route exact path="*" element={<ErrorPage />} />
             </Routes>

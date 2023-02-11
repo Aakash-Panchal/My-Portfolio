@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Accordion from "../subComponents/Accordion";
-import Footer from "../subComponents/Footer";
+import emailjs from "@emailjs/browser";
 import { MagneticButton } from "../subComponents/MagneticButton";
 import RouteTransition from "../subComponents/RouteTransition";
 import gsap from "gsap";
@@ -73,6 +73,26 @@ const Contact = () => {
     e.preventDefault();
   };
 
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_luqpw3d",
+        "template_7mu6x67",
+        formRef.current,
+        "X319VgJOVJQ-LXbEi"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
   console.log(inputs);
 
   return (
@@ -83,7 +103,7 @@ const Contact = () => {
           <span>your next project</span>
         </Title>
         <Content>
-          <Form ref={formRef}>
+          <Form ref={formRef} onSubmit={sendEmail}>
             <hr />
             <div className="name-input">
               <Counter>01</Counter>
@@ -116,7 +136,7 @@ const Contact = () => {
               <div className="input-content">
                 <label>What do you want to get done?</label>
                 <input
-                  placeholder="Web Development"
+                  placeholder="Web Development?"
                   name="work"
                   onChange={handelChange}
                   required
@@ -129,7 +149,7 @@ const Contact = () => {
               <div className="input-content">
                 <label>How did you find me?</label>
                 <input
-                  placeholder="From google search"
+                  placeholder="From google search?"
                   name="category"
                   onChange={handelChange}
                   required
@@ -150,7 +170,7 @@ const Contact = () => {
               </div>
             </div>
             <hr />
-            <Button onClick={handelSubmit}>
+            <Button type="submit">
               <MagneticButton
                 className="button-1"
                 style={{ backgroundColor: "transparent" }}
@@ -298,7 +318,7 @@ const Content = styled.div`
 `;
 
 const Form = styled.form`
-  width: 60rem;
+  width: 70rem;
   padding-right: 5rem;
   padding-bottom: 1rem;
   .name-input,
@@ -328,10 +348,12 @@ const Counter = styled.p`
   padding-right: 1rem;
 `;
 
-const Button = styled.div`
+const Button = styled.button`
   width: 220px;
   margin: 2rem -3.5rem;
-
+  background: none;
+  outline: none;
+  border: none;
   @media (max-width: 768px) {
     width: 120px;
     margin: 2rem 0rem;
