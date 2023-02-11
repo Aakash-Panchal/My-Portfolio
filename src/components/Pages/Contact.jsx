@@ -15,7 +15,7 @@ const Contact = () => {
     name: "",
     email: "",
     work: "",
-    category: "",
+    FoundMeFrom: "",
     message: "",
   });
 
@@ -155,7 +155,7 @@ const Contact = () => {
                 <label>How did you find me?</label>
                 <input
                   placeholder="From google search?"
-                  name="category"
+                  name="FoundMeFrom"
                   onChange={handelChange}
                   required
                 ></input>
