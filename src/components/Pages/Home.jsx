@@ -19,15 +19,15 @@ const Home = ({ setViewProject }) => {
     {
       projectNo: "02",
       projectImg:
-        "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/618f3ad5f6c6e05234740557_sarnco-mark.jpg",
-      ProjectTitle: "Univ",
+        "https://res.cloudinary.com/dzsocqtuc/image/upload/v1676534775/Project%20Images/cleverStudioHomePage_rzmkir.png",
+      ProjectTitle: "Clever Studio",
       projectLink: "/",
     },
     {
       projectNo: "03",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
-      ProjectTitle: "Oxygen",
+      ProjectTitle: "univ",
       projectLink: "/",
     },
   ]);
@@ -189,7 +189,7 @@ const Home = ({ setViewProject }) => {
 const Container = styled.div`
   margin: 0 6rem;
   @media (max-width: 768px) {
-    margin: 0 2rem;
+    margin: 0 1rem;
   }
 `;
 
