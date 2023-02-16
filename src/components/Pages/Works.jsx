@@ -6,37 +6,42 @@ import Quotes from "../subComponents/Quotes";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 
-const Works = ({ setViewProject }) => {
+const Works = ({ setViewProject, setWorkCursor }) => {
   const [projects, setProjects] = useState([
     {
       projectNo: "01",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
       ProjectTitle: "Chemin Esports",
+      projectLink: "",
     },
     {
       projectNo: "02",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/618f3ad5f6c6e05234740557_sarnco-mark.jpg",
       ProjectTitle: "Project Oxygen",
+      projectLink: "",
     },
     {
       projectNo: "03",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
       ProjectTitle: "Lemon Juice",
+      projectLink: "",
     },
     {
       projectNo: "04",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
       ProjectTitle: "Project Width",
+      projectLink: "",
     },
     {
       projectNo: "05",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
       ProjectTitle: "Alive",
+      projectLink: "",
     },
   ]);
 
@@ -54,17 +59,6 @@ const Works = ({ setViewProject }) => {
         amount: 0.3,
       },
     });
-
-    // tl.from(".project-card", {
-    //   duration: 1.8,
-    //   y: 100,
-    //   opacity: 0,
-    //   ease: "power4.out",
-    //   skewY: 7,
-    //   stagger: {
-    //     amount: 0.3,
-    //   },
-    // });
   }, []);
 
   return (
@@ -77,25 +71,24 @@ const Works = ({ setViewProject }) => {
         <Content>
           <ProjectsContainer>
             {projects.map((item, index) => (
-              <ProjectCard key={index} className="project-card">
-                <ImageHolder
-                  onMouseEnter={() => {
-                    setViewProject("View-Project");
-                  }}
-                  onMouseLeave={() => {
-                    setViewProject(false);
-                  }}
-                  onClick={() => {
-                    setViewProject(false);
-                  }}
-                >
-                  <Link to="/works/54">
-                    <img src={item.projectImg} />
-                  </Link>
+              <ProjectCard
+                onMouseEnter={() => {
+                  setWorkCursor(item.projectImg);
+                }}
+                onMouseLeave={() => {
+                  setWorkCursor(false);
+                }}
+                key={index}
+                className="project-card"
+              >
+                <ImageHolder>
+                  <img src={item.projectImg} />
                 </ImageHolder>
                 <ProjectInfo>
-                  <p>{item.projectNo}</p>
-                  <h1>{item.ProjectTitle}</h1>
+                  <div>
+                    <p>{item.projectNo}</p>
+                    <h1>{item.ProjectTitle}</h1>
+                  </div>
                 </ProjectInfo>
               </ProjectCard>
             ))}
@@ -139,94 +132,51 @@ const Title = styled.div`
   }
 `;
 
-const Content = styled.div``;
+const Content = styled.div`
+  margin-top: 10rem;
+`;
 const ProjectsContainer = styled.div`
   margin: 0 5rem;
-  display: flex;
-  flex-direction: column;
-  :nth-child(even) {
-    margin-left: auto;
-  }
+
   @media (max-width: 768px) {
     margin: 0 2rem;
   }
 `;
 const ProjectCard = styled.div`
-  width: 60vw;
-  margin-bottom: 8rem;
-  :nth-child(odd) {
-    margin-left: auto;
-  }
-  :last-child {
-    margin-bottom: 0;
-  }
-  @media (max-width: 1024px) {
-    width: 100%;
-    :nth-child(odd) {
-      margin-left: 0;
-    }
-    margin-bottom: 4rem;
-  }
-  @media (max-width: 768px) {
-    width: 100%;
-    margin-bottom: 2rem;
-  }
+  width: 100%;
+  height: 70vh;
+  margin-bottom: 2rem;
+  display: flex;
 `;
 
 const ImageHolder = styled.div`
-  height: 33vw;
-  overflow: hidden;
-  -webkit-user-drag: none;
-  position: relative;
+  width: 65%;
+  z-index: 5;
   img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* clip-path: inset(0 100% 0 0);
-    transition: all 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-    scale: 1.3; */
-  }
-  /* .is-inview {
-    clip-path: inset(0 0 0 0);
-    scale: 1;
-  } */
-
-  @media (max-width: 1024px) {
-    width: 100%;
-    height: 40vh;
-  }
-  @media (max-width: 768px) {
-    width: 100%;
-    height: 25vh;
   }
 `;
 
 const ProjectInfo = styled.div`
-  font-family: "gallientregular";
   display: flex;
-  padding: 1.5rem 0;
-  padding-bottom: 0;
-  color: #b3cc6d;
-  p {
-    font-family: "Open Sans", sans-serif;
-    padding: 0 0.5rem;
-    opacity: 0.5;
-    font-size: 1.5rem;
-  }
-  h1 {
-    font-size: 5rem;
-  }
-`;
-
-const ContactContainer = styled.div`
-  margin: 0 5rem;
-  h1 {
-    font-family: "gallientregular";
-    font-size: 10rem;
-    line-height: 0.8;
-  }
-  p {
-    line-height: 2;
+  align-items: center;
+  position: relative;
+  width: 35%;
+  div {
+    width: 100%;
+    position: absolute;
+    left: -20%;
+    /* z-index: 5; */
+    h1 {
+      font-size: 8rem;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: #fff;
+      -webkit-text-fill-color: transparent;
+      background-color: transparent;
+      color: #fff;
+      position: relative;
+      z-index: 2;
+    }
   }
 `;
 

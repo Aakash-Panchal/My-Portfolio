@@ -12,20 +12,23 @@ const Home = ({ setViewProject }) => {
     {
       projectNo: "01",
       projectImg:
-        "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
+        "https://res.cloudinary.com/dzsocqtuc/image/upload/v1676531319/Project%20Images/cheminHomepage_vnxpsf.png",
       ProjectTitle: "Chemin Esports",
+      projectLink: "/chemin_esports",
     },
     {
       projectNo: "02",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/618f3ad5f6c6e05234740557_sarnco-mark.jpg",
-      ProjectTitle: "Project blue",
+      ProjectTitle: "Univ",
+      projectLink: "/",
     },
     {
       projectNo: "03",
       projectImg:
         "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
       ProjectTitle: "Oxygen",
+      projectLink: "/",
     },
   ]);
 
@@ -132,7 +135,7 @@ const Home = ({ setViewProject }) => {
                     setViewProject(false);
                   }}
                 >
-                  <Link to="/works/54">
+                  <Link to={"works" + item.projectLink}>
                     <img src={item.projectImg} />
                   </Link>
                 </ImageHolder>
@@ -335,6 +338,7 @@ const ImageHolder = styled.div`
   height: 33vw;
   overflow: hidden;
   position: relative;
+  border-radius: 15px;
   a {
     display: block;
     height: 100%;

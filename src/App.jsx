@@ -92,7 +92,7 @@ function App() {
               />
               <Route
                 exact
-                path="/works/:id"
+                path="/works/:url"
                 element={<SingleProject setViewProject={setViewProject} />}
               />
               <Route
