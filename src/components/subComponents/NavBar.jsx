@@ -66,8 +66,7 @@ const NavBar = ({ setViewProject }) => {
             </Link>
             <img
               className="menu__item-img"
-              alt="failed to loads"
-              src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1658564329/menu-img-three_oqghif.jpg"
+              src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1676544750/Portfolio/homePage_icvowe.png"
             />
             <div className="marquee">
               <div className="marquee__inner">
@@ -81,8 +80,7 @@ const NavBar = ({ setViewProject }) => {
             </Link>
             <img
               className="menu__item-img"
-              alt="failed to loads"
-              src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1658564329/menu-img-one_f0gtga.jpg"
+              src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1676544750/Portfolio/aboutpage_rrdra4.png"
             />
             <div className="marquee">
               <div className="marquee__inner">
@@ -99,8 +97,7 @@ const NavBar = ({ setViewProject }) => {
             </Link>
             <img
               className="menu__item-img"
-              alt="failed to loads"
-              src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346118/WorksPage_deckgq.png"
+              src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1676544762/Portfolio/Screenshot_from_2023-02-16_16-21-51_rpwioz.png"
             />
             <div className="marquee">
               <div className="marquee__inner">
@@ -116,8 +113,7 @@ const NavBar = ({ setViewProject }) => {
             </Link>
             <img
               className="menu__item-img"
-              alt="failed to loads"
-              src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1664346117/ContactPage_xwgc4u.png"
+              src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1676544762/Portfolio/Screenshot_from_2023-02-16_16-22-05_i3hppv.png"
             />
             <div className="marquee">
               <div className="marquee__inner">

@@ -11,37 +11,24 @@ const Works = ({ setViewProject, setWorkCursor }) => {
     {
       projectNo: "01",
       projectImg:
-        "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
+        "https://res.cloudinary.com/dzsocqtuc/image/upload/v1676531319/Project%20Images/cheminHomepage_vnxpsf.png",
       ProjectTitle: "Chemin Esports",
-      projectLink: "",
+      projectLink: "/chemin_esports",
+      url: "/chemin_esports",
     },
     {
       projectNo: "02",
       projectImg:
-        "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/618f3ad5f6c6e05234740557_sarnco-mark.jpg",
-      ProjectTitle: "Project Oxygen",
-      projectLink: "",
+        "https://res.cloudinary.com/dzsocqtuc/image/upload/v1676534775/Project%20Images/cleverStudioHomePage_rzmkir.png",
+      ProjectTitle: "Clever Studio",
+      projectLink: "/",
     },
     {
       projectNo: "03",
       projectImg:
-        "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
-      ProjectTitle: "Lemon Juice",
-      projectLink: "",
-    },
-    {
-      projectNo: "04",
-      projectImg:
-        "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
-      ProjectTitle: "Project Width",
-      projectLink: "",
-    },
-    {
-      projectNo: "05",
-      projectImg:
-        "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
-      ProjectTitle: "Alive",
-      projectLink: "",
+        "https://res.cloudinary.com/dzsocqtuc/image/upload/v1676544495/Project%20Images/placeholder_amk7kk.jpg",
+      ProjectTitle: "Univ",
+      projectLink: "/",
     },
   ]);
 
@@ -71,24 +58,26 @@ const Works = ({ setViewProject, setWorkCursor }) => {
         <Content>
           <ProjectsContainer>
             {projects.map((item, index) => (
-              <ProjectCard
-                onMouseEnter={() => {
-                  setWorkCursor(item.projectImg);
-                }}
-                onMouseLeave={() => {
-                  setWorkCursor(false);
-                }}
-                key={index}
-                className="project-card"
-              >
-                <ImageHolder>
-                  <img src={item.projectImg} />
+              <ProjectCard key={index} className="project-card">
+                <ImageHolder
+                  onMouseEnter={() => {
+                    setViewProject("View-Project");
+                  }}
+                  onMouseLeave={() => {
+                    setViewProject(false);
+                  }}
+                  onClick={() => {
+                    setViewProject(false);
+                  }}
+                >
+                  <Link to={"works" + item.projectLink}>
+                    <img src={item.projectImg} />
+                  </Link>
                 </ImageHolder>
                 <ProjectInfo>
-                  <div>
-                    <p>{item.projectNo}</p>
-                    <h1>{item.ProjectTitle}</h1>
-                  </div>
+                  <p>{item.projectNo}</p>
+                  <h1>{item.ProjectTitle}</h1>
+                  <a href="https://www.google.com"></a>
                 </ProjectInfo>
               </ProjectCard>
             ))}
@@ -143,39 +132,80 @@ const ProjectsContainer = styled.div`
   }
 `;
 const ProjectCard = styled.div`
-  width: 100%;
-  height: 70vh;
-  margin-bottom: 2rem;
-  display: flex;
+  width: 60vw;
+  margin-bottom: 8rem;
+  :nth-child(even) {
+    margin-left: auto;
+  }
+  :last-child {
+    margin-bottom: 0;
+  }
+  @media (max-width: 1024px) {
+    width: 100%;
+    :nth-child(even) {
+      margin-left: 0;
+    }
+    margin-bottom: 4rem;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
 `;
 
 const ImageHolder = styled.div`
-  width: 65%;
-  z-index: 5;
+  height: 33vw;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  a {
+    display: block;
+    height: 100%;
+  }
   img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 1024px) {
+    height: 35vh;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 25vh;
   }
 `;
 
 const ProjectInfo = styled.div`
+  font-family: "gallientregular";
   display: flex;
-  align-items: center;
-  position: relative;
-  width: 35%;
-  div {
-    width: 100%;
-    position: absolute;
-    left: -20%;
-    /* z-index: 5; */
+  padding: 1.5rem 0;
+  padding-bottom: 0;
+  color: #b3cc6d;
+  p {
+    font-family: "Open Sans", sans-serif;
+    padding: 0 0.5rem;
+    opacity: 0.5;
+    font-size: 1.5rem;
+  }
+  h1 {
+    font-size: 5rem;
+  }
+  @media (max-width: 1024px) {
+    p {
+      font-size: 1rem;
+    }
     h1 {
-      font-size: 8rem;
-      -webkit-text-stroke-width: 2px;
-      -webkit-text-stroke-color: #fff;
-      -webkit-text-fill-color: transparent;
-      background-color: transparent;
-      color: #fff;
-      position: relative;
-      z-index: 2;
+      font-size: 3rem;
+    }
+  }
+  @media (max-width: 768px) {
+    p {
+      font-size: 0.8rem;
+    }
+    h1 {
+      font-size: 2rem;
     }
   }
 `;

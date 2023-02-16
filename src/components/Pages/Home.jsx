@@ -15,6 +15,7 @@ const Home = ({ setViewProject }) => {
         "https://res.cloudinary.com/dzsocqtuc/image/upload/v1676531319/Project%20Images/cheminHomepage_vnxpsf.png",
       ProjectTitle: "Chemin Esports",
       projectLink: "/chemin_esports",
+      url: "/chemin_esports",
     },
     {
       projectNo: "02",
@@ -26,8 +27,8 @@ const Home = ({ setViewProject }) => {
     {
       projectNo: "03",
       projectImg:
-        "https://uploads-ssl.webflow.com/611868992ba0adbb0e5938f1/61b360340618d937e9ded89a_drink-ky-app-screens.jpg",
-      ProjectTitle: "univ",
+        "https://res.cloudinary.com/dzsocqtuc/image/upload/v1676544495/Project%20Images/placeholder_amk7kk.jpg",
+      ProjectTitle: "Univ",
       projectLink: "/",
     },
   ]);
@@ -180,7 +181,6 @@ const Home = ({ setViewProject }) => {
         </Content>
       </Container>
       <Quotes setViewProject={setViewProject} />
-      {/* <FooterTitle titleLink="/works" title="Recent Works" /> */}
       <Footer setViewProject={setViewProject} />
     </RouteTransition>
   );
@@ -310,6 +310,10 @@ const ProjectTitle = styled.div`
       padding-left: 20vw;
     }
   }
+  @media (max-width: 768px) {
+    font-size: 4rem;
+    padding-bottom: 4rem;
+  }
 `;
 
 const ProjectCard = styled.div`
@@ -338,7 +342,7 @@ const ImageHolder = styled.div`
   height: 33vw;
   overflow: hidden;
   position: relative;
-  border-radius: 15px;
+  border-radius: 10px;
   a {
     display: block;
     height: 100%;
@@ -374,11 +378,17 @@ const ProjectInfo = styled.div`
     font-size: 5rem;
   }
   @media (max-width: 1024px) {
+    p {
+      font-size: 1rem;
+    }
     h1 {
       font-size: 3rem;
     }
   }
   @media (max-width: 768px) {
+    p {
+      font-size: 0.8rem;
+    }
     h1 {
       font-size: 2rem;
     }
@@ -393,6 +403,8 @@ const ViewAllBtn = styled.div`
   margin-top: 10rem;
   a {
     color: #fff;
+    display: flex;
+    align-items: center;
   }
   span {
     padding-right: 3rem;
@@ -405,8 +417,11 @@ const ViewAllBtn = styled.div`
     font-size: 5rem;
   }
   @media (max-width: 768px) {
-    margin-top: 4rem;
+    margin-top: 3rem;
     font-size: 2.5rem;
+    span {
+      padding-right: 1rem;
+    }
   }
 `;
 
