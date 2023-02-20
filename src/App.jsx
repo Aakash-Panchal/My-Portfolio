@@ -6,7 +6,6 @@ import Preloader from "./components/subComponents/Preloader";
 import NavBar from "./components/subComponents/NavBar";
 import Cursor from "./components/CustomCursor/Cursor";
 import ErrorPage from "./components/Pages/ErrorPage";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LocomotiveScroll from "locomotive-scroll";
 import { AnimatePresence } from "framer-motion";
 import Contact from "./components/Pages/Contact";
@@ -14,7 +13,6 @@ import About from "./components/Pages/About";
 import Works from "./components/Pages/Works";
 import Home from "./components/Pages/Home";
 import styled from "styled-components";
-import gsap from "gsap";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import "./App.scss";
 
@@ -24,8 +22,6 @@ function App() {
 
   const scrollRef = useRef(null);
   const location = useLocation();
-
-  gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
     const LocoScroll = new LocomotiveScroll({

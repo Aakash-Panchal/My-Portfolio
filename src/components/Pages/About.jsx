@@ -54,10 +54,12 @@ const About = ({ setViewProject }) => {
                   <p>Figma</p>
                   <p>UI design</p>
                 </li>
+                <Line data-scroll data-scroll-class="line" />
                 <li>
                   <p>Spline</p>
                   <p>3D</p>
                 </li>
+                <Line data-scroll data-scroll-class="line" />
               </ul>
             </DesignTools>
           </DesignSection>
@@ -69,26 +71,32 @@ const About = ({ setViewProject }) => {
                   <p>HTML,CSS,JS</p>
                   <p>Frontend development</p>
                 </li>
+                <Line data-scroll data-scroll-class="line" />
                 <li>
                   <p>SCSS</p>
                   <p>CSS framework</p>
                 </li>
+                <Line data-scroll data-scroll-class="line" />
                 <li>
                   <p>Reactjs</p>
                   <p>Frontend framework</p>
                 </li>
+                <Line data-scroll data-scroll-class="line" />
                 <li>
                   <p>Gsap</p>
                   <p>Frotend animations</p>
                 </li>
+                <Line data-scroll data-scroll-class="line" />
                 <li>
                   <p>Node,Express</p>
                   <p>Backend development</p>
                 </li>
+                <Line data-scroll data-scroll-class="line" />
                 <li>
                   <p>MongoDB</p>
                   <p>Database</p>
                 </li>
+                <Line data-scroll data-scroll-class="line" />
               </ul>
             </DesignTools>
           </DevelopmentSection>
@@ -195,7 +203,6 @@ const DesignTools = styled.div`
     li {
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px solid #fff;
       padding: 2rem 0;
       p {
         font-size: 1.5rem;
@@ -242,6 +249,13 @@ const DevelopmentSection = styled.div`
   @media (max-width: 768px) {
     margin-top: 4rem;
   }
+`;
+
+const Line = styled.div`
+  border-bottom: 1px solid #fff;
+  /* clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%); */
+  width: 0;
+  transition: all 1s;
 `;
 
 export default About;
