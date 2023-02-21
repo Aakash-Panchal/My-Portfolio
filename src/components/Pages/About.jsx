@@ -84,7 +84,7 @@ const About = ({ setViewProject }) => {
                 <Line data-scroll data-scroll-class="line" />
                 <li>
                   <p>Gsap</p>
-                  <p>Frotend animations</p>
+                  <p>Frontend animations</p>
                 </li>
                 <Line data-scroll data-scroll-class="line" />
                 <li>
