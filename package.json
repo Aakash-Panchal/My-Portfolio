@@ -27,7 +27,8 @@
     "sort-by": "^1.2.0",
     "split-type": "^0.3.3",
     "styled-components": "^5.3.5",
-    "swiper": "^9.0.5"
+    "swiper": "^9.0.5",
+    "web-vitals": "^3.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
