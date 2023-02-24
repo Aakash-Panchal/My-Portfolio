@@ -7,6 +7,8 @@ import RouteTransition from "../subComponents/RouteTransition";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import gsap from "gsap";
+import axios from "axios";
+import { BaseUrl } from "../../BaseUrl";
 
 const Contact = () => {
   const formRef = useRef();
@@ -15,7 +17,7 @@ const Contact = () => {
     name: "",
     email: "",
     work: "",
-    FoundMeFrom: "",
+    my_info: "",
     message: "",
   });
 
@@ -81,22 +83,14 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_luqpw3d",
-        "template_7mu6x67",
-        formRef.current,
-        "X319VgJOVJQ-LXbEi"
-      )
-      .then(
-        (result) => {
-          toast.success("Email Sent", toastOptions);
-          e.target.reset();
-        },
-        (error) => {
-          toast.error("There was an error", toastOptions);
-        }
-      );
+    axios
+      .post(BaseUrl + "sendemail", {
+        inputs,
+      })
+      .then((res) => {
+        toast.success("Email Sent", toastOptions);
+        e.target.reset();
+      });
   };
 
   return (
@@ -155,7 +149,7 @@ const Contact = () => {
                 <label>How did you find me?</label>
                 <input
                   placeholder="From google search?"
-                  name="FoundMeFrom"
+                  name="my_info"
                   onChange={handelChange}
                   required
                 ></input>
@@ -222,7 +216,7 @@ const Contact = () => {
         </Content>
         <SubContent>
           <SubTitle className="sub-title">
-            <span>Frequently</span>
+            <span className="line-1">Frequently</span>
             <span>asked questions</span>
           </SubTitle>
           {Data.map((item, index) => {
