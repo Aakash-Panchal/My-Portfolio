@@ -23,9 +23,13 @@ const Contact = () => {
 
   const toastOptions = {
     position: "bottom-right",
-    autoClose: 3000,
     pauseOnHover: true,
     theme: "dark",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    draggable: true,
+    progress: undefined,
   };
 
   const Data = [
@@ -80,16 +84,33 @@ const Contact = () => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const toastId = useRef(null);
+
   const sendEmail = (e) => {
     e.preventDefault();
-
+    toastId.current = toast.loading("Sending...", toastOptions);
     axios
       .post(BaseUrl + "sendemail", {
         inputs,
       })
       .then((res) => {
-        toast.success("Email Sent", toastOptions);
+        toast.update(toastId.current, {
+          render: "Email Sent",
+          type: "success",
+          isLoading: false,
+          autoClose: 3000,
+          hideProgressBar: true,
+        });
         e.target.reset();
+      })
+      .catch((error) => {
+        toast.update(toastId.current, {
+          render: "There was an error...",
+          type: "error",
+          isLoading: "false",
+          autoClose: 3000,
+          hideProgressBar: true,
+        });
       });
   };
 
