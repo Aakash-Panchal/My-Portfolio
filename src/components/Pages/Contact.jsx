@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Accordion from "../subComponents/Accordion";
-import emailjs from "@emailjs/browser";
 import { MagneticButton } from "../subComponents/MagneticButton";
 import RouteTransition from "../subComponents/RouteTransition";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import gsap from "gsap";
-import axios from "axios";
-import { BaseUrl } from "../../BaseUrl";
+import apiRequest from "../../utils/apiRequest";
 
 const Contact = () => {
   const formRef = useRef();
@@ -89,8 +87,8 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
     toastId.current = toast.loading("Sending...", toastOptions);
-    axios
-      .post(BaseUrl + "sendemail", {
+    apiRequest
+      .post("sendemail", {
         inputs,
       })
       .then((res) => {

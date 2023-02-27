@@ -1,37 +1,20 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Footer from "../subComponents/Footer";
 import Quotes from "../subComponents/Quotes";
 import RouteTransition from "../subComponents/RouteTransition";
-import gsap from "gsap";
-import { useState } from "react";
+import apiRequest from "../../utils/apiRequest";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
 
 const Home = ({ setViewProject }) => {
-  const [projects, setProjects] = useState([
-    {
-      projectNo: "01",
-      projectImg:
-        "https://res.cloudinary.com/dzsocqtuc/image/upload/v1676531319/Project%20Images/cheminHomepage_vnxpsf.png",
-      ProjectTitle: "Chemin Esports",
-      projectLink: "/chemin_esports",
-      url: "/chemin_esports",
-    },
-    {
-      projectNo: "02",
-      projectImg:
-        "https://res.cloudinary.com/dzsocqtuc/image/upload/v1676534775/Project%20Images/cleverStudioHomePage_rzmkir.png",
-      ProjectTitle: "Clever Studio",
-      projectLink: "/",
-    },
-    {
-      projectNo: "03",
-      projectImg:
-        "https://res.cloudinary.com/dzsocqtuc/image/upload/v1676544495/Project%20Images/placeholder_amk7kk.jpg",
-      ProjectTitle: "Univ",
-      projectLink: "/",
-    },
-  ]);
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    apiRequest.get("projects").then((res) => {
+      setProjects(res.data);
+    });
+  }, []);
 
   const tl = gsap.timeline();
 
@@ -81,10 +64,9 @@ const Home = ({ setViewProject }) => {
             </div>
             <div>
               <p>
-                <span>
-                  Hey i'm Aakash <br />I am a Frontend web developer & UI/UX
-                  Designer from India.
-                </span>
+                <span>Hey i'm Aakash</span>
+                <span>I am a Frontend web developer & UI/UX</span>
+                <span>Designer from India.</span>
               </p>
               <Button>
                 <Link
@@ -136,8 +118,8 @@ const Home = ({ setViewProject }) => {
                     setViewProject(false);
                   }}
                 >
-                  <Link to={"works" + item.projectLink}>
-                    <img src={item.projectImg} />
+                  <Link to={"works/" + item.url}>
+                    <img src={item.ProjectThumbnail} />
                   </Link>
                 </ImageHolder>
                 <ProjectInfo>

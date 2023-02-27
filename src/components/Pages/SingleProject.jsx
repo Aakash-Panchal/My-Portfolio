@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import Footer from "../subComponents/Footer";
@@ -8,24 +8,25 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { IoMdLink } from "react-icons/io";
 import { useRef } from "react";
 import "swiper/css";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
+import apiRequest from "../../utils/apiRequest";
 
 const SingleProject = ({ setViewProject }) => {
-  const projects = {
-    projectTitle: "Chemin Esports",
-    projectImg:
-      "https://res.cloudinary.com/dzsocqtuc/image/upload/v1676531319/Project%20Images/cheminHomepage_vnxpsf.png",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,and scrambled it to make a type specimen book.text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
-    review:
-      "ly dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an ",
-    siteLink: "https://cheminesports.com",
-  };
-
+  const [project, setProject] = useState({ ProjectImages: [] });
   const swiperRef = useRef();
+  const { url } = useParams();
+
+  useEffect(() => {
+    apiRequest.get(`projects/${url}`, {}).then((res) => {
+      setProject(res.data);
+    });
+  }, []);
 
   return (
     <RouteTransition>
       <Container data-scroll-section>
-        <Title>{projects.projectTitle}</Title>
+        <Title>{project.projectTitle}</Title>
         <Content>
           <Info>
             <ItemWrapper>
@@ -42,25 +43,18 @@ const SingleProject = ({ setViewProject }) => {
             </ItemWrapper>
             <ItemWrapper>
               <p>Vist Site :</p>
-              <a href={projects.siteLink} target="_blank">
+              <a href={project.siteLink} target="_blank">
                 Click Here <IoMdLink />
               </a>
             </ItemWrapper>
           </Info>
           <ProjectImage>
             <Swiper ref={swiperRef} spaceBetween={50} slidesPerView={1.3}>
-              <SwiperSlide>
-                <img src={projects.projectImg} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src="https://res.cloudinary.com/dzsocqtuc/image/upload/v1676533117/Project%20Images/infCHeminHomePage_ucycaz.png" />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={projects.projectImg} />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img src={projects.projectImg} />
-              </SwiperSlide>
+              {project.ProjectImages.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <img src={item.url} />
+                </SwiperSlide>
+              ))}
             </Swiper>
             <SlideButton>
               <div
@@ -79,17 +73,11 @@ const SingleProject = ({ setViewProject }) => {
             </SlideButton>
           </ProjectImage>
           <ProjectDesc>
-            <p>{projects.desc}</p>
+            <p>{project.desc}</p>
           </ProjectDesc>
-          {/* 
-          <Review>
-            <p>What they think about me</p>
-            <p>{projects.review}</p>
-          </Review> */}
         </Content>
       </Container>
-      {/* <FooterTitle titleLink="/works" title="Recent Works" /> */}
-      <Quotes />
+      <Quotes setViewProject={setViewProject} />
       <Footer setViewProject={setViewProject} />
     </RouteTransition>
   );
@@ -130,7 +118,6 @@ const Info = styled.div`
   height: 20vh;
   display: flex;
   justify-content: space-between;
-
   @media (max-width: 768px) {
     flex-direction: column;
     height: auto;
@@ -152,12 +139,17 @@ const ItemWrapper = styled.div`
   a {
     display: flex;
     align-items: center;
-    justify-content: center;
     text-decoration: none;
     color: #fff;
     svg {
       margin-left: 0.5rem;
       font-size: 1.5rem;
+    }
+  }
+  @media (max-width: 1024px) {
+    a,
+    p {
+      font-size: 1rem;
     }
   }
 `;

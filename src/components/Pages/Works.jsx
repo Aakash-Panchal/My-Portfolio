@@ -5,36 +5,18 @@ import RouteTransition from "../subComponents/RouteTransition";
 import Quotes from "../subComponents/Quotes";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
+import apiRequest from "../../utils/apiRequest";
 
 const Works = ({ setViewProject, setWorkCursor }) => {
-  const [projects, setProjects] = useState([
-    {
-      projectNo: "01",
-      projectImg:
-        "https://res.cloudinary.com/dzsocqtuc/image/upload/v1676531319/Project%20Images/cheminHomepage_vnxpsf.png",
-      ProjectTitle: "Chemin Esports",
-      projectLink: "/chemin_esports",
-      url: "/chemin_esports",
-    },
-    {
-      projectNo: "02",
-      projectImg:
-        "https://res.cloudinary.com/dzsocqtuc/image/upload/v1676534775/Project%20Images/cleverStudioHomePage_rzmkir.png",
-      ProjectTitle: "Clever Studio",
-      projectLink: "/",
-    },
-    {
-      projectNo: "03",
-      projectImg:
-        "https://res.cloudinary.com/dzsocqtuc/image/upload/v1676544495/Project%20Images/placeholder_amk7kk.jpg",
-      ProjectTitle: "Univ",
-      projectLink: "/",
-    },
-  ]);
+  const [projects, setProjects] = useState([]);
 
   const tl = gsap.timeline();
 
   useEffect(() => {
+    apiRequest.get("projects").then((res) => {
+      setProjects(res.data);
+    });
+
     tl.from(".works-title span", {
       duration: 1.8,
       y: 100,
@@ -70,8 +52,8 @@ const Works = ({ setViewProject, setWorkCursor }) => {
                     setViewProject(false);
                   }}
                 >
-                  <Link to={"works" + item.projectLink}>
-                    <img src={item.projectImg} />
+                  <Link to={`/works/${item.url}`}>
+                    <img src={item.ProjectThumbnail} />
                   </Link>
                 </ImageHolder>
                 <ProjectInfo>
@@ -84,7 +66,7 @@ const Works = ({ setViewProject, setWorkCursor }) => {
           </ProjectsContainer>
         </Content>
       </Container>
-      <Quotes />
+      <Quotes setWorkCursor={setWorkCursor} />
       <Footer setViewProject={setViewProject} />
     </RouteTransition>
   );
