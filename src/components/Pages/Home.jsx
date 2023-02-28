@@ -123,9 +123,8 @@ const Home = ({ setViewProject }) => {
                   </Link>
                 </ImageHolder>
                 <ProjectInfo>
-                  <p>{item.projectNo}</p>
-                  <h1>{item.ProjectTitle}</h1>
-                  <a href="https://www.google.com"></a>
+                  {/* <p>{index}</p> */}
+                  <h1>{item.projectTitle}</h1>
                 </ProjectInfo>
               </ProjectCard>
             ))}
