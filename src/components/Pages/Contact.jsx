@@ -93,7 +93,7 @@ const Contact = () => {
       })
       .then((res) => {
         toast.update(toastId.current, {
-          render: "Email Sent",
+          render: res.data.Message,
           type: "success",
           isLoading: false,
           autoClose: 3000,
