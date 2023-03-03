@@ -6,6 +6,7 @@ import RouteTransition from "../subComponents/RouteTransition";
 import apiRequest from "../../utils/apiRequest";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
+import { MediaUrl } from "../../utils/MediaUrl";
 
 const Home = ({ setViewProject }) => {
   const [projects, setProjects] = useState([]);
@@ -119,7 +120,7 @@ const Home = ({ setViewProject }) => {
                   }}
                 >
                   <Link to={"works/" + item.url}>
-                    <img src={item.ProjectThumbnail} />
+                    <img src={MediaUrl + item.ProjectThumbnail[0].img} />
                   </Link>
                 </ImageHolder>
                 <ProjectInfo>
