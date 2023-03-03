@@ -11,6 +11,7 @@ import "swiper/css";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import apiRequest from "../../utils/apiRequest";
+import { MediaUrl } from "../../utils/MediaUrl";
 
 const SingleProject = ({ setViewProject }) => {
   const [project, setProject] = useState({ ProjectImages: [] });
@@ -49,10 +50,19 @@ const SingleProject = ({ setViewProject }) => {
             </ItemWrapper>
           </Info>
           <ProjectImage>
-            <Swiper ref={swiperRef} spaceBetween={50} slidesPerView={1.3}>
+            <Swiper
+              ref={swiperRef}
+              spaceBetween={50}
+              slidesPerView={1}
+              breakpoints={{
+                1024: {
+                  slidesPerView: 1.2,
+                },
+              }}
+            >
               {project.ProjectImages.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <img src={item.url} />
+                  <img src={MediaUrl + item.img} />
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -90,7 +100,7 @@ const Container = styled.div`
     margin: 0 4rem;
   }
   @media (max-width: 768px) {
-    margin: 0 2rem;
+    margin: 0 1rem;
   }
 `;
 const Title = styled.div`
@@ -100,16 +110,15 @@ const Title = styled.div`
   font-size: 6rem;
   font-weight: 600;
   font-family: "gallientregular";
-
   @media (max-width: 768px) {
-    height: 35vh;
-    font-size: 4rem;
+    height: 30vh;
+    font-size: 3rem;
   }
 `;
 const Content = styled.div`
   margin-top: 5rem;
   @media (max-width: 768px) {
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
 `;
 
