@@ -6,10 +6,10 @@ import RouteTransition from "../subComponents/RouteTransition";
 import apiRequest from "../../utils/apiRequest";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
-import { MediaUrl } from "../../utils/MediaUrl";
 
 const Home = ({ setViewProject }) => {
   const [projects, setProjects] = useState([]);
+  console.log(projects);
 
   useEffect(() => {
     apiRequest.get("projects").then((res) => {
@@ -120,7 +120,10 @@ const Home = ({ setViewProject }) => {
                   }}
                 >
                   <Link to={"works/" + item.url}>
-                    <img src={MediaUrl + item.ProjectThumbnail[0].img} />
+                    <img
+                      // alt={item.ProjectThumbnail.url}
+                      src={item.ProjectThumbnail[0].url}
+                    />
                   </Link>
                 </ImageHolder>
                 <ProjectInfo>

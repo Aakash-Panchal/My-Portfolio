@@ -11,7 +11,6 @@ import "swiper/css";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import apiRequest from "../../utils/apiRequest";
-import { MediaUrl } from "../../utils/MediaUrl";
 
 const SingleProject = ({ setViewProject }) => {
   const [project, setProject] = useState({ ProjectImages: [] });
@@ -62,7 +61,7 @@ const SingleProject = ({ setViewProject }) => {
             >
               {project.ProjectImages.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <img src={MediaUrl + item.img} />
+                  <img src={item.url} />
                 </SwiperSlide>
               ))}
             </Swiper>

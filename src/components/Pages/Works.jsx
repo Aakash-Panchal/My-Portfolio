@@ -6,7 +6,6 @@ import Quotes from "../subComponents/Quotes";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import apiRequest from "../../utils/apiRequest";
-import { MediaUrl } from "../../utils/MediaUrl";
 
 const Works = ({ setViewProject, setWorkCursor }) => {
   const [projects, setProjects] = useState([]);
@@ -54,7 +53,7 @@ const Works = ({ setViewProject, setWorkCursor }) => {
                   }}
                 >
                   <Link to={`/works/${item.url}`}>
-                    <img src={MediaUrl + item.ProjectThumbnail[0].img} />
+                    <img src={item.ProjectThumbnail[0].url} />
                   </Link>
                 </ImageHolder>
                 <ProjectInfo>
