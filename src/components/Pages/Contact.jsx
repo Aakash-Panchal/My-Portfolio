@@ -30,20 +30,23 @@ const Contact = () => {
     progress: undefined,
   };
 
-  const Data = [
+  const FaqContent = [
     {
       title: "I want to work with you, how do we get started?",
       content: `To start a new project just fill in the contact form and let me know what you want to get done.`,
     },
     {
-      title: "How long will it take to complete my project?",
-      content: `That depends on the type of project.`,
+      title: "What information do you need from me to get started?",
+      content: `I'll need a clear understanding of your goals and objectives, your target audience, your branding, and any content or assets you want to include on your website. We'll work together to create a detailed project brief that outlines your requirements and expectations.`,
     },
     {
-      title: "Section 3",
-      content: `Sapiente expedita hic obcaecati, laboriosam similique omnis architecto ducimus magnam accusantium corrupti
-        quam sint dolore pariatur perspiciatis, necessitatibus rem vel dignissimos
-        dolor ut sequi minus iste? Quas?`,
+      title: "What kind of websites do you create?",
+      content: `I can create a wide variety of websites, including business websites, e-commerce sites, blogs, landing pages, and custom web applications.`,
+    },
+    {
+      title: "Will my website be mobile-friendly?",
+      content:
+        "Yes, I'll ensure that your website is fully mobile-responsive and looks great on all devices, including smartphones, tablets, and desktop computers.",
     },
   ];
 
@@ -238,7 +241,7 @@ const Contact = () => {
             <span className="line-1">Frequently</span>
             <span>asked questions</span>
           </SubTitle>
-          {Data.map((item, index) => {
+          {FaqContent.map((item, index) => {
             return (
               <Accordion
                 key={index}
@@ -249,9 +252,6 @@ const Contact = () => {
           })}
         </SubContent>
       </Container>
-      {/* <Quotes setViewProject={setViewProject} />
-      <FooterTitle title="Works" titleLink="/works" />
-      <Footer setViewProject={setViewProject} /> */}
     </RouteTransition>
   );
 };
