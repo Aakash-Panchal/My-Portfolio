@@ -53,7 +53,11 @@ const Works = ({ setViewProject, setWorkCursor }) => {
                   }}
                 >
                   <Link to={`/works/${item.url}`}>
-                    <img src={item.ProjectThumbnail[0].url} />
+                    <img
+                      data-scroll
+                      data-scroll-class="iamge-reveal"
+                      src={item.ProjectThumbnail[0].url}
+                    />
                   </Link>
                 </ImageHolder>
                 <ProjectInfo>
@@ -146,6 +150,13 @@ const ImageHolder = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    scale: 1.2;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    transition: all 1.1s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  .iamge-reveal {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    scale: 1;
   }
 
   @media (max-width: 1024px) {

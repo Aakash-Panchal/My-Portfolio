@@ -33,7 +33,7 @@ function App() {
         smooth: false,
       },
       tablet: { smooth: false },
-      repeat: true,
+      repeat: false,
     });
 
     new ResizeObserver(() => LocoScroll.update()).observe(
