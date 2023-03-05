@@ -29,7 +29,7 @@ const Footer = ({ setViewProject }) => {
         </Title>
         <InfoWrapper>
           <Socials>
-            <a href="https://www.instagram.com/ig__drew/" target="_blank">
+            <a href="" target="_blank">
               <span>
                 Twitter<p>@aakash</p>
               </span>
@@ -37,9 +37,9 @@ const Footer = ({ setViewProject }) => {
                 <AiOutlineTwitter />
               </div>
             </a>
-            <a href="https://www.instagram.com/ig__drew/" target="_blank">
+            <a href="https://www.instagram.com/ig__aakash21/" target="_blank">
               <span>
-                Instagram <p>@ig_drew</p>
+                Instagram <p>@ig__Aakash21</p>
               </span>
               <div className="socialLogo">
                 <FiInstagram />
@@ -48,7 +48,7 @@ const Footer = ({ setViewProject }) => {
             <a href="https://github.com/Aakash-Panchal" target="_blank">
               <span>
                 Github
-                <p>@aakash-panchal</p>
+                <p>@Aakash-panchal</p>
               </span>
               <div className="socialLogo">
                 <FiGithub />
@@ -56,7 +56,7 @@ const Footer = ({ setViewProject }) => {
             </a>
             <a href="" target="_blank">
               <span>
-                Linkedin <p>@aakash</p>
+                Linkedin <p>@Aakash-Panchal</p>
               </span>
               <div className="socialLogo">
                 <AiFillLinkedin />
