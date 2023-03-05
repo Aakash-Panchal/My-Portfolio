@@ -138,7 +138,6 @@ const ImageHolder = styled.div`
   height: 33vw;
   overflow: hidden;
   position: relative;
-  border-radius: 10px;
   a {
     display: block;
     height: 100%;
