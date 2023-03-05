@@ -30,9 +30,9 @@ function App() {
       scrollFromAnywhere: true,
       reloadOnContextChange: true,
       smartphone: {
-        smooth: true,
+        smooth: false,
       },
-      tablet: { smooth: true },
+      tablet: { smooth: false },
       repeat: true,
     });
 
